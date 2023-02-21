@@ -1,6 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Landing() {
+
   return (
     <>
       <div>
@@ -9553,12 +9555,12 @@ function Landing() {
                               </a>
                             </li>
                             <li className="menu-item">
-                              <a
+                              <Link
                                 className="menu-link ps-0 py-2"
-                                href="dashboards/light.html"
+                                to="/dashboard"
                               >
                                 Light
-                              </a>
+                              </Link>
                             </li>
                             <li className="menu-item">
                               <a

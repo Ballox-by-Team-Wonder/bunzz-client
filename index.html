@@ -12,10 +12,15 @@
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Global Stylesheets Bundle-->
+
+    <!--begin::Page Vendor Stylesheets(used by dashboard page)-->
+		<link href="assets/plugins/custom/leaflet/leaflet.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Page Vendor Stylesheets-->
 
     <title>Vite + React</title>
   </head>
-  <body id="kt_body" data-sidebar="on" class="header-fixed header-tablet-and-mobile-fixed sidebar-enabled">
+  <body id="kt_body">
     <div id="root"></div>
     <!--begin::Global Javascript Bundle(used by all pages)-->
     <script src="assets/plugins/global/plugins.bundle.js"></script>
@@ -28,6 +33,16 @@
 		<script src="assets/js/custom/modals/select-location.js"></script>
 		<script src="assets/js/custom/modals/users-search.js"></script>
     <!--end::Page Custom Javascript-->
+
+    <!--begin::Page Vendors Javascript(used by dashboard page)-->
+		<script src="assets/plugins/custom/leaflet/leaflet.bundle.js"></script>
+		<!--end::Page Vendors Javascript-->
+		<!--begin::Page Custom Javascript(used by dashboard page)-->
+		<script src="assets/js/custom/widgets.js"></script>
+		<script src="assets/js/custom/modals/create-app.js"></script>
+		<script src="assets/js/custom/modals/select-location.js"></script>
+		<script src="assets/js/custom/modals/users-search.js"></script>
+		<!--end::Page Custom Javascript-->
 
 
     <script type="module" src="/src/main.jsx"></script>
