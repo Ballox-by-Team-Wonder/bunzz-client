@@ -4,10 +4,32 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		<!--begin::Fonts-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<!--end::Fonts-->
+		<!--begin::Global Stylesheets Bundle(used by all pages)-->
+		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+
     <title>Vite + React</title>
   </head>
-  <body>
+  <body id="kt_body" data-sidebar="on" class="header-fixed header-tablet-and-mobile-fixed sidebar-enabled">
     <div id="root"></div>
+    <!--begin::Global Javascript Bundle(used by all pages)-->
+    <script src="assets/plugins/global/plugins.bundle.js"></script>
+		<script src="assets/js/scripts.bundle.js"></script>
+		<!--end::Global Javascript Bundle-->
+
+		<!--begin::Page Custom Javascript(used by landing page)-->
+		<script src="assets/js/custom/widgets.js"></script>
+		<script src="assets/js/custom/modals/create-app.js"></script>
+		<script src="assets/js/custom/modals/select-location.js"></script>
+		<script src="assets/js/custom/modals/users-search.js"></script>
+    <!--end::Page Custom Javascript-->
+
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
