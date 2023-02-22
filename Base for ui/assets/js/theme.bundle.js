@@ -180,7 +180,7 @@
               i.forEach((t) => {
                 const n = {
                   ...{
-                    url: "https://Team Wonderco.uk/Culture/upload.php",
+                    url: "https://Team Wonderco.uk/Identify/upload.php",
                     previewTemplate:
                       '\n        <form class="form" enctype="multipart/form-data">\n            <div class="dz-preview dz-file-preview">\n                <div class="dz-details d-flex mb-1">\n                    <img class="dz-image img-fluid" data-dz-thumbnail>\n                    <div class="dz-file-wrapper text-start w-100">\n                        <p class="dz-filename mb-0 fs-4">\n                            <span data-dz-name></span> (<span class="dz-size fs-6" data-dz-size></span>)\n                        </p>\n                    </div>\n                </div>\n                <div class="d-flex justify-content-between align-items-center h-20px">\n                    <div class="dz-progress progress w-100">\n                        <div class="dz-upload progress-bar bg-success" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-dz-uploadprogress></div>\n                    </div>\n                    <div class="ms-3">\n                        <div class="dz-success-mark text-success">\n                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="16" width="16"><path d="M12,0A12,12,0,1,0,24,12,12,12,0,0,0,12,0Zm6.93,8.2-6.85,9.29a1,1,0,0,1-1.43.19L5.76,13.77a1,1,0,0,1-.15-1.41A1,1,0,0,1,7,12.21l4.08,3.26L17.32,7a1,1,0,0,1,1.39-.21A1,1,0,0,1,18.93,8.2Z" style="fill: currentColor"/></svg>                      \n                        </div>\n                        <div class="dz-error-mark text-danger" data-bs-toggle="tooltip" title="data-dz-errormessage">\n                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="16" width="16"><path d="M12,0A12.24,12.24,0,0,0,3.47,3.65,11.85,11.85,0,0,0,0,12.21,11.78,11.78,0,0,0,11.8,24H12A12.11,12.11,0,0,0,24,11.79h0A11.77,11.77,0,0,0,12,0ZM10.5,16.54A1.48,1.48,0,0,1,12,15h0a1.53,1.53,0,0,1,1.52,1.47A1.47,1.47,0,0,1,12.05,18h0A1.53,1.53,0,0,1,10.5,16.54Zm.5-4v-6a1,1,0,0,1,2,0v6a1,1,0,0,1-2,0Z" style="fill: currentColor"/></svg>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </form>',
                     uploadMultiple: !0,
@@ -880,7 +880,7 @@
     })()),
     (r.o = (e, t) => Object.prototype.hasOwnProperty.call(e, t)),
     (n = {}),
-    (i = "Culture:"),
+    (i = "Identify:"),
     (r.l = (e, t, s, o) => {
       if (n[e]) n[e].push(t);
       else {
@@ -960,7 +960,7 @@
           }
           for (t && t(n); c < o.length; c++) (s = o[c]), r.o(e, s) && e[s] && e[s][0](), (e[s] = 0);
         },
-        n = (self.webpackChunkCulture = self.webpackChunkCulture || []);
+        n = (self.webpackChunkIdentify = self.webpackChunkIdentify || []);
       n.forEach(t.bind(null, 0)), (n.push = t.bind(null, n.push.bind(n)));
     })(),
     (() => {
