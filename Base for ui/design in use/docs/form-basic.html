@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" >
+    
+<!-- Mirrored from dashly-theme.com/docs/form-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Oct 2022 14:52:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="Webinning" name="author" />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap">
+        <link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap">
+
+        <!-- no-JS fallback -->
+        <noscript>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap">
+        </noscript>
+
+        <!-- Theme CSS -->
+            <link rel="stylesheet" href="../assets/css/theme.bundle.css" />
+
+        <script>
+         // Theme switcher
+        
+            let themeSwitcher = document.getElementById('themeSwitcher');
+        
+            const getPreferredTheme = () => {
+                if (localStorage.getItem('theme') != null) {
+                    return localStorage.getItem('theme');
+                }
+        
+                return document.documentElement.dataset.theme;
+            };
+        
+            const setTheme = function (theme) {
+                if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } else {
+                    document.documentElement.dataset.theme = theme;
+                }
+        
+                localStorage.setItem('theme', theme);
+            };
+        
+            const showActiveTheme = theme => {
+                const activeBtn = document.querySelector(`[data-theme-value="${theme}"]`);
+        
+                document.querySelectorAll('[data-theme-value]').forEach(element => {
+                    element.classList.remove('active');
+                });
+        
+                activeBtn && activeBtn.classList.add('active');
+        
+             // Set button if demo mode is enabled
+                document.querySelectorAll('[data-theme-control="theme"]').forEach(element => {
+                    if (element.value == theme) {
+                        element.checked = true;
+                    }
+                });
+            };
+        
+            function reloadPage() {
+                window.location = window.location.pathname;
+            }
+        
+        
+            setTheme(getPreferredTheme());
+        
+            if(typeof themeSwitcher != 'undefined') {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    if(localStorage.getItem('theme') != null) {
+                        if (localStorage.getItem('theme') == 'auto') {
+                            reloadPage();
+                        }
+                    }
+                });
+        
+                window.addEventListener('load', () => {
+                    showActiveTheme(getPreferredTheme());
+                    
+                    document.querySelectorAll('[data-theme-value]').forEach(element => {
+                        element.addEventListener('click', () => {
+                            const theme = element.getAttribute('data-theme-value');
+        
+                            localStorage.setItem('theme', theme);
+                            reloadPage();
+                        })
+                    })
+                });
+            }
+        </script>
+        <!-- Favicon -->
+        <link rel="icon" href="../assets/favicon/favicon.ico" sizes="any" />
+
+        <!-- Page Title -->
+        <title>Basic Forms - Documentation | Dashly</title>
+
+    </head>
+    
+    <body>
+        <!-- NAVIGATION -->
+        <nav id="mainNavbar" class="navbar navbar-vertical navbar-expand-lg scrollbar bg-white navbar-light">
+            <div class="container-fluid">
+                
+                <div class="d-flex align-items-center mb-lg-7">
+                    <!-- Brand -->
+                    <a class="navbar-brand mb-0" href="index.html">
+                        <img src="https://d33wubrfki0l68.cloudfront.net/ba6b91b7d508187d153e48318c22d0773a9cedfc/36afa/assets/images/logo.svg" class="navbar-brand-img logo-light logo-large" alt="..." width="125" height="25">
+                        <img src="https://d33wubrfki0l68.cloudfront.net/55307694d1a6b107d2d87c838a1aaede85cd3d84/66f18/assets/images/logo-dark.svg" class="navbar-brand-img logo-dark logo-large" alt="..." width="125" height="25">
+                    </a>
+
+                    <a href="changelog.html">
+                        <span class="badge text-bg-primary-soft ms-2">v1.0.0</span>
+                    </a>
+                </div>
+        
+                <!-- Navbar toggler -->
+                <a href="javascript: void(0);" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#sidenavCollapse" aria-controls="sidenavCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </a>
+        
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="sidenavCollapse">
+        
+                    <!-- Navigation -->
+                    <ul class="navbar-nav mb-lg-7">
+                        <li class="nav-item">
+                            <span class="h6 text-secondary ps-4 ps-lg-6 mb-3 d-block text-uppercase">Getting started</span>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M12,22.125V4.712S9.545,1.985,1.268,1.875a.506.506,0,0,0-.366.15.522.522,0,0,0-.152.369V18.769a.515.515,0,0,0,.5.519C9.543,19.4,12,22.125,12,22.125" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M9,11.18a21.258,21.258,0,0,0-5.26-1.055" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M9,15.375A21.258,21.258,0,0,0,3.74,14.32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15,11.18a21.258,21.258,0,0,1,5.26-1.055" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15,15.375a21.258,21.258,0,0,1,5.26-1.055" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M12,22.125V4.712s2.455-2.727,10.732-2.837a.506.506,0,0,1,.366.15.522.522,0,0,1,.152.369V18.769a.515.515,0,0,1-.5.519C14.457,19.4,12,22.125,12,22.125" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Introduction</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="structure.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M16.5,23.248H21a.75.75,0,0,0,.75-.75V17.559a.75.75,0,0,0-.219-.53l-1.06-1.061a.749.749,0,0,0-.53-.22H16.5a.75.75,0,0,0-.75.75v6A.75.75,0,0,0,16.5,23.248Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M16.5,9.748H21A.75.75,0,0,0,21.75,9V4.059a.75.75,0,0,0-.219-.53l-1.06-1.061a.749.749,0,0,0-.53-.22H16.5a.75.75,0,0,0-.75.75V9A.75.75,0,0,0,16.5,9.748Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25 0.748L2.25 2.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25 5.248L2.25 8.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25 11.248L2.25 14.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25,17.248v1.5a1.5,1.5,0,0,0,1.5,1.5h1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M8.25 20.248L11.25 20.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14.25 20.248L15.75 20.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25 6.748L5.25 6.748" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M8.25 6.748L11.25 6.748" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14.25 6.748L15.75 6.748" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Structure</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#customization" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="customization">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><g><g><circle cx="9.5" cy="6.75" r="2" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="11.5" y1="6.75" x2="18.75" y2="6.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="5.25" y1="6.75" x2="7.5" y2="6.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><circle cx="14.5" cy="12.75" r="2" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="12.5" y1="12.75" x2="5.25" y2="12.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="18.75" y1="12.75" x2="16.5" y2="12.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/></g><g><path d="M13.5,18.75a8.93,8.93,0,0,0,1.5,4.5H9a8.93,8.93,0,0,0,1.5-4.5" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="6.75" y1="23.25" x2="17.25" y2="23.25" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><rect x="0.75" y="0.75" width="22.5" height="18" rx="1.5" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/></g></g></svg>    
+                                <span>Customization</span>
+                            </a>
+                            <div class="collapse" id="customization">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="webpack.html" class="nav-link">Webpack</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="sass.html" class="nav-link">Sass</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="javascript.html" class="nav-link">JavaScript</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="handlebars.html" class="nav-link">Handlebars</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="site-config.html" class="nav-link">Site config</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="dark-mode.html" class="nav-link">Dark mode</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="rtl.html" class="nav-link">RTL version</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        
+                        <li class="nav-item">
+                            <a href="credits.html" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>app-window-four</title><rect class="a" x="0.76" y="0.753" width="9" height="9" rx="1.5" ry="1.5"/><line class="a" x1="0.76" y1="3.753" x2="9.76" y2="3.753"/><rect class="a" x="14.26" y="0.753" width="9" height="9" rx="1.5" ry="1.5"/><line class="a" x1="14.26" y1="3.753" x2="23.26" y2="3.753"/><rect class="a" x="0.76" y="14.253" width="9" height="9" rx="1.5" ry="1.5"/><line class="a" x1="0.76" y1="17.253" x2="9.76" y2="17.253"/><rect class="a" x="14.26" y="14.253" width="9" height="9" rx="1.5" ry="1.5"/><line class="a" x1="14.26" y1="17.253" x2="23.26" y2="17.253"/></svg>
+                                <span>Credits</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item w-100">
+                            <hr>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="h6 text-secondary ps-4 ps-lg-6 mb-3 d-block text-uppercase">Design & Graphics</span>
+                        </li>
+                        <li class="nav-item">
+                            <a href="illustrations.html" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>picture-sun</title><rect class="a" x="0.75" y="0.75" width="22.5" height="22.5" rx="1.5" ry="1.5"/><circle class="a" cx="16.5" cy="7.5" r="3"/><path class="a" d="M3.961,14.959a8.194,8.194,0,0,1,11.694,4.149"/><path class="a" d="M14.382,16.918a4.449,4.449,0,0,1,5.851-.125"/></svg>
+                                <span>Illustrations</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="icons.html" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>shapes</title><rect class="a" x="0.75" y="0.75" width="9" height="9" rx="1" ry="1"/><circle class="a" cx="18.75" cy="5.25" r="4.5"/><path class="a" d="M18.786,13.977a.886.886,0,0,0-1.572,0l-4.337,7.807a1.027,1.027,0,0,0-.007.976.905.905,0,0,0,.793.49h8.674a.905.905,0,0,0,.793-.49,1.027,1.027,0,0,0-.007-.976Z"/><path class="a" d="M5.851,13.034a.778.778,0,0,0-1.2,0L.941,17.471a.827.827,0,0,0,0,1.058l3.708,4.437a.778.778,0,0,0,1.2,0l3.708-4.437a.827.827,0,0,0,0-1.058Z"/></svg>
+                                <span>Icons</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item w-100">
+                            <hr>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="h6 text-secondary ps-4 ps-lg-6 mb-3 d-block text-uppercase">Components</span>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#baseUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="baseUI">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><path class="a" d="M23.25,13.25V19.5a1,1,0,0,1-1,1H1.75a1,1,0,0,1-1-1V9.25a1,1,0,0,1,1-1H9"/><path class="a" d="M19.334,14.187A5.5,5.5,0,1,1,23,9"/><circle class="a" cx="17.5" cy="9" r="1.833"/><path class="a" d="M19.333,9A1.834,1.834,0,0,0,23,9"/><line class="a" x1="4.662" y1="11.667" x2="4.662" y2="17.083"/></svg>
+                                <span>Base UI</span>
+                            </a>
+                            <div class="collapse" id="baseUI">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="accordion.html" class="nav-link">Accordion</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="alerts.html" class="nav-link">Alerts</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="avatars.html" class="nav-link">
+                                            Avatars
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="badge.html" class="nav-link">Badge</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="breadcrumb.html" class="nav-link">Breadcrumb</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="buttons.html" class="nav-link">Buttons</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="button-group.html" class="nav-link">Button group</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="cards.html" class="nav-link">Cards</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="collapse.html" class="nav-link">Collapse</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="dropdowns.html" class="nav-link">Dropdowns</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="legend-circle.html" class="nav-link">
+                                            Legend circle
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="list-group.html" class="nav-link">List group</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="modal.html" class="nav-link">Modal</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="navs-tabs.html" class="nav-link">Navs & tabs</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="offcanvas.html" class="nav-link">Offcanvas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pagination.html" class="nav-link">Pagination</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="progress.html" class="nav-link">Progress</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="scrollbar.html" class="nav-link">
+                                            Scrollbar
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="scroll-shadow.html" class="nav-link">
+                                            Scroll shadow
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="tooltips.html" class="nav-link">Tooltips</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="typography.html" class="nav-link">Typography</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="wizard.html" class="nav-link">
+                                            Wizard
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#extendedUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="extendedUI">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>ui-columns</title><rect class="a" x="0.75" y="0.75" width="22.5" height="9" rx="1.5" ry="1.5"/><line class="a" x1="3.75" y1="3.75" x2="11.022" y2="3.75"/><line class="a" x1="3.75" y1="6.75" x2="8.204" y2="6.761"/><line class="a" x1="15" y1="0.75" x2="15" y2="9.75"/><polyline class="a" points="19.5 3.75 18 5.25 19.5 6.75"/><rect class="a" x="0.75" y="14.25" width="22.5" height="9" rx="1.5" ry="1.5"/><line class="a" x1="3.75" y1="17.25" x2="11.022" y2="17.25"/><line class="a" x1="3.75" y1="20.25" x2="8.204" y2="20.261"/><line class="a" x1="15" y1="14.25" x2="15" y2="23.25"/><polyline class="a" points="19.5 17.25 18 18.75 19.5 20.25"/></svg>
+                                <span>Extended UI</span>
+                            </a>
+                            <div class="collapse" id="extendedUI">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="chart.html" class="nav-link">Chart</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="calendar.html" class="nav-link">Calendar</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="drag-and-drop.html" class="nav-link">Drag & Drop</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="highlight-js.html" class="nav-link">Highlight</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="jsvectormap.html" class="nav-link">Jsvectormap</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="scrollspy.html" class="nav-link">Scrollspy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active" href="#forms" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="forms">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M3.75,19.5H2.571a1.038,1.038,0,0,1-1.071-1V1.725A1.027,1.027,0,0,1,2.571.75H21.429a1.027,1.027,0,0,1,1.071.975V18.5a1.038,1.038,0,0,1-1.071,1H20.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M5.25 4.5L18.75 4.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M5.217 8.25L15 8.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M6.375 17.625 A5.625 5.625 0 1 0 17.625 17.625 A5.625 5.625 0 1 0 6.375 17.625 Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14.259,16.134l-2.438,3.251a.631.631,0,0,1-.949.068L9.611,18.192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Forms</span>
+                            </a>
+                            <div class="collapse show" id="forms">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="form-basic.html" class="nav-link active">Basic</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link" href="#form-advanced" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="form-advanced">
+                                            Advanced
+                                        </a>
+                                        <div class="collapse" id="form-advanced">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a href="clipboard.html" class="nav-link">Clipboard</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="datepicker.html" class="nav-link">Datepicker</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="editor.html" class="nav-link">Editor</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="emoji.html" class="nav-link">Emoji</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="file-upload.html" class="nav-link">File upload</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="inputmask.html" class="nav-link">Inputmask</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="password-strength.html" class="nav-link">Password strength</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="reveal-password.html" class="nav-link">Reveal password</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="select.html" class="nav-link">Select</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#tables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="tables">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><rect class="a" x="0.75" y="2.75" width="22.5" height="18.5" rx="2"/><line class="a" x1="0.75" y1="7.25" x2="23.25" y2="7.25"/><line class="a" x1="0.75" y1="14.25" x2="23.25" y2="14.25"/><line class="a" x1="8.25" y1="7.25" x2="8.25" y2="21.25"/><line class="a" x1="15.75" y1="7.25" x2="15.75" y2="21.25"/><line class="a" x1="3.5" y1="10.75" x2="5.5" y2="10.75"/><line class="a" x1="3.5" y1="17.75" x2="5.5" y2="17.75"/></svg>
+                                <span>Tables</span>
+                            </a>
+                            <div class="collapse" id="tables">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="basic-tables.html" class="nav-link">Basic Tables</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="data-tables.html" class="nav-link">Data Tables</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="utilities-helpers.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M0.75 23.25L15.75 8.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M10.5 8.25L8.25 8.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M23.25 8.25L21 8.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M21 3L19.409 4.591" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15.75 3L15.75 0.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15.75 15.75L15.75 13.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M12.091 4.591L10.5 3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M21 13.5L19.409 11.909" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Utilities, helpers</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item w-100">
+                            <hr>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="h6 text-secondary ps-4 ps-lg-6 mb-3 d-block text-uppercase">Other</span>
+                        </li>
+                        <li class="nav-item">
+                            <a href="upgrade.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M19.5 15.754L23.25 15.754 23.25 11.254" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M23.061,15.754A6,6,0,1,0,21.94,21" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M8.25,20.254h-6a1.5,1.5,0,0,1-1.5-1.5V2.254a1.5,1.5,0,0,1,1.5-1.5H12.879a1.5,1.5,0,0,1,1.061.439l2.871,2.871a1.5,1.5,0,0,1,.439,1.061V8.254" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M9 6.004L11.25 8.254 9 10.504" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M6 6.004L3.75 8.254 6 10.504" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Upgrade</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="changelog.html" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><g><line x1="8.25" y1="3" x2="23.25" y2="3" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="8.25" y1="12" x2="23.25" y2="12" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="8.25" y1="21" x2="23.25" y2="21" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><path d="M.8,18.36a1.5,1.5,0,1,1,1.45,1.89A1.5,1.5,0,1,1,.8,22.15" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><path d="M.75,11.25a1.5,1.5,0,0,1,1.5-1.5h0a1.5,1.5,0,0,1,1.5,1.5h0a2.16,2.16,0,0,1-.47,1.34L.75,14.25h3" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><g><path d="M.75.75H1.5a.76.76,0,0,1,.75.75V6.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="0.75" y1="6.75" x2="3.75" y2="6.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/></g></g></svg>         
+                                <span>Changelog</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- End of Navigation -->
+                </div>
+                <!-- End of Collapse -->
+            </div>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main>
+
+            <!-- HEADER -->
+            <header class="container-fluid d-flex py-6 mb-4">
+                <!-- Top buttons -->
+                <div class="d-flex align-items-center ms-auto me-n1 me-lg-n2">
+                    <div class="dropdown" id="themeSwitcher">
+                        <a href="javascript: void(0);" class="dropdown-toggle no-arrow d-flex align-items-center justify-content-center bg-white rounded-circle shadow-sm mx-1 mx-lg-2 w-40px h-40px link-secondary" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,10">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M12,4.64A7.36,7.36,0,1,0,19.36,12,7.37,7.37,0,0,0,12,4.64Zm0,12.72A5.36,5.36,0,1,1,17.36,12,5.37,5.37,0,0,1,12,17.36Z" style="fill: currentColor"/><path d="M12,3.47a1,1,0,0,0,1-1V1a1,1,0,0,0-2,0V2.47A1,1,0,0,0,12,3.47Z" style="fill: currentColor"/><path d="M4.55,6a1,1,0,0,0,.71.29A1,1,0,0,0,6,6,1,1,0,0,0,6,4.55l-1-1A1,1,0,0,0,3.51,4.93Z" style="fill: currentColor"/><path d="M2.47,11H1a1,1,0,0,0,0,2H2.47a1,1,0,1,0,0-2Z" style="fill: currentColor"/><path d="M4.55,18l-1,1a1,1,0,0,0,0,1.42,1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29l1-1A1,1,0,0,0,4.55,18Z" style="fill: currentColor"/><path d="M12,20.53a1,1,0,0,0-1,1V23a1,1,0,0,0,2,0V21.53A1,1,0,0,0,12,20.53Z" style="fill: currentColor"/><path d="M19.45,18A1,1,0,0,0,18,19.45l1,1a1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z" style="fill: currentColor"/><path d="M23,11H21.53a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z" style="fill: currentColor"/><path d="M18.74,6.26A1,1,0,0,0,19.45,6l1-1a1,1,0,1,0-1.42-1.42l-1,1A1,1,0,0,0,18,6,1,1,0,0,0,18.74,6.26Z" style="fill: currentColor"/></g></svg>
+                        </a>
+            
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <button type="button" class="dropdown-item active" data-theme-value="light">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="me-2" height="18" width="18"><g><path d="M12,4.64A7.36,7.36,0,1,0,19.36,12,7.37,7.37,0,0,0,12,4.64Zm0,12.72A5.36,5.36,0,1,1,17.36,12,5.37,5.37,0,0,1,12,17.36Z" style="fill: currentColor"/><path d="M12,3.47a1,1,0,0,0,1-1V1a1,1,0,0,0-2,0V2.47A1,1,0,0,0,12,3.47Z" style="fill: currentColor"/><path d="M4.55,6a1,1,0,0,0,.71.29A1,1,0,0,0,6,6,1,1,0,0,0,6,4.55l-1-1A1,1,0,0,0,3.51,4.93Z" style="fill: currentColor"/><path d="M2.47,11H1a1,1,0,0,0,0,2H2.47a1,1,0,1,0,0-2Z" style="fill: currentColor"/><path d="M4.55,18l-1,1a1,1,0,0,0,0,1.42,1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29l1-1A1,1,0,0,0,4.55,18Z" style="fill: currentColor"/><path d="M12,20.53a1,1,0,0,0-1,1V23a1,1,0,0,0,2,0V21.53A1,1,0,0,0,12,20.53Z" style="fill: currentColor"/><path d="M19.45,18A1,1,0,0,0,18,19.45l1,1a1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z" style="fill: currentColor"/><path d="M23,11H21.53a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z" style="fill: currentColor"/><path d="M18.74,6.26A1,1,0,0,0,19.45,6l1-1a1,1,0,1,0-1.42-1.42l-1,1A1,1,0,0,0,18,6,1,1,0,0,0,18.74,6.26Z" style="fill: currentColor"/></g></svg>
+                                    Light mode
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="dropdown-item" data-theme-value="dark">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="me-2" height="18" width="18"><path d="M19.57,23.34a1,1,0,0,0,0-1.9,9.94,9.94,0,0,1,0-18.88,1,1,0,0,0,.68-.94,1,1,0,0,0-.68-.95A11.58,11.58,0,0,0,8.88,2.18,12.33,12.33,0,0,0,3.75,12a12.31,12.31,0,0,0,5.11,9.79A11.49,11.49,0,0,0,15.61,24,12.55,12.55,0,0,0,19.57,23.34ZM10,20.17A10.29,10.29,0,0,1,5.75,12a10.32,10.32,0,0,1,4.3-8.19A9.34,9.34,0,0,1,15.59,2a.17.17,0,0,1,.17.13.18.18,0,0,1-.07.2,11.94,11.94,0,0,0-.18,19.21.25.25,0,0,1-.16.45A9.5,9.5,0,0,1,10,20.17Z" style="fill: currentColor"/></svg>
+                                    Dark mode
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="dropdown-item" data-theme-value="auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="me-2" height="18" width="18"><path d="M24,12a1,1,0,0,0-1-1H19.09a.51.51,0,0,1-.49-.4,6.83,6.83,0,0,0-.94-2.28.5.5,0,0,1,.06-.63l2.77-2.76a1,1,0,1,0-1.42-1.42L16.31,6.28a.5.5,0,0,1-.63.06A6.83,6.83,0,0,0,13.4,5.4a.5.5,0,0,1-.4-.49V1a1,1,0,0,0-2,0V4.91a.51.51,0,0,1-.4.49,6.83,6.83,0,0,0-2.28.94.5.5,0,0,1-.63-.06L4.93,3.51A1,1,0,0,0,3.51,4.93L6.28,7.69a.5.5,0,0,1,.06.63A6.83,6.83,0,0,0,5.4,10.6a.5.5,0,0,1-.49.4H1a1,1,0,0,0,0,2H4.91a.51.51,0,0,1,.49.4,6.83,6.83,0,0,0,.94,2.28.5.5,0,0,1-.06.63L3.51,19.07a1,1,0,1,0,1.42,1.42l2.76-2.77a.5.5,0,0,1,.63-.06,6.83,6.83,0,0,0,2.28.94.5.5,0,0,1,.4.49V23a1,1,0,0,0,2,0V19.09a.51.51,0,0,1,.4-.49,6.83,6.83,0,0,0,2.28-.94.5.5,0,0,1,.63.06l2.76,2.77a1,1,0,1,0,1.42-1.42l-2.77-2.76a.5.5,0,0,1-.06-.63,6.83,6.83,0,0,0,.94-2.28.5.5,0,0,1,.49-.4H23A1,1,0,0,0,24,12Zm-8.74,2.5A5.76,5.76,0,0,1,9.5,8.74a5.66,5.66,0,0,1,.16-1.31A.49.49,0,0,1,10,7.07a5.36,5.36,0,0,1,1.8-.31,5.47,5.47,0,0,1,5.46,5.46,5.36,5.36,0,0,1-.31,1.8.49.49,0,0,1-.35.32A5.53,5.53,0,0,1,15.26,14.5Z" style="fill: currentColor"/></svg>
+                                    Auto
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+            
+                    <!-- Divider -->
+                    <div class="vr bg-gray-700 mx-1 mx-md-2 mx-lg-3"></div>
+                    
+                    <!-- Link -->
+                    <a href="mailto:support@dashly-theme.com" class="btn btn-link mx-1 mx-lg-2 fw-semibold d-none d-md-block">
+                        Get support
+                    </a>
+
+                    <!-- Link -->
+                    <a href="https://themes.getbootstrap.com/product/dashly-admin-dashboard-template/" target="_blank" class="btn btn-primary mx-1 mx-lg-2 px-4 px-lg-5">
+                        Purchase Now
+                    </a>
+
+                    <!-- Link -->
+                    <a href="../index.html" class="btn btn-dark mx-1 mx-lg-2 px-4 px-lg-5">
+                        Preview Demo
+                    </a>
+                </div>
+            </header>
+
+            <div class="container-fluid">
+
+                <!-- Title -->
+                <h1 class="h2">
+                    Basic Forms
+                </h1>
+
+                <div class="row">
+                    <div class="col">
+
+                        <!-- Card -->
+                        <div class="card border-0 p-md-6">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="lead mb-3">Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.</p>
+                                        <a class="fw-semibold d-flex align-items-center" href="https://getbootstrap.com/docs/5.2/forms/overview/" target="_blank">
+                                            Bootstrap Forms documentation
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14" width="14" class="ms-2"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>share-external-link-1</title><line class="a" x1="9.25" y1="14.523" x2="23.25" y2="0.75"/><polyline class="a" points="23.25 8.621 23.25 0.75 15.25 0.75"/><path class="a" d="M12.125,5.75H1.625a.875.875,0,0,0-.875.875v15.75a.875.875,0,0,0,.875.875h15.75a.875.875,0,0,0,.875-.875v-10.5"/></svg>
+                                        </a>
+                                        <hr>
+                                        <h2 class="mt-8 mb-3">Form controls</h2>
+                                        <p>Textual form controls—like <code>&lt;input&gt;</code>s, <code>&lt;select&gt;</code>s, and <code>&lt;textarea&gt;</code>s—are styled with the <code>.form-control</code> class. Included are styles for general appearance, focus state, sizing, and more.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-01" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-01" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-01" type="button" role="tab" aria-controls="preview-tab-pane-01" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-01" data-bs-toggle="tab" data-bs-target="#html-tab-pane-01" type="button" role="tab" aria-controls="html-tab-pane-01" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-01">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-01" role="tabpanel" aria-labelledby="preview-tab-01" tabindex="0">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="exampleFormControlInput1">Text</label>
+                                                    <input type="text" id="exampleFormControlInput1" class="form-control">
+                                                </div>
+                                              
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="exampleFormControlPlaceholderInput2">Text</label>
+                                                    <input type="text" id="exampleFormControlPlaceholderInput2" class="form-control" placeholder="Placeholder text">
+                                                </div>
+                                              
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="exampleFormControlInput3">Password</label>
+                                                    <input type="password" id="exampleFormControlInput3" class="form-control" value="********">
+                                                </div>
+                                              
+                                                <div class="mb-3">
+                                                    <label class="form-label">Helper text</label>
+                                                    <input type="password" class="form-control" value="**********">
+                                                    <span class="form-text">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</span>
+                                                </div>
+                                              
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="exampleFormControlInput4">Email</label>
+                                                    <input type="email" id="exampleFormControlInput4" class="form-control" placeholder="name@domain.com">
+                                                </div>
+                                              
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="exampleFormControlSelect1">Select <span class="form-label-secondary">(Optional)</span></label>
+                                                    <select id="exampleFormControlSelect1" class="form-control">
+                                                        <option>Choose an option</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                              
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="exampleFormControlSelect2">Multiple select</label>
+                                                    <select id="exampleFormControlSelect2" class="form-control" size="3" multiple>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                              
+                                                <div>
+                                                    <label class="form-label" for="exampleFormControlTextarea1">Textarea</label>
+                                                    <textarea id="exampleFormControlTextarea1" class="form-control" placeholder="Textarea field" rows="4"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-01" role="tabpanel" aria-labelledby="html-tab-01" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-01" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-01">&lt;div class="mb-3"&gt;
+    &lt;label class="form-label" for="exampleFormControlInput1"&gt;Text&lt;/label&gt;
+    &lt;input type="text" id="exampleFormControlInput1" class="form-control"&gt;
+&lt;/div&gt;
+
+&lt;div class="mb-3"&gt;
+    &lt;label class="form-label" for="exampleFormControlPlaceholderInput2"&gt;Text&lt;/label&gt;
+    &lt;input type="text" id="exampleFormControlPlaceholderInput2" class="form-control" placeholder="Placeholder text"&gt;
+&lt;/div&gt;
+
+&lt;div class="mb-3"&gt;
+    &lt;label class="form-label" for="exampleFormControlInput3"&gt;Password&lt;/label&gt;
+    &lt;input type="password" id="exampleFormControlInput3" class="form-control" value="********"&gt;
+&lt;/div&gt;
+
+&lt;div class="mb-3"&gt;
+    &lt;label class="form-label"&gt;Helper text&lt;/label&gt;
+    &lt;input type="password" class="form-control" value="**********"&gt;
+    &lt;span class="form-text"&gt;Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="mb-3"&gt;
+    &lt;label class="form-label" for="exampleFormControlInput4"&gt;Email&lt;/label&gt;
+    &lt;input type="email" id="exampleFormControlInput4" class="form-control" placeholder="name@domain.com"&gt;
+&lt;/div&gt;
+
+&lt;div class="mb-3"&gt;
+    &lt;label class="form-label" for="exampleFormControlSelect1"&gt;Select &lt;span class="form-label-secondary"&gt;(Optional)&lt;/span&gt;&lt;/label&gt;
+    &lt;select id="exampleFormControlSelect1" class="form-control"&gt;
+        &lt;option&gt;Choose an option&lt;/option&gt;
+        &lt;option&gt;1&lt;/option&gt;
+        &lt;option&gt;2&lt;/option&gt;
+        &lt;option&gt;3&lt;/option&gt;
+        &lt;option&gt;4&lt;/option&gt;
+        &lt;option&gt;5&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/div&gt;
+
+&lt;div class="mb-3"&gt;
+    &lt;label class="form-label" for="exampleFormControlSelect2"&gt;Multiple select&lt;/label&gt;
+    &lt;select id="exampleFormControlSelect2" class="form-control" size="3" multiple&gt;
+        &lt;option&gt;1&lt;/option&gt;
+        &lt;option&gt;2&lt;/option&gt;
+        &lt;option&gt;3&lt;/option&gt;
+        &lt;option&gt;4&lt;/option&gt;
+        &lt;option&gt;5&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;label class="form-label" for="exampleFormControlTextarea1"&gt;Textarea&lt;/label&gt;
+    &lt;textarea id="exampleFormControlTextarea1" class="form-control" placeholder="Textarea field" rows="4"&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">Sizing</h2>
+                                        <p>Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>. On select use <code>.form-select-lg</code> and <code>.form-select-sm</code> classes.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-02" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-02" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-02" type="button" role="tab" aria-controls="preview-tab-pane-02" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-02" data-bs-toggle="tab" data-bs-target="#html-tab-pane-02" type="button" role="tab" aria-controls="html-tab-pane-02" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-02">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-02" role="tabpanel" aria-labelledby="preview-tab-02" tabindex="0">
+                                                <div class="w-md-50">
+                                                    <input class="form-control form-control-lg mb-2" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
+                                                    <input class="form-control mb-2" type="text" placeholder="Default input" aria-label="Default input example">
+                                                    <input class="form-control form-control-sm mb-6" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example">
+
+                                                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                        <option selected>Open this select menu</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+
+                                                    <select class="form-select mb-3" aria-label="Default select example">
+                                                        <option selected>Open this select menu</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                      </select>
+                                                      
+                                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                        <option selected>Open this select menu</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-02" role="tabpanel" aria-labelledby="html-tab-02" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-02" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-02">&lt;input class="form-control form-control-lg mb-3" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example"&gt;
+&lt;input class="form-control" type="text" placeholder="Default input" aria-label="Default input example"&gt;
+&lt;input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example"&gt;
+
+&lt;select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"&gt;
+    &lt;option selected&gt;Open this select menu&lt;/option&gt;
+    &lt;option value="1"&gt;One&lt;/option&gt;
+    &lt;option value="2"&gt;Two&lt;/option&gt;
+    &lt;option value="3"&gt;Three&lt;/option&gt;
+&lt;/select&gt;
+&lt;select class="form-select mb-3" aria-label="Default select example"&gt;
+    &lt;option selected&gt;Open this select menu&lt;/option&gt;
+    &lt;option value="1"&gt;One&lt;/option&gt;
+    &lt;option value="2"&gt;Two&lt;/option&gt;
+    &lt;option value="3"&gt;Three&lt;/option&gt;
+&lt;/select&gt;
+&lt;select class="form-select form-select-sm" aria-label=".form-select-sm example"&gt;
+    &lt;option selected&gt;Open this select menu&lt;/option&gt;
+    &lt;option value="1"&gt;One&lt;/option&gt;
+    &lt;option value="2"&gt;Two&lt;/option&gt;
+    &lt;option value="3"&gt;Three&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">Disabled</h2>
+                                        <p>Add the <code>disabled</code> boolean attribute on an input to give it a grayed out appearance, remove pointer events, and prevent focusing.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-03" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-03" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-03" type="button" role="tab" aria-controls="preview-tab-pane-03" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-03" data-bs-toggle="tab" data-bs-target="#html-tab-pane-03" type="button" role="tab" aria-controls="html-tab-pane-03" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-03">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-03" role="tabpanel" aria-labelledby="preview-tab-03" tabindex="0">
+                                                <input class="form-control mb-3" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
+                                                <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-03" role="tabpanel" aria-labelledby="html-tab-03" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-03" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-03">&lt;input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled&gt;
+&lt;input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">Readonly</h2>
+                                        <p>Add the <code>readonly</code> boolean attribute on an input to prevent modification of the input's value. <code>readonly</code> inputs can still be focused and selected, while <code>disabled</code> inputs cannot.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-04" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-04" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-04" type="button" role="tab" aria-controls="preview-tab-pane-04" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-04" data-bs-toggle="tab" data-bs-target="#html-tab-pane-04" type="button" role="tab" aria-controls="html-tab-pane-04" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-04">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-04" role="tabpanel" aria-labelledby="preview-tab-04" tabindex="0">
+                                                <input class="form-control" type="text" value="Readonly input here..." aria-label="readonly input example" readonly>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-04" role="tabpanel" aria-labelledby="html-tab-04" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-04" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-04">&lt;input class="form-control" type="text" value="Readonly input here..." aria-label="readonly input example" readonly&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-6">File input</h2>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-05" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-05" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-05" type="button" role="tab" aria-controls="preview-tab-pane-05" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-05" data-bs-toggle="tab" data-bs-target="#html-tab-pane-05" type="button" role="tab" aria-controls="html-tab-pane-05" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-05">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-05" role="tabpanel" aria-labelledby="preview-tab-05" tabindex="0">
+                                                <div class="mb-3">
+                                                    <label for="formFile" class="form-label">Default file input example</label>
+                                                    <input class="form-control" type="file" id="formFile">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                                                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="formFileDisabled" class="form-label">Disabled file input example</label>
+                                                    <input class="form-control" type="file" id="formFileDisabled" disabled>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="formFileSm" class="form-label">Small file input example</label>
+                                                    <input class="form-control form-control-sm" id="formFileSm" type="file">
+                                                </div>
+                                                <div>
+                                                    <label for="formFileLg" class="form-label">Large file input example</label>
+                                                    <input class="form-control form-control-lg" id="formFileLg" type="file">
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-05" role="tabpanel" aria-labelledby="html-tab-05" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-05" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-05">&lt;div class="mb-3"&gt;
+    &lt;label for="formFile" class="form-label"&gt;Default file input example&lt;/label&gt;
+    &lt;input class="form-control" type="file" id="formFile"&gt;
+&lt;/div&gt;
+&lt;div class="mb-3"&gt;
+    &lt;label for="formFileMultiple" class="form-label"&gt;Multiple files input example&lt;/label&gt;
+    &lt;input class="form-control" type="file" id="formFileMultiple" multiple&gt;
+&lt;/div&gt;
+&lt;div class="mb-3"&gt;
+    &lt;label for="formFileDisabled" class="form-label"&gt;Disabled file input example&lt;/label&gt;
+    &lt;input class="form-control" type="file" id="formFileDisabled" disabled&gt;
+&lt;/div&gt;
+&lt;div class="mb-3"&gt;
+    &lt;label for="formFileSm" class="form-label"&gt;Small file input example&lt;/label&gt;
+    &lt;input class="form-control form-control-sm" id="formFileSm" type="file"&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    &lt;label for="formFileLg" class="form-label"&gt;Large file input example&lt;/label&gt;
+    &lt;input class="form-control form-control-lg" id="formFileLg" type="file"&gt;
+&lt;/div&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-6">Checkbox and radios</h2>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-06" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-06" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-06" type="button" role="tab" aria-controls="preview-tab-pane-06" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-06" data-bs-toggle="tab" data-bs-target="#html-tab-pane-06" type="button" role="tab" aria-controls="html-tab-pane-06" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-06">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-06" role="tabpanel" aria-labelledby="preview-tab-06" tabindex="0">
+                                                <div class="form-check mb-3">
+                                                    <input type="checkbox" id="formCheck1" class="form-check-input">
+                                                    <label class="form-check-label" for="formCheck1">Unchecked</label>
+                                                </div>
+                                                
+                                                <div class="form-check mb-3">
+                                                    <input type="checkbox" id="formCheck2" class="form-check-input" checked>
+                                                    <label class="form-check-label" for="formCheck2">Checked</label>
+                                                </div>
+                                                
+                                                <div class="form-check mb-3">
+                                                    <input type="checkbox" id="formCheck3" class="form-check-input" disabled>
+                                                    <label class="form-check-label" for="formCheck3">Unchecked and disabled</label>
+                                                </div>
+                                                
+                                                <div class="form-check mb-6">
+                                                    <input type="checkbox" id="formCheck4" class="form-check-input" checked disabled>
+                                                    <label class="form-check-label" for="formCheck4">Checked and disabled</label>
+                                                </div>
+
+                                                <div class="form-check mb-3">
+                                                    <input type="radio" id="formRadio1" class="form-check-input">
+                                                    <label class="form-check-label" for="formRadio1">Unchecked</label>
+                                                </div>
+                                                
+                                                <div class="form-check mb-3">
+                                                    <input type="radio" id="formRadio2" class="form-check-input" checked>
+                                                    <label class="form-check-label" for="formRadio2">Checked</label>
+                                                </div>
+                                                
+                                                <div class="form-check mb-3">
+                                                    <input type="radio" id="formRadio3" class="form-check-input" disabled>
+                                                    <label class="form-check-label" for="formRadio3">Unchecked and disabled</label>
+                                                </div>
+                                                
+                                                <div class="form-check">
+                                                    <input type="radio" id="formRadio4" class="form-check-input" checked disabled>
+                                                    <label class="form-check-label" for="formRadio4">Checked and disabled</label>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-06" role="tabpanel" aria-labelledby="html-tab-06" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-06" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-06">&lt;div class="form-check mb-3"&gt;
+    &lt;input type="checkbox" id="formCheck1" class="form-check-input"&gt;
+    &lt;label class="form-check-label" for="formCheck1"&gt;Unchecked&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-check mb-3"&gt;
+    &lt;input type="checkbox" id="formCheck2" class="form-check-input" checked&gt;
+    &lt;label class="form-check-label" for="formCheck2"&gt;Checked&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-check mb-3"&gt;
+    &lt;input type="checkbox" id="formCheck3" class="form-check-input" disabled&gt;
+    &lt;label class="form-check-label" for="formCheck3"&gt;Unchecked and disabled&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-check mb-3"&gt;
+    &lt;input type="checkbox" id="formCheck4" class="form-check-input" checked disabled&gt;
+    &lt;label class="form-check-label" for="formCheck4"&gt;Checked and disabled&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-check mb-3"&gt;
+    &lt;input type="radio" id="formRadio1" class="form-check-input"&gt;
+    &lt;label class="form-check-label" for="formRadio1"&gt;Unchecked&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-check mb-3"&gt;
+    &lt;input type="radio" id="formRadio2" class="form-check-input" checked&gt;
+    &lt;label class="form-check-label" for="formRadio2"&gt;Checked&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-check mb-3"&gt;
+    &lt;input type="radio" id="formRadio3" class="form-check-input" disabled&gt;
+    &lt;label class="form-check-label" for="formRadio3"&gt;Unchecked and disabled&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-check"&gt;
+    &lt;input type="radio" id="formRadio4" class="form-check-input" checked disabled&gt;
+    &lt;label class="form-check-label" for="formRadio4"&gt;Checked and disabled&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">Switches</h2>
+                                        <p>A switch has the markup of a custom checkbox but uses the <code>.form-switch</code> class to render a toggle switch. Consider using <code>role="switch"</code> to more accurately convey the nature of the control to assistive technologies that support this role. In older assistive technologies, it will simply be announced as a regular checkbox as a fallback. Switches also support the <code>disabled</code> attribute.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-07" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-07" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-07" type="button" role="tab" aria-controls="preview-tab-pane-07" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-07" data-bs-toggle="tab" data-bs-target="#html-tab-pane-07" type="button" role="tab" aria-controls="html-tab-pane-07" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-07">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-07" role="tabpanel" aria-labelledby="preview-tab-07" tabindex="0">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                                    <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                                                    <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled" disabled>
+                                                    <label class="form-check-label" for="flexSwitchCheckDisabled">Disabled switch checkbox input</label>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked disabled>
+                                                    <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-07" role="tabpanel" aria-labelledby="html-tab-07" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-07" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-07">&lt;div class="form-check form-switch"&gt;
+    &lt;input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"&gt;
+    &lt;label class="form-check-label" for="flexSwitchCheckDefault"&gt;Default switch checkbox input&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-check form-switch"&gt;
+    &lt;input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked&gt;
+    &lt;label class="form-check-label" for="flexSwitchCheckChecked"&gt;Checked switch checkbox input&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-check form-switch"&gt;
+    &lt;input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled" disabled&gt;
+    &lt;label class="form-check-label" for="flexSwitchCheckDisabled"&gt;Disabled switch checkbox input&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-check form-switch"&gt;
+    &lt;input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked disabled&gt;
+    &lt;label class="form-check-label" for="flexSwitchCheckCheckedDisabled"&gt;Disabled checked switch checkbox input&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">State switcher<span class="badge text-bg-success-soft ms-2">Exclusive</span></h2>
+                                        <p>Very similar to normal switches, but you can use different text or add icons within the states. Use <code>.form-state-switch</code> class along with <code>.form-check</code> and define the states within the tag using <code>.form-state-default</code> and <code>.form-state-active</code>.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-08" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-08" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-08" type="button" role="tab" aria-controls="preview-tab-pane-08" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-08" data-bs-toggle="tab" data-bs-target="#html-tab-pane-08" type="button" role="tab" aria-controls="html-tab-pane-08" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-08">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-08" role="tabpanel" aria-labelledby="preview-tab-08" tabindex="0">
+                                                <div class="form-check form-state-switch">
+                                                    <input class="form-state-input" type="checkbox" id="connection1">
+                                                    <label class="form-state-label" for="connection1">
+                                                        <span class="form-state-default">
+                                                            <span class="d-flex align-items-center justify-content-center text-bg-light link-secondary rounded-circle w-30px h-30px">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14" width="14"><g><path d="M11.23,12.24a.49.49,0,0,0-.13-.76,7.37,7.37,0,0,0-3.64-1A7.55,7.55,0,0,0,.27,15.86a.5.5,0,0,0,.08.44.48.48,0,0,0,.4.2H8.89a.49.49,0,0,0,.49-.41A7.92,7.92,0,0,1,11.23,12.24Z" style="fill: currentColor"/><circle cx="7.25" cy="4.75" r="4.75" style="fill: currentColor"/><path d="M17.25,11a6.5,6.5,0,1,0,6.5,6.5A6.51,6.51,0,0,0,17.25,11Zm3.5,7.5h-2a.5.5,0,0,0-.5.5v2a1,1,0,0,1-2,0V19a.5.5,0,0,0-.5-.5h-2a1,1,0,0,1,0-2h2a.5.5,0,0,0,.5-.5V14a1,1,0,0,1,2,0v2a.5.5,0,0,0,.5.5h2a1,1,0,0,1,0,2Z" style="fill: currentColor"/></g></svg>
+                                                            </span>
+                                                        </span>
+
+                                                        <span class="form-state-active">
+                                                            <span class="d-flex align-items-center justify-content-center text-bg-primary ms-auto rounded-circle w-30px h-30px">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14" width="14"><path d="M23.37.29a1.49,1.49,0,0,0-2.09.34L7.25,20.2,2.56,15.51A1.5,1.5,0,0,0,.44,17.63l5.93,5.94a1.53,1.53,0,0,0,2.28-.19l15.07-21A1.49,1.49,0,0,0,23.37.29Z" style="fill: currentColor"/></svg>
+                                                            </span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+
+                                                <br>
+                                                <br>
+
+                                                <div class="form-check form-state-switch">
+                                                    <input class="form-state-input" type="checkbox" id="connection2">
+                                                    <label class="form-state-label" for="connection2">
+                                                        <span class="form-state-default">
+        
+                                                            <!-- Button -->
+                                                            <span class="btn btn-outline-primary d-flex align-items-center justify-content-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14" width="14" class="me-2"><g><path d="M11.23,12.24a.49.49,0,0,0-.13-.76,7.37,7.37,0,0,0-3.64-1A7.55,7.55,0,0,0,.27,15.86a.5.5,0,0,0,.08.44.48.48,0,0,0,.4.2H8.89a.49.49,0,0,0,.49-.41A7.92,7.92,0,0,1,11.23,12.24Z" style="fill: currentColor"/><circle cx="7.25" cy="4.75" r="4.75" style="fill: currentColor"/><path d="M17.25,11a6.5,6.5,0,1,0,6.5,6.5A6.51,6.51,0,0,0,17.25,11Zm3.5,7.5h-2a.5.5,0,0,0-.5.5v2a1,1,0,0,1-2,0V19a.5.5,0,0,0-.5-.5h-2a1,1,0,0,1,0-2h2a.5.5,0,0,0,.5-.5V14a1,1,0,0,1,2,0v2a.5.5,0,0,0,.5.5h2a1,1,0,0,1,0,2Z" style="fill: currentColor"/></g></svg>
+                                                                Connect
+                                                            </span>
+                                                        </span>
+        
+                                                        <span class="form-state-active">
+        
+                                                            <!-- Button -->
+                                                            <span class="btn btn-primary d-flex align-items-center justify-content-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14" width="14" class="me-2"><path d="M23.37.29a1.49,1.49,0,0,0-2.09.34L7.25,20.2,2.56,15.51A1.5,1.5,0,0,0,.44,17.63l5.93,5.94a1.53,1.53,0,0,0,2.28-.19l15.07-21A1.49,1.49,0,0,0,23.37.29Z" style="fill: currentColor"/></svg>
+                                                                Connected
+                                                            </span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-08" role="tabpanel" aria-labelledby="html-tab-08" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-08" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-08">&lt;div class="form-check form-state-switch"&gt;
+    &lt;input class="form-state-input" type="checkbox" id="connection1"&gt;
+    &lt;label class="form-state-label" for="connection1"&gt;
+        &lt;span class="form-state-default"&gt;
+            &lt;span class="d-flex align-items-center justify-content-center text-bg-light link-secondary rounded-circle w-30px h-30px"&gt;
+                &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14" width="14"&gt;&lt;g&gt;&lt;path d="M11.23,12.24a.49.49,0,0,0-.13-.76,7.37,7.37,0,0,0-3.64-1A7.55,7.55,0,0,0,.27,15.86a.5.5,0,0,0,.08.44.48.48,0,0,0,.4.2H8.89a.49.49,0,0,0,.49-.41A7.92,7.92,0,0,1,11.23,12.24Z" style="fill: currentColor"/&gt;&lt;circle cx="7.25" cy="4.75" r="4.75" style="fill: currentColor"/&gt;&lt;path d="M17.25,11a6.5,6.5,0,1,0,6.5,6.5A6.51,6.51,0,0,0,17.25,11Zm3.5,7.5h-2a.5.5,0,0,0-.5.5v2a1,1,0,0,1-2,0V19a.5.5,0,0,0-.5-.5h-2a1,1,0,0,1,0-2h2a.5.5,0,0,0,.5-.5V14a1,1,0,0,1,2,0v2a.5.5,0,0,0,.5.5h2a1,1,0,0,1,0,2Z" style="fill: currentColor"/&gt;&lt;/g&gt;&lt;/svg&gt;
+            &lt;/span&gt;
+        &lt;/span&gt;
+
+        &lt;span class="form-state-active"&gt;
+            &lt;span class="d-flex align-items-center justify-content-center text-bg-primary ms-auto rounded-circle w-30px h-30px"&gt;
+                &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14" width="14"&gt;&lt;path d="M23.37.29a1.49,1.49,0,0,0-2.09.34L7.25,20.2,2.56,15.51A1.5,1.5,0,0,0,.44,17.63l5.93,5.94a1.53,1.53,0,0,0,2.28-.19l15.07-21A1.49,1.49,0,0,0,23.37.29Z" style="fill: currentColor"/&gt;&lt;/svg&gt;
+            &lt;/span&gt;
+        &lt;/span&gt;
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-check form-state-switch"&gt;
+    &lt;input class="form-state-input" type="checkbox" id="connection2"&gt;
+    &lt;label class="form-state-label" for="connection2"&gt;
+        &lt;span class="form-state-default"&gt;
+
+            &lt;!-- Button --&gt;
+            &lt;span class="btn btn-outline-primary d-flex align-items-center justify-content-center"&gt;
+                &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14" width="14" class="me-2"&gt;&lt;g&gt;&lt;path d="M11.23,12.24a.49.49,0,0,0-.13-.76,7.37,7.37,0,0,0-3.64-1A7.55,7.55,0,0,0,.27,15.86a.5.5,0,0,0,.08.44.48.48,0,0,0,.4.2H8.89a.49.49,0,0,0,.49-.41A7.92,7.92,0,0,1,11.23,12.24Z" style="fill: currentColor"/&gt;&lt;circle cx="7.25" cy="4.75" r="4.75" style="fill: currentColor"/&gt;&lt;path d="M17.25,11a6.5,6.5,0,1,0,6.5,6.5A6.51,6.51,0,0,0,17.25,11Zm3.5,7.5h-2a.5.5,0,0,0-.5.5v2a1,1,0,0,1-2,0V19a.5.5,0,0,0-.5-.5h-2a1,1,0,0,1,0-2h2a.5.5,0,0,0,.5-.5V14a1,1,0,0,1,2,0v2a.5.5,0,0,0,.5.5h2a1,1,0,0,1,0,2Z" style="fill: currentColor"/&gt;&lt;/g&gt;&lt;/svg&gt;
+                Connect
+            &lt;/span&gt;
+        &lt;/span&gt;
+
+        &lt;span class="form-state-active"&gt;
+
+            &lt;!-- Button --&gt;
+            &lt;span class="btn btn-primary d-flex align-items-center justify-content-center"&gt;
+                &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14" width="14" class="me-2"&gt;&lt;path d="M23.37.29a1.49,1.49,0,0,0-2.09.34L7.25,20.2,2.56,15.51A1.5,1.5,0,0,0,.44,17.63l5.93,5.94a1.53,1.53,0,0,0,2.28-.19l15.07-21A1.49,1.49,0,0,0,23.37.29Z" style="fill: currentColor"/&gt;&lt;/svg&gt;
+                Connected
+            &lt;/span&gt;
+        &lt;/span&gt;
+    &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">Range</h2>
+                                        <p>Create custom <code>&lt;input type="range"&gt;</code> controls with <code>.form-range</code>. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Firefox supports "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-09" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-09" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-09" type="button" role="tab" aria-controls="preview-tab-pane-09" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-09" data-bs-toggle="tab" data-bs-target="#html-tab-pane-09" type="button" role="tab" aria-controls="html-tab-pane-09" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-09">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-09" role="tabpanel" aria-labelledby="preview-tab-09" tabindex="0">
+                                                <label for="customRange1" class="form-label">Example range</label>
+                                                <input type="range" class="form-range" id="customRange1">
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-09" role="tabpanel" aria-labelledby="html-tab-09" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-09" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-09">&lt;label for="customRange1" class="form-label"&gt;Example range&lt;/label&gt;
+&lt;input type="range" class="form-range" id="customRange1"&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">Input group</h2>
+                                        <p>Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place <code>&lt;label&gt;</code>s outside the input group.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-10" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-10" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-10" type="button" role="tab" aria-controls="preview-tab-pane-10" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-10" data-bs-toggle="tab" data-bs-target="#html-tab-pane-10" type="button" role="tab" aria-controls="html-tab-pane-10" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-10">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-10" role="tabpanel" aria-labelledby="preview-tab-10" tabindex="0">
+                                                <div class="w-md-50">
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text" id="basic-addon1">@</span>
+                                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                    </div>
+                                                      
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                        <span class="input-group-text" id="basic-addon2">@example.com</span>
+                                                    </div>
+                                                      
+                                                    <label for="basic-url" class="form-label">Your vanity URL</label>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+                                                        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                                    </div>
+                                                      
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">$</span>
+                                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                                        <span class="input-group-text">.00</span>
+                                                    </div>
+                                                      
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+                                                        <span class="input-group-text">@</span>
+                                                        <input type="text" class="form-control" placeholder="Server" aria-label="Server">
+                                                    </div>
+                                                      
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">With textarea</span>
+                                                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-10" role="tabpanel" aria-labelledby="html-tab-10" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-10" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-10">&lt;div class="input-group mb-3"&gt;
+    &lt;span class="input-group-text" id="basic-addon1"&gt;@&lt;/span&gt;
+    &lt;input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"&gt;
+&lt;/div&gt;
+  
+&lt;div class="input-group mb-3"&gt;
+    &lt;input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"&gt;
+    &lt;span class="input-group-text" id="basic-addon2"&gt;@example.com&lt;/span&gt;
+&lt;/div&gt;
+  
+&lt;label for="basic-url" class="form-label"&gt;Your vanity URL&lt;/label&gt;
+&lt;div class="input-group mb-3"&gt;
+    &lt;span class="input-group-text" id="basic-addon3"&gt;https://example.com/users/&lt;/span&gt;
+    &lt;input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3"&gt;
+&lt;/div&gt;
+  
+&lt;div class="input-group mb-3"&gt;
+    &lt;span class="input-group-text"&gt;$&lt;/span&gt;
+    &lt;input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"&gt;
+    &lt;span class="input-group-text"&gt;.00&lt;/span&gt;
+&lt;/div&gt;
+  
+&lt;div class="input-group mb-3"&gt;
+    &lt;input type="text" class="form-control" placeholder="Username" aria-label="Username"&gt;
+    &lt;span class="input-group-text"&gt;@&lt;/span&gt;
+    &lt;input type="text" class="form-control" placeholder="Server" aria-label="Server"&gt;
+&lt;/div&gt;
+  
+&lt;div class="input-group"&gt;
+    &lt;span class="input-group-text"&gt;With textarea&lt;/span&gt;
+    &lt;textarea class="form-control" aria-label="With textarea"&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">Merged input group<span class="badge text-bg-success-soft ms-2">Exclusive</span></h2>
+                                        <p>You can easily get rid of the border separator between the addon and the form element by using <code>.input-group-merge</code> class.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-11" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-11" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-11" type="button" role="tab" aria-controls="preview-tab-pane-11" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-11" data-bs-toggle="tab" data-bs-target="#html-tab-pane-11" type="button" role="tab" aria-controls="html-tab-pane-11" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content mb-8" id="myTabContent-11">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-11" role="tabpanel" aria-labelledby="preview-tab-11" tabindex="0">
+                                                <div class="w-md-50">
+                                                    <div class="input-group input-group-merge mb-3">
+                                                        <span class="input-group-text" id="basic-addon1-merged">@</span>
+                                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1-merged">
+                                                    </div>
+                                                      
+                                                    <div class="input-group input-group-merge mb-3">
+                                                        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2-merged">
+                                                        <span class="input-group-text" id="basic-addon2-merged">@example.com</span>
+                                                    </div>
+                                                      
+                                                    <label for="basic-url" class="form-label">Your vanity URL</label>
+                                                    <div class="input-group input-group-merge mb-3">
+                                                        <span class="input-group-text" id="basic-addon3-merged">https://example.com/users/</span>
+                                                        <input type="text" class="form-control" id="basic-url-merged" aria-describedby="basic-addon3-merged">
+                                                    </div>
+                                                      
+                                                    <div class="input-group input-group-merge mb-3">
+                                                        <span class="input-group-text">$</span>
+                                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                                        <span class="input-group-text">.00</span>
+                                                    </div>
+                                                      
+                                                    <div class="input-group input-group-merge">
+                                                        <span class="input-group-text">With textarea</span>
+                                                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-11" role="tabpanel" aria-labelledby="html-tab-11" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-11" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-11">&lt;div class="input-group input-group-merge mb-3"&gt;
+    &lt;span class="input-group-text" id="basic-addon1-merged"&gt;@&lt;/span&gt;
+    &lt;input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1-merged"&gt;
+&lt;/div&gt;
+  
+&lt;div class="input-group input-group-merge mb-3"&gt;
+    &lt;input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2-merged"&gt;
+    &lt;span class="input-group-text" id="basic-addon2-merged"&gt;@example.com&lt;/span&gt;
+&lt;/div&gt;
+  
+&lt;label for="basic-url" class="form-label"&gt;Your vanity URL&lt;/label&gt;
+&lt;div class="input-group input-group-merge mb-3"&gt;
+    &lt;span class="input-group-text" id="basic-addon3-merged"&gt;https://example.com/users/&lt;/span&gt;
+    &lt;input type="text" class="form-control" id="basic-url-merged" aria-describedby="basic-addon3-merged"&gt;
+&lt;/div&gt;
+  
+&lt;div class="input-group input-group-merge mb-3"&gt;
+    &lt;span class="input-group-text"&gt;$&lt;/span&gt;
+    &lt;input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"&gt;
+    &lt;span class="input-group-text"&gt;.00&lt;/span&gt;
+&lt;/div&gt;
+  
+&lt;div class="input-group input-group-merge"&gt;
+    &lt;span class="input-group-text"&gt;With textarea&lt;/span&gt;
+    &lt;textarea class="form-control" aria-label="With textarea"&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">Validation</h2>
+                                        <p class="mb-2">For custom Bootstrap form validation messages, you'll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you'll see the <code>:invalid</code> and <code>:valid</code> styles applied to your form controls.</p>
+                                        <p>Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. Background icons for <code>&lt;select&gt;</code>s are only available with <code>.form-select</code>, and not <code>.form-control</code>.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-12" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-12" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-12" type="button" role="tab" aria-controls="preview-tab-pane-12" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-12" data-bs-toggle="tab" data-bs-target="#html-tab-pane-12" type="button" role="tab" aria-controls="html-tab-pane-12" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-12">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-12" role="tabpanel" aria-labelledby="preview-tab-12" tabindex="0">
+                                                <div class="w-md-50">
+                                                    <form class="row g-3 needs-validation" novalidate>
+                                                        <div class="col-md-4">
+                                                            <label for="validationCustom01" class="form-label">First name</label>
+                                                            <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label for="validationCustom02" class="form-label">Last name</label>
+                                                            <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label for="validationCustomUsername" class="form-label">Username</label>
+                                                            <div class="input-group has-validation">
+                                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                                                <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                                                                <div class="invalid-feedback">
+                                                                    Please choose a username.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="validationCustom03" class="form-label">City</label>
+                                                            <input type="text" class="form-control" id="validationCustom03" required>
+                                                            <div class="invalid-feedback">
+                                                                Please provide a valid city.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label for="validationCustom04" class="form-label">State</label>
+                                                            <select class="form-select" id="validationCustom04" required>
+                                                                <option selected disabled value="">Choose...</option>
+                                                                <option>...</option>
+                                                            </select>
+                                                            <div class="invalid-feedback">
+                                                                Please select a valid state.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label for="validationCustom05" class="form-label">Zip</label>
+                                                            <input type="text" class="form-control" id="validationCustom05" required>
+                                                            <div class="invalid-feedback">
+                                                                Please provide a valid zip.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                                                <label class="form-check-label" for="invalidCheck">
+                                                                    Agree to terms and conditions
+                                                                </label>
+                                                                <div class="invalid-feedback">
+                                                                    You must agree before submitting.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Submit form</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-12" role="tabpanel" aria-labelledby="html-tab-12" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-12" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-12">&lt;form class="row g-3 needs-validation" novalidate&gt;
+    &lt;div class="col-md-4"&gt;
+        &lt;label for="validationCustom01" class="form-label"&gt;First name&lt;/label&gt;
+        &lt;input type="text" class="form-control" id="validationCustom01" value="Mark" required&gt;
+        &lt;div class="valid-feedback"&gt;
+            Looks good!
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-4"&gt;
+        &lt;label for="validationCustom02" class="form-label"&gt;Last name&lt;/label&gt;
+        &lt;input type="text" class="form-control" id="validationCustom02" value="Otto" required&gt;
+        &lt;div class="valid-feedback"&gt;
+            Looks good!
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-4"&gt;
+        &lt;label for="validationCustomUsername" class="form-label"&gt;Username&lt;/label&gt;
+        &lt;div class="input-group has-validation"&gt;
+            &lt;span class="input-group-text" id="inputGroupPrepend"&gt;@&lt;/span&gt;
+            &lt;input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required&gt;
+            &lt;div class="invalid-feedback"&gt;
+                Please choose a username.
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-6"&gt;
+        &lt;label for="validationCustom03" class="form-label"&gt;City&lt;/label&gt;
+        &lt;input type="text" class="form-control" id="validationCustom03" required&gt;
+        &lt;div class="invalid-feedback"&gt;
+            Please provide a valid city.
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-3"&gt;
+        &lt;label for="validationCustom04" class="form-label"&gt;State&lt;/label&gt;
+        &lt;select class="form-select" id="validationCustom04" required&gt;
+            &lt;option selected disabled value=""&gt;Choose...&lt;/option&gt;
+            &lt;option&gt;...&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;div class="invalid-feedback"&gt;
+            Please select a valid state.
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-3"&gt;
+        &lt;label for="validationCustom05" class="form-label"&gt;Zip&lt;/label&gt;
+        &lt;input type="text" class="form-control" id="validationCustom05" required&gt;
+        &lt;div class="invalid-feedback"&gt;
+            Please provide a valid zip.
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-12"&gt;
+        &lt;div class="form-check"&gt;
+            &lt;input class="form-check-input" type="checkbox" value="" id="invalidCheck" required&gt;
+            &lt;label class="form-check-label" for="invalidCheck"&gt;
+                Agree to terms and conditions
+            &lt;/label&gt;
+            &lt;div class="invalid-feedback"&gt;
+                You must agree before submitting.
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-12"&gt;
+        &lt;button class="btn btn-primary" type="submit"&gt;Submit form&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">Validation states</h2>
+                                        <p>Provide valuable, actionable feedback to your users with HTML5 form validation.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-13" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-13" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-13" type="button" role="tab" aria-controls="preview-tab-pane-13" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-13" data-bs-toggle="tab" data-bs-target="#html-tab-pane-13" type="button" role="tab" aria-controls="html-tab-pane-13" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content mb-6" id="myTabContent-13">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-13" role="tabpanel" aria-labelledby="preview-tab-13" tabindex="0">
+                                                <form>
+                                                    <div class="mb-3">
+                                                        <label for="validationValidInput1">Valid input</label>
+                                                        <input type="text" class="form-control is-valid" id="validationValidInput1" placeholder="Placeholder">
+                                                    </div>
+                                                  
+                                                    <div class="mb-3">
+                                                        <label for="validationValidSelect1">Valid select</label>
+                                                        <select class="form-select is-valid" id="validationValidSelect1">
+                                                            <option>Choose an option</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                        </select>
+                                                        <span class="valid-feedback">Valid feedback</span>
+                                                    </div>
+                                                  
+                                                    <div class="mb-3">
+                                                        <label for="validationValidTextarea1">Valid textarea</label>
+                                                        <textarea class="form-control is-valid" placeholder="Textarea field" id="validationValidTextarea1" rows="4"></textarea>
+                                                    </div>
+                                                  
+                                                    <div>
+                                                        <label for="validationValidFileInput1">Valid file input</label>
+                                                        <input type="file" id="validationValidFileInput1" class="form-control is-valid">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-13" role="tabpanel" aria-labelledby="html-tab-13" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-13" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-13">&lt;form&gt;
+    &lt;div class="mb-3"&gt;
+        &lt;label for="validationValidInput1"&gt;Valid input&lt;/label&gt;
+        &lt;input type="text" class="form-control is-valid" id="validationValidInput1" placeholder="Placeholder"&gt;
+    &lt;/div&gt;
+  
+    &lt;div class="mb-3"&gt;
+        &lt;label for="validationValidSelect1"&gt;Valid select&lt;/label&gt;
+        &lt;select class="form-select is-valid" id="validationValidSelect1"&gt;
+            &lt;option&gt;Choose an option&lt;/option&gt;
+            &lt;option&gt;2&lt;/option&gt;
+            &lt;option&gt;3&lt;/option&gt;
+            &lt;option&gt;4&lt;/option&gt;
+            &lt;option&gt;5&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;span class="valid-feedback"&gt;Valid feedback&lt;/span&gt;
+    &lt;/div&gt;
+  
+    &lt;div class="mb-3"&gt;
+        &lt;label for="validationValidTextarea1"&gt;Valid textarea&lt;/label&gt;
+        &lt;textarea class="form-control is-valid" placeholder="Textarea field" id="validationValidTextarea1" rows="4"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+  
+    &lt;div&gt;
+        &lt;label for="validationValidFileInput1"&gt;Valid file input&lt;/label&gt;
+        &lt;input type="file" id="validationValidFileInput1" class="form-control is-valid"&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-14" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-14" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-14" type="button" role="tab" aria-controls="preview-tab-pane-14" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-14" data-bs-toggle="tab" data-bs-target="#html-tab-pane-14" type="button" role="tab" aria-controls="html-tab-pane-14" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-14">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-14" role="tabpanel" aria-labelledby="preview-tab-14" tabindex="0">
+                                                <form>
+                                                    <div class="mb-3">
+                                                        <label for="validationInvalidInput1">Valid input</label>
+                                                        <input type="text" class="form-control is-invalid" id="validationInvalidInput1" placeholder="Placeholder">
+                                                    </div>
+                                                  
+                                                    <div class="mb-3">
+                                                        <label for="validationInvalidSelect1">Valid select</label>
+                                                        <select class="form-select is-invalid" id="validationInvalidSelect1">
+                                                            <option>Choose an option</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                        </select>
+                                                        <span class="invalid-feedback">Valid feedback</span>
+                                                    </div>
+                                                  
+                                                    <div class="mb-3">
+                                                        <label for="validationInvalidTextarea1">Valid textarea</label>
+                                                        <textarea class="form-control is-invalid" placeholder="Textarea field" id="validationInvalidTextarea1" rows="4"></textarea>
+                                                    </div>
+                                                  
+                                                    <div>
+                                                        <label for="validationInvalidFileInput1">Valid file input</label>
+                                                        <input type="file" id="validationInvalidFileInput1" class="form-control is-invalid">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-14" role="tabpanel" aria-labelledby="html-tab-14" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-14" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-14">&lt;form&gt;
+    &lt;div class="mb-3"&gt;
+        &lt;label for="validationInvalidInput1"&gt;Valid input&lt;/label&gt;
+        &lt;input type="text" class="form-control is-invalid" id="validationInvalidInput1" placeholder="Placeholder"&gt;
+    &lt;/div&gt;
+  
+    &lt;div class="mb-3"&gt;
+        &lt;label for="validationInvalidSelect1"&gt;Valid select&lt;/label&gt;
+        &lt;select class="form-select is-invalid" id="validationInvalidSelect1"&gt;
+            &lt;option&gt;Choose an option&lt;/option&gt;
+            &lt;option&gt;2&lt;/option&gt;
+            &lt;option&gt;3&lt;/option&gt;
+            &lt;option&gt;4&lt;/option&gt;
+            &lt;option&gt;5&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;span class="invalid-feedback"&gt;Valid feedback&lt;/span&gt;
+    &lt;/div&gt;
+  
+    &lt;div class="mb-3"&gt;
+        &lt;label for="validationInvalidTextarea1"&gt;Valid textarea&lt;/label&gt;
+        &lt;textarea class="form-control is-invalid" placeholder="Textarea field" id="validationInvalidTextarea1" rows="4"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+  
+    &lt;div&gt;
+        &lt;label for="validationInvalidFileInput1"&gt;Valid file input&lt;/label&gt;
+        &lt;input type="file" id="validationInvalidFileInput1" class="form-control is-invalid"&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-6">Floating labels</h2>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-15" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-15" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-15" type="button" role="tab" aria-controls="preview-tab-pane-15" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-15" data-bs-toggle="tab" data-bs-target="#html-tab-pane-15" type="button" role="tab" aria-controls="html-tab-pane-15" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-15">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-15" role="tabpanel" aria-labelledby="preview-tab-15" tabindex="0">
+                                                <div class="w-md-50">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                                        <label for="floatingInput">Email address</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                                        <label for="floatingPassword">Password</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="test@example.com">
+                                                        <label for="floatingInputValue">Input with pre-defined value</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                                          <option selected>Open this select menu</option>
+                                                          <option value="1">One</option>
+                                                          <option value="2">Two</option>
+                                                          <option value="3">Three</option>
+                                                        </select>
+                                                        <label for="floatingSelect">Works with selects</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <textarea class="form-control h-100px" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                                        <label for="floatingTextarea">Texarea</label>
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">@</span>
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                                                            <label for="floatingInputGroup1">Username</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-floating">
+                                                        <input type="email" class="form-control is-invalid" id="floatingInputInvalid" placeholder="name@example.com" value="test@example.com">
+                                                        <label for="floatingInputInvalid">Invalid input</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-15" role="tabpanel" aria-labelledby="html-tab-15" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-15" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-15">&lt;div class="form-floating mb-3"&gt;
+    &lt;input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"&gt;
+    &lt;label for="floatingInput"&gt;Email address&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-floating mb-3"&gt;
+    &lt;input type="password" class="form-control" id="floatingPassword" placeholder="Password"&gt;
+    &lt;label for="floatingPassword"&gt;Password&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-floating mb-3"&gt;
+    &lt;input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="test@example.com"&gt;
+    &lt;label for="floatingInputValue"&gt;Input with pre-defined value&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-floating mb-3"&gt;
+    &lt;select class="form-select" id="floatingSelect" aria-label="Floating label select example"&gt;
+      &lt;option selected&gt;Open this select menu&lt;/option&gt;
+      &lt;option value="1"&gt;One&lt;/option&gt;
+      &lt;option value="2"&gt;Two&lt;/option&gt;
+      &lt;option value="3"&gt;Three&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;label for="floatingSelect"&gt;Works with selects&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-floating mb-3"&gt;
+    &lt;textarea class="form-control h-100px" placeholder="Leave a comment here" id="floatingTextarea"&gt;&lt;/textarea&gt;
+    &lt;label for="floatingTextarea"&gt;Texarea&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="input-group mb-3"&gt;
+    &lt;span class="input-group-text"&gt;@&lt;/span&gt;
+    &lt;div class="form-floating"&gt;
+        &lt;input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username"&gt;
+        &lt;label for="floatingInputGroup1"&gt;Username&lt;/label&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="form-floating"&gt;
+    &lt;input type="email" class="form-control is-invalid" id="floatingInputInvalid" placeholder="name@example.com" value="test@example.com"&gt;
+    &lt;label for="floatingInputInvalid"&gt;Invalid input&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- / .row -->
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- / .row -->
+            </div> <!-- / .container-fluid -->
+
+            <!-- Footer -->
+            <footer class="mt-auto">
+                <div class="container-fluid mt-4 mb-6 text-muted">
+                    <div class="row justify-content-between">
+                        <div class="col">
+                            © Dashly. 2022 Webinning.
+                        </div>
+
+                        <div class="col-auto">
+                            v1.0.0
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+            </footer>
+            
+        </main> <!-- / main -->
+
+        <!-- JAVASCRIPT-->
+        <!-- Vendor JS -->
+        <!-- <script src="../assets/js/vendors.bundle.js"></script> -->
+        
+        <!-- Theme JS -->
+        <script src="../assets/js/theme.bundle.js"></script>    </body>
+
+<!-- Mirrored from dashly-theme.com/docs/form-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Oct 2022 14:52:28 GMT -->
+</html>

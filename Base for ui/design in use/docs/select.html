@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" >
+    
+<!-- Mirrored from dashly-theme.com/docs/select.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Oct 2022 14:52:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="Webinning" name="author" />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap">
+        <link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap">
+
+        <!-- no-JS fallback -->
+        <noscript>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap">
+        </noscript>
+
+        <!-- Theme CSS -->
+            <link rel="stylesheet" href="../assets/css/theme.bundle.css" />
+
+        <script>
+         // Theme switcher
+        
+            let themeSwitcher = document.getElementById('themeSwitcher');
+        
+            const getPreferredTheme = () => {
+                if (localStorage.getItem('theme') != null) {
+                    return localStorage.getItem('theme');
+                }
+        
+                return document.documentElement.dataset.theme;
+            };
+        
+            const setTheme = function (theme) {
+                if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } else {
+                    document.documentElement.dataset.theme = theme;
+                }
+        
+                localStorage.setItem('theme', theme);
+            };
+        
+            const showActiveTheme = theme => {
+                const activeBtn = document.querySelector(`[data-theme-value="${theme}"]`);
+        
+                document.querySelectorAll('[data-theme-value]').forEach(element => {
+                    element.classList.remove('active');
+                });
+        
+                activeBtn && activeBtn.classList.add('active');
+        
+             // Set button if demo mode is enabled
+                document.querySelectorAll('[data-theme-control="theme"]').forEach(element => {
+                    if (element.value == theme) {
+                        element.checked = true;
+                    }
+                });
+            };
+        
+            function reloadPage() {
+                window.location = window.location.pathname;
+            }
+        
+        
+            setTheme(getPreferredTheme());
+        
+            if(typeof themeSwitcher != 'undefined') {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    if(localStorage.getItem('theme') != null) {
+                        if (localStorage.getItem('theme') == 'auto') {
+                            reloadPage();
+                        }
+                    }
+                });
+        
+                window.addEventListener('load', () => {
+                    showActiveTheme(getPreferredTheme());
+                    
+                    document.querySelectorAll('[data-theme-value]').forEach(element => {
+                        element.addEventListener('click', () => {
+                            const theme = element.getAttribute('data-theme-value');
+        
+                            localStorage.setItem('theme', theme);
+                            reloadPage();
+                        })
+                    })
+                });
+            }
+        </script>
+        <!-- Favicon -->
+        <link rel="icon" href="../assets/favicon/favicon.ico" sizes="any" />
+
+        <!-- Page Title -->
+        <title>Select - Documentation | Dashly</title>
+
+    </head>
+    
+    <body>
+        <!-- NAVIGATION -->
+        <nav id="mainNavbar" class="navbar navbar-vertical navbar-expand-lg scrollbar bg-white navbar-light">
+            <div class="container-fluid">
+                
+                <div class="d-flex align-items-center mb-lg-7">
+                    <!-- Brand -->
+                    <a class="navbar-brand mb-0" href="index.html">
+                        <img src="https://d33wubrfki0l68.cloudfront.net/ba6b91b7d508187d153e48318c22d0773a9cedfc/36afa/assets/images/logo.svg" class="navbar-brand-img logo-light logo-large" alt="..." width="125" height="25">
+                        <img src="https://d33wubrfki0l68.cloudfront.net/55307694d1a6b107d2d87c838a1aaede85cd3d84/66f18/assets/images/logo-dark.svg" class="navbar-brand-img logo-dark logo-large" alt="..." width="125" height="25">
+                    </a>
+
+                    <a href="changelog.html">
+                        <span class="badge text-bg-primary-soft ms-2">v1.0.0</span>
+                    </a>
+                </div>
+        
+                <!-- Navbar toggler -->
+                <a href="javascript: void(0);" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#sidenavCollapse" aria-controls="sidenavCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </a>
+        
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="sidenavCollapse">
+        
+                    <!-- Navigation -->
+                    <ul class="navbar-nav mb-lg-7">
+                        <li class="nav-item">
+                            <span class="h6 text-secondary ps-4 ps-lg-6 mb-3 d-block text-uppercase">Getting started</span>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M12,22.125V4.712S9.545,1.985,1.268,1.875a.506.506,0,0,0-.366.15.522.522,0,0,0-.152.369V18.769a.515.515,0,0,0,.5.519C9.543,19.4,12,22.125,12,22.125" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M9,11.18a21.258,21.258,0,0,0-5.26-1.055" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M9,15.375A21.258,21.258,0,0,0,3.74,14.32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15,11.18a21.258,21.258,0,0,1,5.26-1.055" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15,15.375a21.258,21.258,0,0,1,5.26-1.055" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M12,22.125V4.712s2.455-2.727,10.732-2.837a.506.506,0,0,1,.366.15.522.522,0,0,1,.152.369V18.769a.515.515,0,0,1-.5.519C14.457,19.4,12,22.125,12,22.125" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Introduction</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="structure.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M16.5,23.248H21a.75.75,0,0,0,.75-.75V17.559a.75.75,0,0,0-.219-.53l-1.06-1.061a.749.749,0,0,0-.53-.22H16.5a.75.75,0,0,0-.75.75v6A.75.75,0,0,0,16.5,23.248Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M16.5,9.748H21A.75.75,0,0,0,21.75,9V4.059a.75.75,0,0,0-.219-.53l-1.06-1.061a.749.749,0,0,0-.53-.22H16.5a.75.75,0,0,0-.75.75V9A.75.75,0,0,0,16.5,9.748Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25 0.748L2.25 2.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25 5.248L2.25 8.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25 11.248L2.25 14.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25,17.248v1.5a1.5,1.5,0,0,0,1.5,1.5h1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M8.25 20.248L11.25 20.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14.25 20.248L15.75 20.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25 6.748L5.25 6.748" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M8.25 6.748L11.25 6.748" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14.25 6.748L15.75 6.748" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Structure</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#customization" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="customization">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><g><g><circle cx="9.5" cy="6.75" r="2" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="11.5" y1="6.75" x2="18.75" y2="6.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="5.25" y1="6.75" x2="7.5" y2="6.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><circle cx="14.5" cy="12.75" r="2" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="12.5" y1="12.75" x2="5.25" y2="12.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="18.75" y1="12.75" x2="16.5" y2="12.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/></g><g><path d="M13.5,18.75a8.93,8.93,0,0,0,1.5,4.5H9a8.93,8.93,0,0,0,1.5-4.5" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="6.75" y1="23.25" x2="17.25" y2="23.25" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><rect x="0.75" y="0.75" width="22.5" height="18" rx="1.5" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/></g></g></svg>    
+                                <span>Customization</span>
+                            </a>
+                            <div class="collapse" id="customization">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="webpack.html" class="nav-link">Webpack</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="sass.html" class="nav-link">Sass</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="javascript.html" class="nav-link">JavaScript</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="handlebars.html" class="nav-link">Handlebars</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="site-config.html" class="nav-link">Site config</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="dark-mode.html" class="nav-link">Dark mode</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="rtl.html" class="nav-link">RTL version</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        
+                        <li class="nav-item">
+                            <a href="credits.html" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>app-window-four</title><rect class="a" x="0.76" y="0.753" width="9" height="9" rx="1.5" ry="1.5"/><line class="a" x1="0.76" y1="3.753" x2="9.76" y2="3.753"/><rect class="a" x="14.26" y="0.753" width="9" height="9" rx="1.5" ry="1.5"/><line class="a" x1="14.26" y1="3.753" x2="23.26" y2="3.753"/><rect class="a" x="0.76" y="14.253" width="9" height="9" rx="1.5" ry="1.5"/><line class="a" x1="0.76" y1="17.253" x2="9.76" y2="17.253"/><rect class="a" x="14.26" y="14.253" width="9" height="9" rx="1.5" ry="1.5"/><line class="a" x1="14.26" y1="17.253" x2="23.26" y2="17.253"/></svg>
+                                <span>Credits</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item w-100">
+                            <hr>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="h6 text-secondary ps-4 ps-lg-6 mb-3 d-block text-uppercase">Design & Graphics</span>
+                        </li>
+                        <li class="nav-item">
+                            <a href="illustrations.html" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>picture-sun</title><rect class="a" x="0.75" y="0.75" width="22.5" height="22.5" rx="1.5" ry="1.5"/><circle class="a" cx="16.5" cy="7.5" r="3"/><path class="a" d="M3.961,14.959a8.194,8.194,0,0,1,11.694,4.149"/><path class="a" d="M14.382,16.918a4.449,4.449,0,0,1,5.851-.125"/></svg>
+                                <span>Illustrations</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="icons.html" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>shapes</title><rect class="a" x="0.75" y="0.75" width="9" height="9" rx="1" ry="1"/><circle class="a" cx="18.75" cy="5.25" r="4.5"/><path class="a" d="M18.786,13.977a.886.886,0,0,0-1.572,0l-4.337,7.807a1.027,1.027,0,0,0-.007.976.905.905,0,0,0,.793.49h8.674a.905.905,0,0,0,.793-.49,1.027,1.027,0,0,0-.007-.976Z"/><path class="a" d="M5.851,13.034a.778.778,0,0,0-1.2,0L.941,17.471a.827.827,0,0,0,0,1.058l3.708,4.437a.778.778,0,0,0,1.2,0l3.708-4.437a.827.827,0,0,0,0-1.058Z"/></svg>
+                                <span>Icons</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item w-100">
+                            <hr>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="h6 text-secondary ps-4 ps-lg-6 mb-3 d-block text-uppercase">Components</span>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#baseUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="baseUI">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><path class="a" d="M23.25,13.25V19.5a1,1,0,0,1-1,1H1.75a1,1,0,0,1-1-1V9.25a1,1,0,0,1,1-1H9"/><path class="a" d="M19.334,14.187A5.5,5.5,0,1,1,23,9"/><circle class="a" cx="17.5" cy="9" r="1.833"/><path class="a" d="M19.333,9A1.834,1.834,0,0,0,23,9"/><line class="a" x1="4.662" y1="11.667" x2="4.662" y2="17.083"/></svg>
+                                <span>Base UI</span>
+                            </a>
+                            <div class="collapse" id="baseUI">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="accordion.html" class="nav-link">Accordion</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="alerts.html" class="nav-link">Alerts</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="avatars.html" class="nav-link">
+                                            Avatars
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="badge.html" class="nav-link">Badges</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="breadcrumb.html" class="nav-link">Breadcrumb</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="buttons.html" class="nav-link">Buttons</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="button-group.html" class="nav-link">Button group</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="cards.html" class="nav-link">Cards</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="collapse.html" class="nav-link">Collapse</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="dropdowns.html" class="nav-link">Dropdowns</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="legend-circle.html" class="nav-link">
+                                            Legend circle
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="list-group.html" class="nav-link">List group</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="modal.html" class="nav-link">Modal</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="navs-tabs.html" class="nav-link">Navs & tabs</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="offcanvas.html" class="nav-link">Offcanvas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pagination.html" class="nav-link">Pagination</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="progress.html" class="nav-link">Progress</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="scrollbar.html" class="nav-link">
+                                            Scrollbar
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="scroll-shadow.html" class="nav-link">
+                                            Scroll shadow
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="tooltips.html" class="nav-link">Tooltips</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="typography.html" class="nav-link">Typography</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="wizard.html" class="nav-link">
+                                            Wizard
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#extendedUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="extendedUI">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>ui-columns</title><rect class="a" x="0.75" y="0.75" width="22.5" height="9" rx="1.5" ry="1.5"/><line class="a" x1="3.75" y1="3.75" x2="11.022" y2="3.75"/><line class="a" x1="3.75" y1="6.75" x2="8.204" y2="6.761"/><line class="a" x1="15" y1="0.75" x2="15" y2="9.75"/><polyline class="a" points="19.5 3.75 18 5.25 19.5 6.75"/><rect class="a" x="0.75" y="14.25" width="22.5" height="9" rx="1.5" ry="1.5"/><line class="a" x1="3.75" y1="17.25" x2="11.022" y2="17.25"/><line class="a" x1="3.75" y1="20.25" x2="8.204" y2="20.261"/><line class="a" x1="15" y1="14.25" x2="15" y2="23.25"/><polyline class="a" points="19.5 17.25 18 18.75 19.5 20.25"/></svg>
+                                <span>Extended UI</span>
+                            </a>
+                            <div class="collapse" id="extendedUI">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="chart.html" class="nav-link">Chart</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="calendar.html" class="nav-link">Calendar</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="drag-and-drop.html" class="nav-link">Drag & Drop</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="highlight-js.html" class="nav-link">Highlight</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="jsvectormap.html" class="nav-link">Jsvectormap</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="scrollspy.html" class="nav-link">Scrollspy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active" href="#forms" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="forms">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M3.75,19.5H2.571a1.038,1.038,0,0,1-1.071-1V1.725A1.027,1.027,0,0,1,2.571.75H21.429a1.027,1.027,0,0,1,1.071.975V18.5a1.038,1.038,0,0,1-1.071,1H20.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M5.25 4.5L18.75 4.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M5.217 8.25L15 8.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M6.375 17.625 A5.625 5.625 0 1 0 17.625 17.625 A5.625 5.625 0 1 0 6.375 17.625 Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14.259,16.134l-2.438,3.251a.631.631,0,0,1-.949.068L9.611,18.192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Forms</span>
+                            </a>
+                            <div class="collapse show" id="forms">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="form-basic.html" class="nav-link">Basic</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link active" href="#form-advanced" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="form-advanced">
+                                            Advanced
+                                        </a>
+                                        <div class="collapse show" id="form-advanced">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a href="clipboard.html" class="nav-link">Clipboard</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="datepicker.html" class="nav-link">Datepicker</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="editor.html" class="nav-link">Editor</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="emoji.html" class="nav-link">Emoji</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="file-upload.html" class="nav-link">File upload</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="inputmask.html" class="nav-link">Inputmask</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="password-strength.html" class="nav-link">Password strength</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="reveal-password.html" class="nav-link">Reveal password</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="select.html" class="nav-link active">Select</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#tables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="tables">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><rect class="a" x="0.75" y="2.75" width="22.5" height="18.5" rx="2"/><line class="a" x1="0.75" y1="7.25" x2="23.25" y2="7.25"/><line class="a" x1="0.75" y1="14.25" x2="23.25" y2="14.25"/><line class="a" x1="8.25" y1="7.25" x2="8.25" y2="21.25"/><line class="a" x1="15.75" y1="7.25" x2="15.75" y2="21.25"/><line class="a" x1="3.5" y1="10.75" x2="5.5" y2="10.75"/><line class="a" x1="3.5" y1="17.75" x2="5.5" y2="17.75"/></svg>
+                                <span>Tables</span>
+                            </a>
+                            <div class="collapse" id="tables">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="basic-tables.html" class="nav-link">Basic Tables</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="data-tables.html" class="nav-link">Data Tables</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="utilities-helpers.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M0.75 23.25L15.75 8.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M10.5 8.25L8.25 8.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M23.25 8.25L21 8.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M21 3L19.409 4.591" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15.75 3L15.75 0.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15.75 15.75L15.75 13.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M12.091 4.591L10.5 3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M21 13.5L19.409 11.909" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Utilities, helpers</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item w-100">
+                            <hr>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="h6 text-secondary ps-4 ps-lg-6 mb-3 d-block text-uppercase">Other</span>
+                        </li>
+                        <li class="nav-item">
+                            <a href="upgrade.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M19.5 15.754L23.25 15.754 23.25 11.254" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M23.061,15.754A6,6,0,1,0,21.94,21" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M8.25,20.254h-6a1.5,1.5,0,0,1-1.5-1.5V2.254a1.5,1.5,0,0,1,1.5-1.5H12.879a1.5,1.5,0,0,1,1.061.439l2.871,2.871a1.5,1.5,0,0,1,.439,1.061V8.254" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M9 6.004L11.25 8.254 9 10.504" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M6 6.004L3.75 8.254 6 10.504" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Upgrade</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="changelog.html" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><g><line x1="8.25" y1="3" x2="23.25" y2="3" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="8.25" y1="12" x2="23.25" y2="12" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="8.25" y1="21" x2="23.25" y2="21" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><path d="M.8,18.36a1.5,1.5,0,1,1,1.45,1.89A1.5,1.5,0,1,1,.8,22.15" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><path d="M.75,11.25a1.5,1.5,0,0,1,1.5-1.5h0a1.5,1.5,0,0,1,1.5,1.5h0a2.16,2.16,0,0,1-.47,1.34L.75,14.25h3" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><g><path d="M.75.75H1.5a.76.76,0,0,1,.75.75V6.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="0.75" y1="6.75" x2="3.75" y2="6.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/></g></g></svg>         
+                                <span>Changelog</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- End of Navigation -->
+                </div>
+                <!-- End of Collapse -->
+            </div>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main>
+
+            <!-- HEADER -->
+            <header class="container-fluid d-flex py-6 mb-4">
+                <!-- Top buttons -->
+                <div class="d-flex align-items-center ms-auto me-n1 me-lg-n2">
+                    <div class="dropdown" id="themeSwitcher">
+                        <a href="javascript: void(0);" class="dropdown-toggle no-arrow d-flex align-items-center justify-content-center bg-white rounded-circle shadow-sm mx-1 mx-lg-2 w-40px h-40px link-secondary" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,10">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M12,4.64A7.36,7.36,0,1,0,19.36,12,7.37,7.37,0,0,0,12,4.64Zm0,12.72A5.36,5.36,0,1,1,17.36,12,5.37,5.37,0,0,1,12,17.36Z" style="fill: currentColor"/><path d="M12,3.47a1,1,0,0,0,1-1V1a1,1,0,0,0-2,0V2.47A1,1,0,0,0,12,3.47Z" style="fill: currentColor"/><path d="M4.55,6a1,1,0,0,0,.71.29A1,1,0,0,0,6,6,1,1,0,0,0,6,4.55l-1-1A1,1,0,0,0,3.51,4.93Z" style="fill: currentColor"/><path d="M2.47,11H1a1,1,0,0,0,0,2H2.47a1,1,0,1,0,0-2Z" style="fill: currentColor"/><path d="M4.55,18l-1,1a1,1,0,0,0,0,1.42,1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29l1-1A1,1,0,0,0,4.55,18Z" style="fill: currentColor"/><path d="M12,20.53a1,1,0,0,0-1,1V23a1,1,0,0,0,2,0V21.53A1,1,0,0,0,12,20.53Z" style="fill: currentColor"/><path d="M19.45,18A1,1,0,0,0,18,19.45l1,1a1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z" style="fill: currentColor"/><path d="M23,11H21.53a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z" style="fill: currentColor"/><path d="M18.74,6.26A1,1,0,0,0,19.45,6l1-1a1,1,0,1,0-1.42-1.42l-1,1A1,1,0,0,0,18,6,1,1,0,0,0,18.74,6.26Z" style="fill: currentColor"/></g></svg>
+                        </a>
+            
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <button type="button" class="dropdown-item active" data-theme-value="light">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="me-2" height="18" width="18"><g><path d="M12,4.64A7.36,7.36,0,1,0,19.36,12,7.37,7.37,0,0,0,12,4.64Zm0,12.72A5.36,5.36,0,1,1,17.36,12,5.37,5.37,0,0,1,12,17.36Z" style="fill: currentColor"/><path d="M12,3.47a1,1,0,0,0,1-1V1a1,1,0,0,0-2,0V2.47A1,1,0,0,0,12,3.47Z" style="fill: currentColor"/><path d="M4.55,6a1,1,0,0,0,.71.29A1,1,0,0,0,6,6,1,1,0,0,0,6,4.55l-1-1A1,1,0,0,0,3.51,4.93Z" style="fill: currentColor"/><path d="M2.47,11H1a1,1,0,0,0,0,2H2.47a1,1,0,1,0,0-2Z" style="fill: currentColor"/><path d="M4.55,18l-1,1a1,1,0,0,0,0,1.42,1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29l1-1A1,1,0,0,0,4.55,18Z" style="fill: currentColor"/><path d="M12,20.53a1,1,0,0,0-1,1V23a1,1,0,0,0,2,0V21.53A1,1,0,0,0,12,20.53Z" style="fill: currentColor"/><path d="M19.45,18A1,1,0,0,0,18,19.45l1,1a1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z" style="fill: currentColor"/><path d="M23,11H21.53a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z" style="fill: currentColor"/><path d="M18.74,6.26A1,1,0,0,0,19.45,6l1-1a1,1,0,1,0-1.42-1.42l-1,1A1,1,0,0,0,18,6,1,1,0,0,0,18.74,6.26Z" style="fill: currentColor"/></g></svg>
+                                    Light mode
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="dropdown-item" data-theme-value="dark">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="me-2" height="18" width="18"><path d="M19.57,23.34a1,1,0,0,0,0-1.9,9.94,9.94,0,0,1,0-18.88,1,1,0,0,0,.68-.94,1,1,0,0,0-.68-.95A11.58,11.58,0,0,0,8.88,2.18,12.33,12.33,0,0,0,3.75,12a12.31,12.31,0,0,0,5.11,9.79A11.49,11.49,0,0,0,15.61,24,12.55,12.55,0,0,0,19.57,23.34ZM10,20.17A10.29,10.29,0,0,1,5.75,12a10.32,10.32,0,0,1,4.3-8.19A9.34,9.34,0,0,1,15.59,2a.17.17,0,0,1,.17.13.18.18,0,0,1-.07.2,11.94,11.94,0,0,0-.18,19.21.25.25,0,0,1-.16.45A9.5,9.5,0,0,1,10,20.17Z" style="fill: currentColor"/></svg>
+                                    Dark mode
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="dropdown-item" data-theme-value="auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="me-2" height="18" width="18"><path d="M24,12a1,1,0,0,0-1-1H19.09a.51.51,0,0,1-.49-.4,6.83,6.83,0,0,0-.94-2.28.5.5,0,0,1,.06-.63l2.77-2.76a1,1,0,1,0-1.42-1.42L16.31,6.28a.5.5,0,0,1-.63.06A6.83,6.83,0,0,0,13.4,5.4a.5.5,0,0,1-.4-.49V1a1,1,0,0,0-2,0V4.91a.51.51,0,0,1-.4.49,6.83,6.83,0,0,0-2.28.94.5.5,0,0,1-.63-.06L4.93,3.51A1,1,0,0,0,3.51,4.93L6.28,7.69a.5.5,0,0,1,.06.63A6.83,6.83,0,0,0,5.4,10.6a.5.5,0,0,1-.49.4H1a1,1,0,0,0,0,2H4.91a.51.51,0,0,1,.49.4,6.83,6.83,0,0,0,.94,2.28.5.5,0,0,1-.06.63L3.51,19.07a1,1,0,1,0,1.42,1.42l2.76-2.77a.5.5,0,0,1,.63-.06,6.83,6.83,0,0,0,2.28.94.5.5,0,0,1,.4.49V23a1,1,0,0,0,2,0V19.09a.51.51,0,0,1,.4-.49,6.83,6.83,0,0,0,2.28-.94.5.5,0,0,1,.63.06l2.76,2.77a1,1,0,1,0,1.42-1.42l-2.77-2.76a.5.5,0,0,1-.06-.63,6.83,6.83,0,0,0,.94-2.28.5.5,0,0,1,.49-.4H23A1,1,0,0,0,24,12Zm-8.74,2.5A5.76,5.76,0,0,1,9.5,8.74a5.66,5.66,0,0,1,.16-1.31A.49.49,0,0,1,10,7.07a5.36,5.36,0,0,1,1.8-.31,5.47,5.47,0,0,1,5.46,5.46,5.36,5.36,0,0,1-.31,1.8.49.49,0,0,1-.35.32A5.53,5.53,0,0,1,15.26,14.5Z" style="fill: currentColor"/></svg>
+                                    Auto
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+            
+                    <!-- Divider -->
+                    <div class="vr bg-gray-700 mx-1 mx-md-2 mx-lg-3"></div>
+                    
+                    <!-- Link -->
+                    <a href="mailto:support@dashly-theme.com" class="btn btn-link mx-1 mx-lg-2 fw-semibold d-none d-md-block">
+                        Get support
+                    </a>
+
+                    <!-- Link -->
+                    <a href="https://themes.getbootstrap.com/product/dashly-admin-dashboard-template/" target="_blank" class="btn btn-primary mx-1 mx-lg-2 px-4 px-lg-5">
+                        Purchase Now
+                    </a>
+
+                    <!-- Link -->
+                    <a href="../index.html" class="btn btn-dark mx-1 mx-lg-2 px-4 px-lg-5">
+                        Preview Demo
+                    </a>
+                </div>
+            </header>
+
+            <div class="container-fluid">
+
+                <!-- Title -->
+                <h1 class="h2">
+                    Select (Tom Select)
+                </h1>
+
+                <div class="row">
+                    <div class="col">
+
+                        <!-- Card -->
+                        <div class="card border-0 p-md-6">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="lead mb-3">A dynamic, framework agnostic, and lightweight <code>&lt;select&gt;</code> UI control.</p>
+                                        <a class="fw-semibold d-flex align-items-center" href="https://tom-select.js.org/" target="_blank">
+                                            Tom Select documentation
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14" width="14" class="ms-2"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>share-external-link-1</title><line class="a" x1="9.25" y1="14.523" x2="23.25" y2="0.75"/><polyline class="a" points="23.25 8.621 23.25 0.75 15.25 0.75"/><path class="a" d="M12.125,5.75H1.625a.875.875,0,0,0-.875.875v15.75a.875.875,0,0,0,.875.875h15.75a.875.875,0,0,0,.875-.875v-10.5"/></svg>
+                                        </a>
+                                        <hr>
+
+                                        <h2 class="mt-8 mb-3">Basic example</h2>
+                                        <p>Just add the <code>data-select</code> attribute to <code>&lt;select&gt;</code> tag.</p>
+                                        
+                                        <ul class="nav nav-tabs mb-4" id="myTab-01" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-01" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-01" type="button" role="tab" aria-controls="preview-tab-pane-01" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-01" data-bs-toggle="tab" data-bs-target="#html-tab-pane-01" type="button" role="tab" aria-controls="html-tab-pane-01" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-01">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-01" role="tabpanel" aria-labelledby="preview-tab-01" tabindex="0">
+                                                <div class="w-md-50">
+                                                    <select class="form-select" autocomplete="off" data-select>
+                                                        <option value="Thomas Edison">Thomas Edison</option>
+                                                        <option value="John Doe">John Doe</option>
+                                                        <option value="Nikola Tesla">Nikola Tesla</option>
+                                                        <option value="Arnold Schwarzenegger">Arnold Schwarzenegger</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-01" role="tabpanel" aria-labelledby="html-tab-01" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-01" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-01">&lt;select class="form-select" autocomplete="off" data-select&gt;
+    &lt;option value="Thomas Edison"&gt;Thomas Edison&lt;/option&gt;
+    &lt;option value="John Doe"&gt;John Doe&lt;/option&gt;
+    &lt;option value="Nikola Tesla"&gt;Nikola Tesla&lt;/option&gt;
+    &lt;option value="Arnold Schwarzenegger"&gt;Arnold Schwarzenegger&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">With placeholder</h2>
+                                        <p>You can use the <code>data-select</code> attribute to add more settings, like placeholder <code>data-select='{"placeholder": "Select a person..."}'</code>. In this case you need to add an extra option tag to the select with an empty value.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-02" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-02" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-02" type="button" role="tab" aria-controls="preview-tab-pane-02" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-02" data-bs-toggle="tab" data-bs-target="#html-tab-pane-02" type="button" role="tab" aria-controls="html-tab-pane-02" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-02">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-02" role="tabpanel" aria-labelledby="preview-tab-02" tabindex="0">
+                                                <div class="w-md-50">
+                                                    <select class="form-select" autocomplete="off" data-select='{
+                                                        "placeholder": "Select a person..."
+                                                    }'>
+                                                        <option value="">Select a person...</option>
+                                                        <option value="Thomas Edison">Thomas Edison</option>
+                                                        <option value="John Doe">John Doe</option>
+                                                        <option value="Nikola Tesla">Nikola Tesla</option>
+                                                        <option value="Arnold Schwarzenegger">Arnold Schwarzenegger</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-02" role="tabpanel" aria-labelledby="html-tab-02" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-02" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-02">&lt;select class="form-select" autocomplete="off" data-select='{
+    "placeholder": "Select a person..."
+}'&gt;
+    &lt;option value=""&gt;Select a person...&lt;/option&gt;
+    &lt;option value="Thomas Edison"&gt;Thomas Edison&lt;/option&gt;
+    &lt;option value="John Doe"&gt;John Doe&lt;/option&gt;
+    &lt;option value="Nikola Tesla"&gt;Nikola Tesla&lt;/option&gt;
+    &lt;option value="Arnold Schwarzenegger"&gt;Arnold Schwarzenegger&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">Select multiple</h2>
+                                        <p>If you need to select more than one option, add the <code>multiple</code> attribute to the select.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-03" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-03" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-03" type="button" role="tab" aria-controls="preview-tab-pane-03" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-03" data-bs-toggle="tab" data-bs-target="#html-tab-pane-03" type="button" role="tab" aria-controls="html-tab-pane-03" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-03">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-03" role="tabpanel" aria-labelledby="preview-tab-03" tabindex="0">
+                                                <div class="w-md-50">
+                                                    <select class="form-select" multiple data-select='{
+                                                            "placeholder": "Choose members..."
+                                                        }'>
+                                                        <option value="">Choose members...</option>
+                                                        <option value="Norma Peck">Norma Peck</option>
+                                                        <option value="Perry Hart">Perry Hart</option>
+                                                        <option value="Jimmy Riley">Jimmy Riley</option>
+                                                        <option value="Martin Edwards">Martin Edwards</option>
+                                                        <option value="Katie Fowler">Katie Fowler</option>
+                                                        <option value="Zachary Ortiz">Zachary Ortiz</option>
+                                                        <option value="Dylan Sutton">Dylan Sutton</option>
+                                                        <option value="Melissa Stewart">Melissa Stewart</option>
+                                                        <option value="Lester William">Lester William</option>
+                                                        <option value="Chloe Brewer">Chloe Brewer</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-03" role="tabpanel" aria-labelledby="html-tab-03" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-03" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-03">&lt;select class="form-select" multiple data-select='{
+        "placeholder": "Choose members..."
+    }'&gt;
+    &lt;option value=""&gt;Choose members...&lt;/option&gt;
+    &lt;option value="Norma Peck"&gt;Norma Peck&lt;/option&gt;
+    &lt;option value="Perry Hart"&gt;Perry Hart&lt;/option&gt;
+    &lt;option value="Jimmy Riley"&gt;Jimmy Riley&lt;/option&gt;
+    &lt;option value="Martin Edwards"&gt;Martin Edwards&lt;/option&gt;
+    &lt;option value="Katie Fowler"&gt;Katie Fowler&lt;/option&gt;
+    &lt;option value="Zachary Ortiz"&gt;Zachary Ortiz&lt;/option&gt;
+    &lt;option value="Dylan Sutton"&gt;Dylan Sutton&lt;/option&gt;
+    &lt;option value="Melissa Stewart"&gt;Melissa Stewart&lt;/option&gt;
+    &lt;option value="Lester William"&gt;Lester William&lt;/option&gt;
+    &lt;option value="Chloe Brewer"&gt;Chloe Brewer&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">Custom template<span class="badge text-bg-success-soft ms-2">Exclusive</span></h2>
+                                        <p>You can also create your own custom template by attaching HTML tags to <code>data-option-template</code> and <code>data-item-template</code> attributes. Within the custom template use <code>[[value]]</code> and <code>[[text]]</code> for replacing the value and text of the options.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-04" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-04" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-04" type="button" role="tab" aria-controls="preview-tab-pane-04" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-04" data-bs-toggle="tab" data-bs-target="#html-tab-pane-04" type="button" role="tab" aria-controls="html-tab-pane-04" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-04">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-04" role="tabpanel" aria-labelledby="preview-tab-04" tabindex="0">
+                                                <div class="w-md-50">
+                                                    <select class="form-select" autocomplete="off" data-select='{
+                                                            "placeholder": "Choose country..."
+                                                        }'
+                                                            data-option-template='<span class="d-flex align-items-center py-2"><span class="avatar avatar-circle avatar-xxs"><img class="avatar-img shadow-sm" src="../assets/images/flags/1x1/%5b%5bvalue%5d%5d.html" /></span><span class="text-truncate ms-2">[[text]]</span></span>'
+                                                            data-item-template='<span class="d-flex align-items-center"><span class="avatar avatar-circle avatar-xxs"><img class="avatar-img shadow-sm" src="../assets/images/flags/1x1/%5b%5bvalue%5d%5d.html" /></span><span class="text-truncate ms-2">[[text]]</span></span>'>
+                                                        <option value="">Choose country...</option>
+                                                        <option value="af">Afghanistan</option>
+                                                        <option value="ax">Aland Islands</option>
+                                                        <option value="al">Albania</option>
+                                                        <option value="dz">Algeria</option>
+                                                        <option value="as">American Samoa</option>
+                                                        <option value="ad">Andorra</option>
+                                                        <option value="ao">Angola</option>
+                                                        <option value="ai">Anguilla</option>
+                                                        <option value="aq">Antarctica</option>
+                                                        <option value="ag">Antigua and Barbuda</option>
+                                                        <option value="ar">Argentina</option>
+                                                        <option value="am">Armenia</option>
+                                                        <option value="aw">Aruba</option>
+                                                        <option value="au">Australia</option>
+                                                        <option value="at">Austria</option>
+                                                        <option value="az">Azerbaijian</option>
+                                                        <option value="bs">Bahamas</option>
+                                                        <option value="bh">Bahrain</option>
+                                                        <option value="bd">Bangladesh</option>
+                                                        <option value="bb">Barbados</option>
+                                                        <option value="by">Belarus</option>
+                                                        <option value="be">Belgium</option>
+                                                        <option value="bz">Belize</option>
+                                                        <option value="bj">Benin</option>
+                                                        <option value="bm">Bermuda</option>
+                                                        <option value="bt">Bhutan</option>
+                                                        <option value="bo">Bolivia (Plurinational State of)</option>
+                                                        <option value="bq">Bonaire, Sint Eustatius and Saba</option>
+                                                        <option value="ba">Bosnia and Herzegovina</option>
+                                                        <option value="bw">Botswana</option>
+                                                        <option value="br">Brazil</option>
+                                                        <option value="io">British Indian Ocean Territory</option>
+                                                        <option value="bn">Brunei Darussalam</option>
+                                                        <option value="bg">Bulgaria</option>
+                                                        <option value="bf">Burkina Faso</option> 
+                                                        <option value="bi">Burundi</option>
+                                                        <option value="cv">Cabo Verde</option>
+                                                        <option value="kh">Cambodia</option>
+                                                        <option value="cm">Cameroon</option>
+                                                        <option value="ca">Canada</option>
+                                                        <option value="ky">Cayman Islands</option>
+                                                        <option value="cf">Central African Republic</option>
+                                                        <option value="td">Chad</option>
+                                                        <option value="cl">Chile</option>
+                                                        <option value="cn">China</option>
+                                                        <option value="cx">Christmas Island</option>
+                                                        <option value="cc">Cocos (Keeling) Islands</option>
+                                                        <option value="co">Colombia</option>
+                                                        <option value="km">Comoros</option>
+                                                        <option value="cg">Congo</option>
+                                                        <option value="cd">Congo (the Democratic Republic of the)</option>
+                                                        <option value="ck">Cook Islands</option> 
+                                                        <option value="cr">Costa Rica</option>
+                                                        <option value="ci">Cote D'ivoire</option>
+                                                        <option value="hr">Croatia</option>
+                                                        <option value="cu">Cuba</option>
+                                                        <option value="cw">Curacao</option>
+                                                        <option value="cy">Cyprus</option>
+                                                        <option value="cz">Czechia</option>
+                                                        <option value="dk">Denmark</option>
+                                                        <option value="dj">Djibouti</option>
+                                                        <option value="dm">Dominica</option>
+                                                        <option value="do">Dominican Republic</option>
+                                                        <option value="ec">Ecuador</option>
+                                                        <option value="eg">Egypt</option>
+                                                        <option value="sv">El Salvador</option>
+                                                        <option value="gq">Equatorial Guinea</option>
+                                                        <option value="er">Eritrea</option>
+                                                        <option value="ee">Estonia</option>
+                                                        <option value="et">Ethiopia</option>
+                                                        <option value="fk">Falkland Islands (Malvinas)</option>
+                                                        <option value="fo">Faroe Islands</option>
+                                                        <option value="fj">Fiji</option>
+                                                        <option value="fi">Finland</option>
+                                                        <option value="fr">France</option>
+                                                        <option value="gf">French Guiana</option>
+                                                        <option value="pf">French Polynesia</option>
+                                                        <option value="tf">French Southern Territories</option>
+                                                        <option value="ga">Gabon</option>
+                                                        <option value="gm">Gambia</option>
+                                                        <option value="ge">Georgia</option>
+                                                        <option value="de">Germany</option>
+                                                        <option value="gh">Ghana</option>
+                                                        <option value="gi">Gibraltar</option>
+                                                        <option value="gr">Greece</option>
+                                                        <option value="gl">Greenland</option>
+                                                        <option value="gd">Grenada</option>
+                                                        <option value="gp">Guadeloupe</option>
+                                                        <option value="gu">Guam</option>
+                                                        <option value="gt">Guatemala</option>
+                                                        <option value="gg">Guernsey</option>
+                                                        <option value="gn">Guinea</option>
+                                                        <option value="gw">Guinea-Bissau</option>
+                                                        <option value="gy">Guyana</option>
+                                                        <option value="ht">Haiti</option>
+                                                        <option value="va">Holy See</option>
+                                                        <option value="hn">Honduras</option>
+                                                        <option value="hk">Hong Kong</option>
+                                                        <option value="hu">Hungary</option>
+                                                        <option value="is">Iceland</option>
+                                                        <option value="in">India</option>
+                                                        <option value="id">Indonesia</option>
+                                                        <option value="ir">Iran (Islamic Republic of)</option>
+                                                        <option value="iq">Iraq</option>
+                                                        <option value="ie">Ireland</option>
+                                                        <option value="im">Isle of Man</option>
+                                                        <option value="il">Israel</option>
+                                                        <option value="it">Italy</option>
+                                                        <option value="jm">Jamaica</option>
+                                                        <option value="jp">Japan</option>
+                                                        <option value="je">Jersey</option>
+                                                        <option value="jo">Jordan</option>
+                                                        <option value="kz">Kazakhstan</option>
+                                                        <option value="ke">Kenya</option>
+                                                        <option value="ki">Kiribati</option>
+                                                        <option value="kp">Korea (the Democratic People's Republic of)</option>
+                                                        <option value="kr">Korea (the Republic of)</option>
+                                                        <option value="kw">Kuwait</option>
+                                                        <option value="kg">Kyrgyzstan</option>
+                                                        <option value="la">Lao People's Democratic Republic</option>
+                                                        <option value="lv">Latvia</option>
+                                                        <option value="lb">Lebanon</option>
+                                                        <option value="ls">Lesotho</option>
+                                                        <option value="lr">Liberia</option>
+                                                        <option value="ly">Libya</option>
+                                                        <option value="li">Liechtenstein</option>
+                                                        <option value="lt">Lithuania</option>
+                                                        <option value="lu">Luxembourg</option>
+                                                        <option value="mo">Macao</option>
+                                                        <option value="mk">North Macedonia</option>
+                                                        <option value="mg">Madagascar</option>
+                                                        <option value="mw">Malawi</option>
+                                                        <option value="my">Malaysia</option>
+                                                        <option value="mv">Maldives</option>
+                                                        <option value="ml">Mali</option>
+                                                        <option value="mt">Malta</option>
+                                                        <option value="mh">Marshall Islands</option>
+                                                        <option value="mq">Martinique</option>
+                                                        <option value="mr">Mauritania</option>
+                                                        <option value="mu">Mauritius</option>
+                                                        <option value="yt">Mayotte</option>
+                                                        <option value="mx">Mexico</option>
+                                                        <option value="fm">Micronesia (Federated States of)</option>
+                                                        <option value="md">Moldova (the Republic of)</option>
+                                                        <option value="mc">Monaco</option>
+                                                        <option value="mn">Mongolia</option>
+                                                        <option value="me">Montenegro</option>
+                                                        <option value="ms">Montserrat</option>
+                                                        <option value="ma">Morocco</option>
+                                                        <option value="mz">Mozambique</option>
+                                                        <option value="mm">Myanmar</option>
+                                                        <option value="na">Namibia</option>
+                                                        <option value="nr">Nauru</option>
+                                                        <option value="np">Nepal</option>
+                                                        <option value="nl">Netherlands</option>
+                                                        <option value="nc">New Caledonia</option>
+                                                        <option value="nz">New Zealand</option>
+                                                        <option value="ni">Nicaragua</option>
+                                                        <option value="ne">Niger</option>
+                                                        <option value="ng">Nigeria</option>
+                                                        <option value="nu">Niue</option>
+                                                        <option value="nf">Norfolk Island</option>
+                                                        <option value="mp">Northern Mariana Islands</option>
+                                                        <option value="no">Norway</option>
+                                                        <option value="om">Oman</option>
+                                                        <option value="pk">Pakistan</option>
+                                                        <option value="pw">Palau</option>
+                                                        <option value="ps">Palestine, State of</option>
+                                                        <option value="pa">Panama</option>
+                                                        <option value="pg">Papua New Guinea</option>
+                                                        <option value="py">Paraguay</option>
+                                                        <option value="pe">Peru</option>
+                                                        <option value="ph">Philippines</option>
+                                                        <option value="pn">Pitcairn</option>
+                                                        <option value="pl">Poland</option>
+                                                        <option value="pt">Portugal</option>
+                                                        <option value="pr">Puerto Rico</option>
+                                                        <option value="qa">Qatar</option>
+                                                        <option value="re">Reunion</option>
+                                                        <option value="ro">Romania</option>
+                                                        <option value="ru">Russian Federation</option>
+                                                        <option value="rw">Rwanda</option>
+                                                        <option value="bl">Saint Barthelemy</option>
+                                                        <option value="sh">Saint Helena, Ascension and Tristan Da Cunha</option>
+                                                        <option value="kn">Saint Kitts and Nevis</option>
+                                                        <option value="lc">Saint Lucia</option>
+                                                        <option value="mf">Saint Martin (French Part)</option>
+                                                        <option value="pm">Saint Pierre and Miquelon</option>
+                                                        <option value="vc">Saint Vincent and The Grenadines</option>
+                                                        <option value="ws">Samoa</option>
+                                                        <option value="sm">San Marino</option>
+                                                        <option value="st">Sao Tome and Principe</option>
+                                                        <option value="sa">Saudi Arabia</option> 
+                                                        <option value="sn">Senegal</option>
+                                                        <option value="rs">Serbia</option>
+                                                        <option value="sc">Seychelles</option>
+                                                        <option value="sl">Sierra Leone</option> 
+                                                        <option value="sg">Singapore</option>
+                                                        <option value="sx">Sint Maarten (Dutch Part)</option>
+                                                        <option value="sk">Slovakia</option>
+                                                        <option value="si">Slovenia</option>
+                                                        <option value="sb">Solomon Islands</option>
+                                                        <option value="so">Somalia</option>
+                                                        <option value="za">South Africa</option> 
+                                                        <option value="gs">South Georgia and The South Sandwich Islands</option>
+                                                        <option value="ss">South Sudan</option>
+                                                        <option value="es">Spain</option>
+                                                        <option value="lk">Sri Lanka</option>
+                                                        <option value="sd">Sudan</option>
+                                                        <option value="sr">Suriname</option>
+                                                        <option value="sj">Svalbard and Jan Mayen</option>
+                                                        <option value="sz">Eswatini</option>
+                                                        <option value="se">Sweden</option>
+                                                        <option value="ch">Switzerland</option>
+                                                        <option value="sy">Syrian Arab Republic</option>
+                                                        <option value="tw">Taiwan (Province of China)</option>
+                                                        <option value="tj">Tajikistan</option>
+                                                        <option value="tz">Tanzania, United Republic of</option>
+                                                        <option value="th">Thailand</option>
+                                                        <option value="tl">Timor-Leste</option>
+                                                        <option value="tg">Togo</option>
+                                                        <option value="tk">Tokelau</option>
+                                                        <option value="to">Tonga</option>
+                                                        <option value="tt">Trinidad and Tobago</option>
+                                                        <option value="tn">Tunisia</option>
+                                                        <option value="tr">Turkey</option>
+                                                        <option value="tm">Turkmenistan</option> 
+                                                        <option value="tc">Turks and Caicos Islands</option>
+                                                        <option value="tv">Tuvalu</option>
+                                                        <option value="ug">Uganda</option>
+                                                        <option value="ua">Ukraine</option>
+                                                        <option value="ae">United Arab Emirates</option>
+                                                        <option value="gb">United Kingdom of Great Britain and Northern Ireland</option>
+                                                        <option value="us">United States of America</option>
+                                                        <option value="um">United States Minor Outlying Islands</option>
+                                                        <option value="uy">Uruguay</option>
+                                                        <option value="uz">Uzbekistan</option>
+                                                        <option value="vu">Vanuatu</option>
+                                                        <option value="ve">Venezuela (Bolivarian Republic of)</option>
+                                                        <option value="vn">Viet Nam</option>
+                                                        <option value="vg">Virgin Islands (British)</option>
+                                                        <option value="vi">Virgin Islands (U.S.)</option>
+                                                        <option value="wf">Wallis and Futuna</option>
+                                                        <option value="eh">Western Sahara</option>
+                                                        <option value="ye">Yemen</option>
+                                                        <option value="zm">Zambia</option>
+                                                        <option value="zw">Zimbabwe</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-04" role="tabpanel" aria-labelledby="html-tab-04" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-04" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-04">&lt;select class="form-select" autocomplete="off" data-select='{
+        "placeholder": "Choose country..."
+    }'
+        data-option-template='&lt;span class="d-flex align-items-center py-2"&gt;&lt;span class="avatar avatar-circle avatar-xxs"&gt;&lt;img class="avatar-img shadow-sm" src="../assets/images/flags/1x1/[[value]].svg" /&gt;&lt;/span&gt;&lt;span class="text-truncate ms-2"&gt;[[text]]&lt;/span&gt;&lt;/span&gt;'
+        data-item-template='&lt;span class="d-flex align-items-center"&gt;&lt;span class="avatar avatar-circle avatar-xxs"&gt;&lt;img class="avatar-img shadow-sm" src="../assets/images/flags/1x1/[[value]].svg" /&gt;&lt;/span&gt;&lt;span class="text-truncate ms-2"&gt;[[text]]&lt;/span&gt;&lt;/span&gt;'&gt;
+    &lt;option value=""&gt;Choose country...&lt;/option&gt;
+    &lt;option value="af"&gt;Afghanistan&lt;/option&gt;
+    &lt;option value="ax"&gt;Aland Islands&lt;/option&gt;
+    &lt;option value="al"&gt;Albania&lt;/option&gt;
+    &lt;option value="dz"&gt;Algeria&lt;/option&gt;
+    &lt;option value="as"&gt;American Samoa&lt;/option&gt;
+    &lt;option value="ad"&gt;Andorra&lt;/option&gt;
+    &lt;option value="ao"&gt;Angola&lt;/option&gt;
+    &lt;option value="ai"&gt;Anguilla&lt;/option&gt;
+    &lt;option value="aq"&gt;Antarctica&lt;/option&gt;
+    &lt;option value="ag"&gt;Antigua and Barbuda&lt;/option&gt;
+    &lt;option value="ar"&gt;Argentina&lt;/option&gt;
+    &lt;option value="am"&gt;Armenia&lt;/option&gt;
+    &lt;option value="aw"&gt;Aruba&lt;/option&gt;
+    &lt;option value="au"&gt;Australia&lt;/option&gt;
+    &lt;option value="at"&gt;Austria&lt;/option&gt;
+    &lt;option value="az"&gt;Azerbaijian&lt;/option&gt;
+    &lt;option value="bs"&gt;Bahamas&lt;/option&gt;
+    &lt;option value="bh"&gt;Bahrain&lt;/option&gt;
+    &lt;option value="bd"&gt;Bangladesh&lt;/option&gt;
+    &lt;option value="bb"&gt;Barbados&lt;/option&gt;
+    &lt;option value="by"&gt;Belarus&lt;/option&gt;
+    &lt;option value="be"&gt;Belgium&lt;/option&gt;
+    &lt;option value="bz"&gt;Belize&lt;/option&gt;
+    &lt;option value="bj"&gt;Benin&lt;/option&gt;
+    &lt;option value="bm"&gt;Bermuda&lt;/option&gt;
+    &lt;option value="bt"&gt;Bhutan&lt;/option&gt;
+    &lt;option value="bo"&gt;Bolivia (Plurinational State of)&lt;/option&gt;
+    &lt;option value="bq"&gt;Bonaire, Sint Eustatius and Saba&lt;/option&gt;
+    &lt;option value="ba"&gt;Bosnia and Herzegovina&lt;/option&gt;
+    &lt;option value="bw"&gt;Botswana&lt;/option&gt;
+    &lt;option value="br"&gt;Brazil&lt;/option&gt;
+    &lt;option value="io"&gt;British Indian Ocean Territory&lt;/option&gt;
+    &lt;option value="bn"&gt;Brunei Darussalam&lt;/option&gt;
+    &lt;option value="bg"&gt;Bulgaria&lt;/option&gt;
+    &lt;option value="bf"&gt;Burkina Faso&lt;/option&gt; 
+    &lt;option value="bi"&gt;Burundi&lt;/option&gt;
+    &lt;option value="cv"&gt;Cabo Verde&lt;/option&gt;
+    &lt;option value="kh"&gt;Cambodia&lt;/option&gt;
+    &lt;option value="cm"&gt;Cameroon&lt;/option&gt;
+    &lt;option value="ca"&gt;Canada&lt;/option&gt;
+    &lt;option value="ky"&gt;Cayman Islands&lt;/option&gt;
+    &lt;option value="cf"&gt;Central African Republic&lt;/option&gt;
+    &lt;option value="td"&gt;Chad&lt;/option&gt;
+    &lt;option value="cl"&gt;Chile&lt;/option&gt;
+    &lt;option value="cn"&gt;China&lt;/option&gt;
+    &lt;option value="cx"&gt;Christmas Island&lt;/option&gt;
+    &lt;option value="cc"&gt;Cocos (Keeling) Islands&lt;/option&gt;
+    &lt;option value="co"&gt;Colombia&lt;/option&gt;
+    &lt;option value="km"&gt;Comoros&lt;/option&gt;
+    &lt;option value="cg"&gt;Congo&lt;/option&gt;
+    &lt;option value="cd"&gt;Congo (the Democratic Republic of the)&lt;/option&gt;
+    &lt;option value="ck"&gt;Cook Islands&lt;/option&gt; 
+    &lt;option value="cr"&gt;Costa Rica&lt;/option&gt;
+    &lt;option value="ci"&gt;Cote D'ivoire&lt;/option&gt;
+    &lt;option value="hr"&gt;Croatia&lt;/option&gt;
+    &lt;option value="cu"&gt;Cuba&lt;/option&gt;
+    &lt;option value="cw"&gt;Curacao&lt;/option&gt;
+    &lt;option value="cy"&gt;Cyprus&lt;/option&gt;
+    &lt;option value="cz"&gt;Czechia&lt;/option&gt;
+    &lt;option value="dk"&gt;Denmark&lt;/option&gt;
+    &lt;option value="dj"&gt;Djibouti&lt;/option&gt;
+    &lt;option value="dm"&gt;Dominica&lt;/option&gt;
+    &lt;option value="do"&gt;Dominican Republic&lt;/option&gt;
+    &lt;option value="ec"&gt;Ecuador&lt;/option&gt;
+    &lt;option value="eg"&gt;Egypt&lt;/option&gt;
+    &lt;option value="sv"&gt;El Salvador&lt;/option&gt;
+    &lt;option value="gq"&gt;Equatorial Guinea&lt;/option&gt;
+    &lt;option value="er"&gt;Eritrea&lt;/option&gt;
+    &lt;option value="ee"&gt;Estonia&lt;/option&gt;
+    &lt;option value="et"&gt;Ethiopia&lt;/option&gt;
+    &lt;option value="fk"&gt;Falkland Islands (Malvinas)&lt;/option&gt;
+    &lt;option value="fo"&gt;Faroe Islands&lt;/option&gt;
+    &lt;option value="fj"&gt;Fiji&lt;/option&gt;
+    &lt;option value="fi"&gt;Finland&lt;/option&gt;
+    &lt;option value="fr"&gt;France&lt;/option&gt;
+    &lt;option value="gf"&gt;French Guiana&lt;/option&gt;
+    &lt;option value="pf"&gt;French Polynesia&lt;/option&gt;
+    &lt;option value="tf"&gt;French Southern Territories&lt;/option&gt;
+    &lt;option value="ga"&gt;Gabon&lt;/option&gt;
+    &lt;option value="gm"&gt;Gambia&lt;/option&gt;
+    &lt;option value="ge"&gt;Georgia&lt;/option&gt;
+    &lt;option value="de"&gt;Germany&lt;/option&gt;
+    &lt;option value="gh"&gt;Ghana&lt;/option&gt;
+    &lt;option value="gi"&gt;Gibraltar&lt;/option&gt;
+    &lt;option value="gr"&gt;Greece&lt;/option&gt;
+    &lt;option value="gl"&gt;Greenland&lt;/option&gt;
+    &lt;option value="gd"&gt;Grenada&lt;/option&gt;
+    &lt;option value="gp"&gt;Guadeloupe&lt;/option&gt;
+    &lt;option value="gu"&gt;Guam&lt;/option&gt;
+    &lt;option value="gt"&gt;Guatemala&lt;/option&gt;
+    &lt;option value="gg"&gt;Guernsey&lt;/option&gt;
+    &lt;option value="gn"&gt;Guinea&lt;/option&gt;
+    &lt;option value="gw"&gt;Guinea-Bissau&lt;/option&gt;
+    &lt;option value="gy"&gt;Guyana&lt;/option&gt;
+    &lt;option value="ht"&gt;Haiti&lt;/option&gt;
+    &lt;option value="va"&gt;Holy See&lt;/option&gt;
+    &lt;option value="hn"&gt;Honduras&lt;/option&gt;
+    &lt;option value="hk"&gt;Hong Kong&lt;/option&gt;
+    &lt;option value="hu"&gt;Hungary&lt;/option&gt;
+    &lt;option value="is"&gt;Iceland&lt;/option&gt;
+    &lt;option value="in"&gt;India&lt;/option&gt;
+    &lt;option value="id"&gt;Indonesia&lt;/option&gt;
+    &lt;option value="ir"&gt;Iran (Islamic Republic of)&lt;/option&gt;
+    &lt;option value="iq"&gt;Iraq&lt;/option&gt;
+    &lt;option value="ie"&gt;Ireland&lt;/option&gt;
+    &lt;option value="im"&gt;Isle of Man&lt;/option&gt;
+    &lt;option value="il"&gt;Israel&lt;/option&gt;
+    &lt;option value="it"&gt;Italy&lt;/option&gt;
+    &lt;option value="jm"&gt;Jamaica&lt;/option&gt;
+    &lt;option value="jp"&gt;Japan&lt;/option&gt;
+    &lt;option value="je"&gt;Jersey&lt;/option&gt;
+    &lt;option value="jo"&gt;Jordan&lt;/option&gt;
+    &lt;option value="kz"&gt;Kazakhstan&lt;/option&gt;
+    &lt;option value="ke"&gt;Kenya&lt;/option&gt;
+    &lt;option value="ki"&gt;Kiribati&lt;/option&gt;
+    &lt;option value="kp"&gt;Korea (the Democratic People's Republic of)&lt;/option&gt;
+    &lt;option value="kr"&gt;Korea (the Republic of)&lt;/option&gt;
+    &lt;option value="kw"&gt;Kuwait&lt;/option&gt;
+    &lt;option value="kg"&gt;Kyrgyzstan&lt;/option&gt;
+    &lt;option value="la"&gt;Lao People's Democratic Republic&lt;/option&gt;
+    &lt;option value="lv"&gt;Latvia&lt;/option&gt;
+    &lt;option value="lb"&gt;Lebanon&lt;/option&gt;
+    &lt;option value="ls"&gt;Lesotho&lt;/option&gt;
+    &lt;option value="lr"&gt;Liberia&lt;/option&gt;
+    &lt;option value="ly"&gt;Libya&lt;/option&gt;
+    &lt;option value="li"&gt;Liechtenstein&lt;/option&gt;
+    &lt;option value="lt"&gt;Lithuania&lt;/option&gt;
+    &lt;option value="lu"&gt;Luxembourg&lt;/option&gt;
+    &lt;option value="mo"&gt;Macao&lt;/option&gt;
+    &lt;option value="mk"&gt;North Macedonia&lt;/option&gt;
+    &lt;option value="mg"&gt;Madagascar&lt;/option&gt;
+    &lt;option value="mw"&gt;Malawi&lt;/option&gt;
+    &lt;option value="my"&gt;Malaysia&lt;/option&gt;
+    &lt;option value="mv"&gt;Maldives&lt;/option&gt;
+    &lt;option value="ml"&gt;Mali&lt;/option&gt;
+    &lt;option value="mt"&gt;Malta&lt;/option&gt;
+    &lt;option value="mh"&gt;Marshall Islands&lt;/option&gt;
+    &lt;option value="mq"&gt;Martinique&lt;/option&gt;
+    &lt;option value="mr"&gt;Mauritania&lt;/option&gt;
+    &lt;option value="mu"&gt;Mauritius&lt;/option&gt;
+    &lt;option value="yt"&gt;Mayotte&lt;/option&gt;
+    &lt;option value="mx"&gt;Mexico&lt;/option&gt;
+    &lt;option value="fm"&gt;Micronesia (Federated States of)&lt;/option&gt;
+    &lt;option value="md"&gt;Moldova (the Republic of)&lt;/option&gt;
+    &lt;option value="mc"&gt;Monaco&lt;/option&gt;
+    &lt;option value="mn"&gt;Mongolia&lt;/option&gt;
+    &lt;option value="me"&gt;Montenegro&lt;/option&gt;
+    &lt;option value="ms"&gt;Montserrat&lt;/option&gt;
+    &lt;option value="ma"&gt;Morocco&lt;/option&gt;
+    &lt;option value="mz"&gt;Mozambique&lt;/option&gt;
+    &lt;option value="mm"&gt;Myanmar&lt;/option&gt;
+    &lt;option value="na"&gt;Namibia&lt;/option&gt;
+    &lt;option value="nr"&gt;Nauru&lt;/option&gt;
+    &lt;option value="np"&gt;Nepal&lt;/option&gt;
+    &lt;option value="nl"&gt;Netherlands&lt;/option&gt;
+    &lt;option value="nc"&gt;New Caledonia&lt;/option&gt;
+    &lt;option value="nz"&gt;New Zealand&lt;/option&gt;
+    &lt;option value="ni"&gt;Nicaragua&lt;/option&gt;
+    &lt;option value="ne"&gt;Niger&lt;/option&gt;
+    &lt;option value="ng"&gt;Nigeria&lt;/option&gt;
+    &lt;option value="nu"&gt;Niue&lt;/option&gt;
+    &lt;option value="nf"&gt;Norfolk Island&lt;/option&gt;
+    &lt;option value="mp"&gt;Northern Mariana Islands&lt;/option&gt;
+    &lt;option value="no"&gt;Norway&lt;/option&gt;
+    &lt;option value="om"&gt;Oman&lt;/option&gt;
+    &lt;option value="pk"&gt;Pakistan&lt;/option&gt;
+    &lt;option value="pw"&gt;Palau&lt;/option&gt;
+    &lt;option value="ps"&gt;Palestine, State of&lt;/option&gt;
+    &lt;option value="pa"&gt;Panama&lt;/option&gt;
+    &lt;option value="pg"&gt;Papua New Guinea&lt;/option&gt;
+    &lt;option value="py"&gt;Paraguay&lt;/option&gt;
+    &lt;option value="pe"&gt;Peru&lt;/option&gt;
+    &lt;option value="ph"&gt;Philippines&lt;/option&gt;
+    &lt;option value="pn"&gt;Pitcairn&lt;/option&gt;
+    &lt;option value="pl"&gt;Poland&lt;/option&gt;
+    &lt;option value="pt"&gt;Portugal&lt;/option&gt;
+    &lt;option value="pr"&gt;Puerto Rico&lt;/option&gt;
+    &lt;option value="qa"&gt;Qatar&lt;/option&gt;
+    &lt;option value="re"&gt;Reunion&lt;/option&gt;
+    &lt;option value="ro"&gt;Romania&lt;/option&gt;
+    &lt;option value="ru"&gt;Russian Federation&lt;/option&gt;
+    &lt;option value="rw"&gt;Rwanda&lt;/option&gt;
+    &lt;option value="bl"&gt;Saint Barthelemy&lt;/option&gt;
+    &lt;option value="sh"&gt;Saint Helena, Ascension and Tristan Da Cunha&lt;/option&gt;
+    &lt;option value="kn"&gt;Saint Kitts and Nevis&lt;/option&gt;
+    &lt;option value="lc"&gt;Saint Lucia&lt;/option&gt;
+    &lt;option value="mf"&gt;Saint Martin (French Part)&lt;/option&gt;
+    &lt;option value="pm"&gt;Saint Pierre and Miquelon&lt;/option&gt;
+    &lt;option value="vc"&gt;Saint Vincent and The Grenadines&lt;/option&gt;
+    &lt;option value="ws"&gt;Samoa&lt;/option&gt;
+    &lt;option value="sm"&gt;San Marino&lt;/option&gt;
+    &lt;option value="st"&gt;Sao Tome and Principe&lt;/option&gt;
+    &lt;option value="sa"&gt;Saudi Arabia&lt;/option&gt; 
+    &lt;option value="sn"&gt;Senegal&lt;/option&gt;
+    &lt;option value="rs"&gt;Serbia&lt;/option&gt;
+    &lt;option value="sc"&gt;Seychelles&lt;/option&gt;
+    &lt;option value="sl"&gt;Sierra Leone&lt;/option&gt; 
+    &lt;option value="sg"&gt;Singapore&lt;/option&gt;
+    &lt;option value="sx"&gt;Sint Maarten (Dutch Part)&lt;/option&gt;
+    &lt;option value="sk"&gt;Slovakia&lt;/option&gt;
+    &lt;option value="si"&gt;Slovenia&lt;/option&gt;
+    &lt;option value="sb"&gt;Solomon Islands&lt;/option&gt;
+    &lt;option value="so"&gt;Somalia&lt;/option&gt;
+    &lt;option value="za"&gt;South Africa&lt;/option&gt; 
+    &lt;option value="gs"&gt;South Georgia and The South Sandwich Islands&lt;/option&gt;
+    &lt;option value="ss"&gt;South Sudan&lt;/option&gt;
+    &lt;option value="es"&gt;Spain&lt;/option&gt;
+    &lt;option value="lk"&gt;Sri Lanka&lt;/option&gt;
+    &lt;option value="sd"&gt;Sudan&lt;/option&gt;
+    &lt;option value="sr"&gt;Suriname&lt;/option&gt;
+    &lt;option value="sj"&gt;Svalbard and Jan Mayen&lt;/option&gt;
+    &lt;option value="sz"&gt;Eswatini&lt;/option&gt;
+    &lt;option value="se"&gt;Sweden&lt;/option&gt;
+    &lt;option value="ch"&gt;Switzerland&lt;/option&gt;
+    &lt;option value="sy"&gt;Syrian Arab Republic&lt;/option&gt;
+    &lt;option value="tw"&gt;Taiwan (Province of China)&lt;/option&gt;
+    &lt;option value="tj"&gt;Tajikistan&lt;/option&gt;
+    &lt;option value="tz"&gt;Tanzania, United Republic of&lt;/option&gt;
+    &lt;option value="th"&gt;Thailand&lt;/option&gt;
+    &lt;option value="tl"&gt;Timor-Leste&lt;/option&gt;
+    &lt;option value="tg"&gt;Togo&lt;/option&gt;
+    &lt;option value="tk"&gt;Tokelau&lt;/option&gt;
+    &lt;option value="to"&gt;Tonga&lt;/option&gt;
+    &lt;option value="tt"&gt;Trinidad and Tobago&lt;/option&gt;
+    &lt;option value="tn"&gt;Tunisia&lt;/option&gt;
+    &lt;option value="tr"&gt;Turkey&lt;/option&gt;
+    &lt;option value="tm"&gt;Turkmenistan&lt;/option&gt; 
+    &lt;option value="tc"&gt;Turks and Caicos Islands&lt;/option&gt;
+    &lt;option value="tv"&gt;Tuvalu&lt;/option&gt;
+    &lt;option value="ug"&gt;Uganda&lt;/option&gt;
+    &lt;option value="ua"&gt;Ukraine&lt;/option&gt;
+    &lt;option value="ae"&gt;United Arab Emirates&lt;/option&gt;
+    &lt;option value="gb"&gt;United Kingdom of Great Britain and Northern Ireland&lt;/option&gt;
+    &lt;option value="us"&gt;United States of America&lt;/option&gt;
+    &lt;option value="um"&gt;United States Minor Outlying Islands&lt;/option&gt;
+    &lt;option value="uy"&gt;Uruguay&lt;/option&gt;
+    &lt;option value="uz"&gt;Uzbekistan&lt;/option&gt;
+    &lt;option value="vu"&gt;Vanuatu&lt;/option&gt;
+    &lt;option value="ve"&gt;Venezuela (Bolivarian Republic of)&lt;/option&gt;
+    &lt;option value="vn"&gt;Viet Nam&lt;/option&gt;
+    &lt;option value="vg"&gt;Virgin Islands (British)&lt;/option&gt;
+    &lt;option value="vi"&gt;Virgin Islands (U.S.)&lt;/option&gt;
+    &lt;option value="wf"&gt;Wallis and Futuna&lt;/option&gt;
+    &lt;option value="eh"&gt;Western Sahara&lt;/option&gt;
+    &lt;option value="ye"&gt;Yemen&lt;/option&gt;
+    &lt;option value="zm"&gt;Zambia&lt;/option&gt;
+    &lt;option value="zw"&gt;Zimbabwe&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="mt-8 mb-3">Validation</h2>
+                                        <p>It works perfectly well when you validate within a form. Read more about form validation on the <a href="form-basic.html">Basic Forms</a> page.</p>
+
+                                        <ul class="nav nav-tabs mb-4" id="myTab-05" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="preview-tab-05" data-bs-toggle="tab" data-bs-target="#preview-tab-pane-05" type="button" role="tab" aria-controls="preview-tab-pane-05" aria-selected="true">Preview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="html-tab-05" data-bs-toggle="tab" data-bs-target="#html-tab-pane-05" type="button" role="tab" aria-controls="html-tab-pane-05" aria-selected="false">HTML</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent-05">
+                                            <div class="tab-pane fade show active" id="preview-tab-pane-05" role="tabpanel" aria-labelledby="preview-tab-05" tabindex="0">
+                                                <form class="needs-validation" novalidate>
+                                                    <div class="w-md-50">
+                                                        <div class="mb-3">
+                                                            <select class="form-select" autocomplete="off" required data-select='{
+                                                                "placeholder": "Select a person..."
+                                                            }'>
+                                                                <option value="">Select a person...</option>
+                                                                <option value="Thomas Edison">Thomas Edison</option>
+                                                                <option value="John Doe">John Doe</option>
+                                                                <option value="Nikola Tesla">Nikola Tesla</option>
+                                                                <option value="Arnold Schwarzenegger">Arnold Schwarzenegger</option>
+                                                            </select>
+                                                            <div class="invalid-feedback">Please select a person</div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Send</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane fade" id="html-tab-pane-05" role="tabpanel" aria-labelledby="html-tab-05" tabindex="0">
+                                                <div class="position-relative">
+
+                                                    <!-- Button -->
+                                                    <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-05" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                                    </button>
+                                                
+<pre><code class="highlight language-html" id="code-05">&lt;form class="needs-validation" novalidate&gt;
+    &lt;div class="mb-3"&gt;
+        &lt;select class="form-select" autocomplete="off" required data-select='{
+            "placeholder": "Select a person..."
+        }'&gt;
+            &lt;option value=""&gt;Select a person...&lt;/option&gt;
+            &lt;option value="Thomas Edison"&gt;Thomas Edison&lt;/option&gt;
+            &lt;option value="John Doe"&gt;John Doe&lt;/option&gt;
+            &lt;option value="Nikola Tesla"&gt;Nikola Tesla&lt;/option&gt;
+            &lt;option value="Arnold Schwarzenegger"&gt;Arnold Schwarzenegger&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;div class="invalid-feedback"&gt;Please select your team members&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-12"&gt;
+        &lt;button class="btn btn-primary" type="submit"&gt;Send&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="alert text-bg-info-soft d-flex align-items-center mt-8" role="alert">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18" class="me-3"><g><path d="M12,0A12,12,0,1,0,24,12,12,12,0,0,0,12,0Zm0,22A10,10,0,1,1,22,12,10,10,0,0,1,12,22Z" style="fill: currentColor"/><path d="M17.16,14.16a1,1,0,0,0-1.39.29,4.49,4.49,0,0,1-7.54,0,1,1,0,1,0-1.68,1.1,6.51,6.51,0,0,0,10.9,0A1,1,0,0,0,17.16,14.16Z" style="fill: currentColor"/><path d="M19.5,8.6a3.5,3.5,0,0,0-6.42,0,1,1,0,1,0,1.84.8,1.5,1.5,0,0,1,2.75,0,1,1,0,0,0,.91.6,1.1,1.1,0,0,0,.4-.08A1,1,0,0,0,19.5,8.6Z" style="fill: currentColor"/><circle cx="8" cy="9" r="2" style="fill: currentColor"/></g></svg>
+                                            <div>
+                                                By using <a href="https://webpack.js.org/guides/code-splitting/" target="_blank" class="alert-link">code splitting</a> and dynamic import techniques you don't need to worry about the size of the JavaScript file. Dashly will only import the necessary files when they are needed.
+                                            </div>
+                                        </div>
+                                    </div> <!-- / .row -->  
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- / .row -->
+
+                </div> <!-- / .container-fluid -->
+            </div>
+
+            <!-- Footer -->
+            <footer class="mt-auto">
+                <div class="container-fluid mt-4 mb-6 text-muted">
+                    <div class="row justify-content-between">
+                        <div class="col">
+                            © Dashly. 2022 Webinning.
+                        </div>
+
+                        <div class="col-auto">
+                            v1.0.0
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+            </footer>
+            
+        </main> <!-- / main -->
+
+        <!-- JAVASCRIPT-->
+        <!-- Vendor JS -->
+        <!-- <script src="../assets/js/vendors.bundle.js"></script> -->
+        
+        <!-- Theme JS -->
+        <script src="../assets/js/theme.bundle.js"></script>    </body>
+
+<!-- Mirrored from dashly-theme.com/docs/select.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Oct 2022 14:52:29 GMT -->
+</html>

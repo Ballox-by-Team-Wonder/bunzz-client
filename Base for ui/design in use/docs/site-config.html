@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" >
+    
+<!-- Mirrored from dashly-theme.com/docs/site-config.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Oct 2022 14:52:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="Webinning" name="author" />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap">
+        <link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap">
+
+        <!-- no-JS fallback -->
+        <noscript>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap">
+        </noscript>
+
+        <!-- Theme CSS -->
+            <link rel="stylesheet" href="../assets/css/theme.bundle.css" />
+
+        <script>
+         // Theme switcher
+        
+            let themeSwitcher = document.getElementById('themeSwitcher');
+        
+            const getPreferredTheme = () => {
+                if (localStorage.getItem('theme') != null) {
+                    return localStorage.getItem('theme');
+                }
+        
+                return document.documentElement.dataset.theme;
+            };
+        
+            const setTheme = function (theme) {
+                if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } else {
+                    document.documentElement.dataset.theme = theme;
+                }
+        
+                localStorage.setItem('theme', theme);
+            };
+        
+            const showActiveTheme = theme => {
+                const activeBtn = document.querySelector(`[data-theme-value="${theme}"]`);
+        
+                document.querySelectorAll('[data-theme-value]').forEach(element => {
+                    element.classList.remove('active');
+                });
+        
+                activeBtn && activeBtn.classList.add('active');
+        
+             // Set button if demo mode is enabled
+                document.querySelectorAll('[data-theme-control="theme"]').forEach(element => {
+                    if (element.value == theme) {
+                        element.checked = true;
+                    }
+                });
+            };
+        
+            function reloadPage() {
+                window.location = window.location.pathname;
+            }
+        
+        
+            setTheme(getPreferredTheme());
+        
+            if(typeof themeSwitcher != 'undefined') {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    if(localStorage.getItem('theme') != null) {
+                        if (localStorage.getItem('theme') == 'auto') {
+                            reloadPage();
+                        }
+                    }
+                });
+        
+                window.addEventListener('load', () => {
+                    showActiveTheme(getPreferredTheme());
+                    
+                    document.querySelectorAll('[data-theme-value]').forEach(element => {
+                        element.addEventListener('click', () => {
+                            const theme = element.getAttribute('data-theme-value');
+        
+                            localStorage.setItem('theme', theme);
+                            reloadPage();
+                        })
+                    })
+                });
+            }
+        </script>
+        <!-- Favicon -->
+        <link rel="icon" href="../assets/favicon/favicon.ico" sizes="any" />
+
+        <!-- Page Title -->
+        <title>Site config - Documentation | Dashly</title>
+
+    </head>
+    
+    <body>
+        <!-- NAVIGATION -->
+        <nav id="mainNavbar" class="navbar navbar-vertical navbar-expand-lg scrollbar bg-white navbar-light">
+            <div class="container-fluid">
+                
+                <div class="d-flex align-items-center mb-lg-7">
+                    <!-- Brand -->
+                    <a class="navbar-brand mb-0" href="index.html">
+                        <img src="https://d33wubrfki0l68.cloudfront.net/ba6b91b7d508187d153e48318c22d0773a9cedfc/36afa/assets/images/logo.svg" class="navbar-brand-img logo-light logo-large" alt="..." width="125" height="25">
+                        <img src="https://d33wubrfki0l68.cloudfront.net/55307694d1a6b107d2d87c838a1aaede85cd3d84/66f18/assets/images/logo-dark.svg" class="navbar-brand-img logo-dark logo-large" alt="..." width="125" height="25">
+                    </a>
+
+                    <a href="changelog.html">
+                        <span class="badge text-bg-primary-soft ms-2">v1.0.0</span>
+                    </a>
+                </div>
+        
+                <!-- Navbar toggler -->
+                <a href="javascript: void(0);" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#sidenavCollapse" aria-controls="sidenavCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </a>
+        
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="sidenavCollapse">
+        
+                    <!-- Navigation -->
+                    <ul class="navbar-nav mb-lg-7">
+                        <li class="nav-item">
+                            <span class="h6 text-secondary ps-4 ps-lg-6 mb-3 d-block text-uppercase">Getting started</span>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M12,22.125V4.712S9.545,1.985,1.268,1.875a.506.506,0,0,0-.366.15.522.522,0,0,0-.152.369V18.769a.515.515,0,0,0,.5.519C9.543,19.4,12,22.125,12,22.125" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M9,11.18a21.258,21.258,0,0,0-5.26-1.055" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M9,15.375A21.258,21.258,0,0,0,3.74,14.32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15,11.18a21.258,21.258,0,0,1,5.26-1.055" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15,15.375a21.258,21.258,0,0,1,5.26-1.055" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M12,22.125V4.712s2.455-2.727,10.732-2.837a.506.506,0,0,1,.366.15.522.522,0,0,1,.152.369V18.769a.515.515,0,0,1-.5.519C14.457,19.4,12,22.125,12,22.125" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Introduction</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="structure.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M16.5,23.248H21a.75.75,0,0,0,.75-.75V17.559a.75.75,0,0,0-.219-.53l-1.06-1.061a.749.749,0,0,0-.53-.22H16.5a.75.75,0,0,0-.75.75v6A.75.75,0,0,0,16.5,23.248Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M16.5,9.748H21A.75.75,0,0,0,21.75,9V4.059a.75.75,0,0,0-.219-.53l-1.06-1.061a.749.749,0,0,0-.53-.22H16.5a.75.75,0,0,0-.75.75V9A.75.75,0,0,0,16.5,9.748Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25 0.748L2.25 2.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25 5.248L2.25 8.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25 11.248L2.25 14.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25,17.248v1.5a1.5,1.5,0,0,0,1.5,1.5h1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M8.25 20.248L11.25 20.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14.25 20.248L15.75 20.248" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.25 6.748L5.25 6.748" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M8.25 6.748L11.25 6.748" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14.25 6.748L15.75 6.748" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Structure</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active" href="#customization" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="customization">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><g><g><circle cx="9.5" cy="6.75" r="2" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="11.5" y1="6.75" x2="18.75" y2="6.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="5.25" y1="6.75" x2="7.5" y2="6.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><circle cx="14.5" cy="12.75" r="2" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="12.5" y1="12.75" x2="5.25" y2="12.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="18.75" y1="12.75" x2="16.5" y2="12.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/></g><g><path d="M13.5,18.75a8.93,8.93,0,0,0,1.5,4.5H9a8.93,8.93,0,0,0,1.5-4.5" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="6.75" y1="23.25" x2="17.25" y2="23.25" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><rect x="0.75" y="0.75" width="22.5" height="18" rx="1.5" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/></g></g></svg>    
+                                <span>Customization</span>
+                            </a>
+                            <div class="collapse show" id="customization">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="webpack.html" class="nav-link">Webpack</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="sass.html" class="nav-link">Sass</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="javascript.html" class="nav-link">JavaScript</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="handlebars.html" class="nav-link">Handlebars</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="site-config.html" class="nav-link active">Site config</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="dark-mode.html" class="nav-link">Dark mode</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="rtl.html" class="nav-link">RTL version</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        
+                        <li class="nav-item">
+                            <a href="credits.html" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>app-window-four</title><rect class="a" x="0.76" y="0.753" width="9" height="9" rx="1.5" ry="1.5"/><line class="a" x1="0.76" y1="3.753" x2="9.76" y2="3.753"/><rect class="a" x="14.26" y="0.753" width="9" height="9" rx="1.5" ry="1.5"/><line class="a" x1="14.26" y1="3.753" x2="23.26" y2="3.753"/><rect class="a" x="0.76" y="14.253" width="9" height="9" rx="1.5" ry="1.5"/><line class="a" x1="0.76" y1="17.253" x2="9.76" y2="17.253"/><rect class="a" x="14.26" y="14.253" width="9" height="9" rx="1.5" ry="1.5"/><line class="a" x1="14.26" y1="17.253" x2="23.26" y2="17.253"/></svg>
+                                <span>Credits</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item w-100">
+                            <hr>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="h6 text-secondary ps-4 ps-lg-6 mb-3 d-block text-uppercase">Design & Graphics</span>
+                        </li>
+                        <li class="nav-item">
+                            <a href="illustrations.html" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>picture-sun</title><rect class="a" x="0.75" y="0.75" width="22.5" height="22.5" rx="1.5" ry="1.5"/><circle class="a" cx="16.5" cy="7.5" r="3"/><path class="a" d="M3.961,14.959a8.194,8.194,0,0,1,11.694,4.149"/><path class="a" d="M14.382,16.918a4.449,4.449,0,0,1,5.851-.125"/></svg>
+                                <span>Illustrations</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="icons.html" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>shapes</title><rect class="a" x="0.75" y="0.75" width="9" height="9" rx="1" ry="1"/><circle class="a" cx="18.75" cy="5.25" r="4.5"/><path class="a" d="M18.786,13.977a.886.886,0,0,0-1.572,0l-4.337,7.807a1.027,1.027,0,0,0-.007.976.905.905,0,0,0,.793.49h8.674a.905.905,0,0,0,.793-.49,1.027,1.027,0,0,0-.007-.976Z"/><path class="a" d="M5.851,13.034a.778.778,0,0,0-1.2,0L.941,17.471a.827.827,0,0,0,0,1.058l3.708,4.437a.778.778,0,0,0,1.2,0l3.708-4.437a.827.827,0,0,0,0-1.058Z"/></svg>
+                                <span>Icons</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item w-100">
+                            <hr>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="h6 text-secondary ps-4 ps-lg-6 mb-3 d-block text-uppercase">Components</span>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#baseUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="baseUI">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><path class="a" d="M23.25,13.25V19.5a1,1,0,0,1-1,1H1.75a1,1,0,0,1-1-1V9.25a1,1,0,0,1,1-1H9"/><path class="a" d="M19.334,14.187A5.5,5.5,0,1,1,23,9"/><circle class="a" cx="17.5" cy="9" r="1.833"/><path class="a" d="M19.333,9A1.834,1.834,0,0,0,23,9"/><line class="a" x1="4.662" y1="11.667" x2="4.662" y2="17.083"/></svg>
+                                <span>Base UI</span>
+                            </a>
+                            <div class="collapse" id="baseUI">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="accordion.html" class="nav-link">Accordion</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="alerts.html" class="nav-link">Alerts</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="avatars.html" class="nav-link">
+                                            Avatars
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="badge.html" class="nav-link">Badge</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="breadcrumb.html" class="nav-link">Breadcrumb</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="buttons.html" class="nav-link">Buttons</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="button-group.html" class="nav-link">Button group</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="cards.html" class="nav-link">Cards</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="collapse.html" class="nav-link">Collapse</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="dropdowns.html" class="nav-link">Dropdowns</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="legend-circle.html" class="nav-link">
+                                            Legend circle
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="list-group.html" class="nav-link">List group</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="modal.html" class="nav-link">Modal</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="navs-tabs.html" class="nav-link">Navs & tabs</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="offcanvas.html" class="nav-link">Offcanvas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pagination.html" class="nav-link">Pagination</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="progress.html" class="nav-link">Progress</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="scrollbar.html" class="nav-link">
+                                            Scrollbar
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="scroll-shadow.html" class="nav-link">
+                                            Scroll shadow
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="tooltips.html" class="nav-link">Tooltips</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="typography.html" class="nav-link">Typography</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="wizard.html" class="nav-link">
+                                            Wizard
+                                            <span class="badge text-bg-success-soft rounded-pill ms-2">Exclusive</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#extendedUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="extendedUI">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>ui-columns</title><rect class="a" x="0.75" y="0.75" width="22.5" height="9" rx="1.5" ry="1.5"/><line class="a" x1="3.75" y1="3.75" x2="11.022" y2="3.75"/><line class="a" x1="3.75" y1="6.75" x2="8.204" y2="6.761"/><line class="a" x1="15" y1="0.75" x2="15" y2="9.75"/><polyline class="a" points="19.5 3.75 18 5.25 19.5 6.75"/><rect class="a" x="0.75" y="14.25" width="22.5" height="9" rx="1.5" ry="1.5"/><line class="a" x1="3.75" y1="17.25" x2="11.022" y2="17.25"/><line class="a" x1="3.75" y1="20.25" x2="8.204" y2="20.261"/><line class="a" x1="15" y1="14.25" x2="15" y2="23.25"/><polyline class="a" points="19.5 17.25 18 18.75 19.5 20.25"/></svg>
+                                <span>Extended UI</span>
+                            </a>
+                            <div class="collapse" id="extendedUI">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="chart.html" class="nav-link">Chart</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="calendar.html" class="nav-link">Calendar</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="drag-and-drop.html" class="nav-link">Drag & Drop</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="highlight-js.html" class="nav-link">Highlight</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="jsvectormap.html" class="nav-link">Jsvectormap</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="scrollspy.html" class="nav-link">Scrollspy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#forms" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="forms">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M3.75,19.5H2.571a1.038,1.038,0,0,1-1.071-1V1.725A1.027,1.027,0,0,1,2.571.75H21.429a1.027,1.027,0,0,1,1.071.975V18.5a1.038,1.038,0,0,1-1.071,1H20.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M5.25 4.5L18.75 4.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M5.217 8.25L15 8.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M6.375 17.625 A5.625 5.625 0 1 0 17.625 17.625 A5.625 5.625 0 1 0 6.375 17.625 Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14.259,16.134l-2.438,3.251a.631.631,0,0,1-.949.068L9.611,18.192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Forms</span>
+                            </a>
+                            <div class="collapse" id="forms">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="form-basic.html" class="nav-link">Basic</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link" href="#form-advanced" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="form-advanced">
+                                            Advanced
+                                        </a>
+                                        <div class="collapse" id="form-advanced">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a href="clipboard.html" class="nav-link">Clipboard</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="datepicker.html" class="nav-link">Datepicker</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="editor.html" class="nav-link">Editor</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="emoji.html" class="nav-link">Emoji</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="file-upload.html" class="nav-link">File upload</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="inputmask.html" class="nav-link">Inputmask</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="password-strength.html" class="nav-link">Password strength</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="reveal-password.html" class="nav-link">Reveal password</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="select.html" class="nav-link">Select</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#tables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="tables">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><rect class="a" x="0.75" y="2.75" width="22.5" height="18.5" rx="2"/><line class="a" x1="0.75" y1="7.25" x2="23.25" y2="7.25"/><line class="a" x1="0.75" y1="14.25" x2="23.25" y2="14.25"/><line class="a" x1="8.25" y1="7.25" x2="8.25" y2="21.25"/><line class="a" x1="15.75" y1="7.25" x2="15.75" y2="21.25"/><line class="a" x1="3.5" y1="10.75" x2="5.5" y2="10.75"/><line class="a" x1="3.5" y1="17.75" x2="5.5" y2="17.75"/></svg>
+                                <span>Tables</span>
+                            </a>
+                            <div class="collapse" id="tables">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="basic-tables.html" class="nav-link">Basic Tables</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="data-tables.html" class="nav-link">Data Tables</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="utilities-helpers.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M0.75 23.25L15.75 8.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M10.5 8.25L8.25 8.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M23.25 8.25L21 8.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M21 3L19.409 4.591" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15.75 3L15.75 0.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15.75 15.75L15.75 13.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M12.091 4.591L10.5 3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M21 13.5L19.409 11.909" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Utilities, helpers</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item w-100">
+                            <hr>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="h6 text-secondary ps-4 ps-lg-6 mb-3 d-block text-uppercase">Other</span>
+                        </li>
+                        <li class="nav-item">
+                            <a href="upgrade.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M19.5 15.754L23.25 15.754 23.25 11.254" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M23.061,15.754A6,6,0,1,0,21.94,21" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M8.25,20.254h-6a1.5,1.5,0,0,1-1.5-1.5V2.254a1.5,1.5,0,0,1,1.5-1.5H12.879a1.5,1.5,0,0,1,1.061.439l2.871,2.871a1.5,1.5,0,0,1,.439,1.061V8.254" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M9 6.004L11.25 8.254 9 10.504" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M6 6.004L3.75 8.254 6 10.504" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                                <span>Upgrade</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="changelog.html" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18"><g><line x1="8.25" y1="3" x2="23.25" y2="3" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="8.25" y1="12" x2="23.25" y2="12" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="8.25" y1="21" x2="23.25" y2="21" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><path d="M.8,18.36a1.5,1.5,0,1,1,1.45,1.89A1.5,1.5,0,1,1,.8,22.15" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><path d="M.75,11.25a1.5,1.5,0,0,1,1.5-1.5h0a1.5,1.5,0,0,1,1.5,1.5h0a2.16,2.16,0,0,1-.47,1.34L.75,14.25h3" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><g><path d="M.75.75H1.5a.76.76,0,0,1,.75.75V6.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/><line x1="0.75" y1="6.75" x2="3.75" y2="6.75" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"/></g></g></svg>         
+                                <span>Changelog</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- End of Navigation -->
+                </div>
+                <!-- End of Collapse -->
+            </div>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main>
+
+            <!-- HEADER -->
+            <header class="container-fluid d-flex py-6 mb-4">
+                <!-- Top buttons -->
+                <div class="d-flex align-items-center ms-auto me-n1 me-lg-n2">
+                    <div class="dropdown" id="themeSwitcher">
+                        <a href="javascript: void(0);" class="dropdown-toggle no-arrow d-flex align-items-center justify-content-center bg-white rounded-circle shadow-sm mx-1 mx-lg-2 w-40px h-40px link-secondary" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,10">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M12,4.64A7.36,7.36,0,1,0,19.36,12,7.37,7.37,0,0,0,12,4.64Zm0,12.72A5.36,5.36,0,1,1,17.36,12,5.37,5.37,0,0,1,12,17.36Z" style="fill: currentColor"/><path d="M12,3.47a1,1,0,0,0,1-1V1a1,1,0,0,0-2,0V2.47A1,1,0,0,0,12,3.47Z" style="fill: currentColor"/><path d="M4.55,6a1,1,0,0,0,.71.29A1,1,0,0,0,6,6,1,1,0,0,0,6,4.55l-1-1A1,1,0,0,0,3.51,4.93Z" style="fill: currentColor"/><path d="M2.47,11H1a1,1,0,0,0,0,2H2.47a1,1,0,1,0,0-2Z" style="fill: currentColor"/><path d="M4.55,18l-1,1a1,1,0,0,0,0,1.42,1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29l1-1A1,1,0,0,0,4.55,18Z" style="fill: currentColor"/><path d="M12,20.53a1,1,0,0,0-1,1V23a1,1,0,0,0,2,0V21.53A1,1,0,0,0,12,20.53Z" style="fill: currentColor"/><path d="M19.45,18A1,1,0,0,0,18,19.45l1,1a1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z" style="fill: currentColor"/><path d="M23,11H21.53a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z" style="fill: currentColor"/><path d="M18.74,6.26A1,1,0,0,0,19.45,6l1-1a1,1,0,1,0-1.42-1.42l-1,1A1,1,0,0,0,18,6,1,1,0,0,0,18.74,6.26Z" style="fill: currentColor"/></g></svg>
+                        </a>
+            
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <button type="button" class="dropdown-item active" data-theme-value="light">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="me-2" height="18" width="18"><g><path d="M12,4.64A7.36,7.36,0,1,0,19.36,12,7.37,7.37,0,0,0,12,4.64Zm0,12.72A5.36,5.36,0,1,1,17.36,12,5.37,5.37,0,0,1,12,17.36Z" style="fill: currentColor"/><path d="M12,3.47a1,1,0,0,0,1-1V1a1,1,0,0,0-2,0V2.47A1,1,0,0,0,12,3.47Z" style="fill: currentColor"/><path d="M4.55,6a1,1,0,0,0,.71.29A1,1,0,0,0,6,6,1,1,0,0,0,6,4.55l-1-1A1,1,0,0,0,3.51,4.93Z" style="fill: currentColor"/><path d="M2.47,11H1a1,1,0,0,0,0,2H2.47a1,1,0,1,0,0-2Z" style="fill: currentColor"/><path d="M4.55,18l-1,1a1,1,0,0,0,0,1.42,1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29l1-1A1,1,0,0,0,4.55,18Z" style="fill: currentColor"/><path d="M12,20.53a1,1,0,0,0-1,1V23a1,1,0,0,0,2,0V21.53A1,1,0,0,0,12,20.53Z" style="fill: currentColor"/><path d="M19.45,18A1,1,0,0,0,18,19.45l1,1a1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z" style="fill: currentColor"/><path d="M23,11H21.53a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z" style="fill: currentColor"/><path d="M18.74,6.26A1,1,0,0,0,19.45,6l1-1a1,1,0,1,0-1.42-1.42l-1,1A1,1,0,0,0,18,6,1,1,0,0,0,18.74,6.26Z" style="fill: currentColor"/></g></svg>
+                                    Light mode
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="dropdown-item" data-theme-value="dark">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="me-2" height="18" width="18"><path d="M19.57,23.34a1,1,0,0,0,0-1.9,9.94,9.94,0,0,1,0-18.88,1,1,0,0,0,.68-.94,1,1,0,0,0-.68-.95A11.58,11.58,0,0,0,8.88,2.18,12.33,12.33,0,0,0,3.75,12a12.31,12.31,0,0,0,5.11,9.79A11.49,11.49,0,0,0,15.61,24,12.55,12.55,0,0,0,19.57,23.34ZM10,20.17A10.29,10.29,0,0,1,5.75,12a10.32,10.32,0,0,1,4.3-8.19A9.34,9.34,0,0,1,15.59,2a.17.17,0,0,1,.17.13.18.18,0,0,1-.07.2,11.94,11.94,0,0,0-.18,19.21.25.25,0,0,1-.16.45A9.5,9.5,0,0,1,10,20.17Z" style="fill: currentColor"/></svg>
+                                    Dark mode
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="dropdown-item" data-theme-value="auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="me-2" height="18" width="18"><path d="M24,12a1,1,0,0,0-1-1H19.09a.51.51,0,0,1-.49-.4,6.83,6.83,0,0,0-.94-2.28.5.5,0,0,1,.06-.63l2.77-2.76a1,1,0,1,0-1.42-1.42L16.31,6.28a.5.5,0,0,1-.63.06A6.83,6.83,0,0,0,13.4,5.4a.5.5,0,0,1-.4-.49V1a1,1,0,0,0-2,0V4.91a.51.51,0,0,1-.4.49,6.83,6.83,0,0,0-2.28.94.5.5,0,0,1-.63-.06L4.93,3.51A1,1,0,0,0,3.51,4.93L6.28,7.69a.5.5,0,0,1,.06.63A6.83,6.83,0,0,0,5.4,10.6a.5.5,0,0,1-.49.4H1a1,1,0,0,0,0,2H4.91a.51.51,0,0,1,.49.4,6.83,6.83,0,0,0,.94,2.28.5.5,0,0,1-.06.63L3.51,19.07a1,1,0,1,0,1.42,1.42l2.76-2.77a.5.5,0,0,1,.63-.06,6.83,6.83,0,0,0,2.28.94.5.5,0,0,1,.4.49V23a1,1,0,0,0,2,0V19.09a.51.51,0,0,1,.4-.49,6.83,6.83,0,0,0,2.28-.94.5.5,0,0,1,.63.06l2.76,2.77a1,1,0,1,0,1.42-1.42l-2.77-2.76a.5.5,0,0,1-.06-.63,6.83,6.83,0,0,0,.94-2.28.5.5,0,0,1,.49-.4H23A1,1,0,0,0,24,12Zm-8.74,2.5A5.76,5.76,0,0,1,9.5,8.74a5.66,5.66,0,0,1,.16-1.31A.49.49,0,0,1,10,7.07a5.36,5.36,0,0,1,1.8-.31,5.47,5.47,0,0,1,5.46,5.46,5.36,5.36,0,0,1-.31,1.8.49.49,0,0,1-.35.32A5.53,5.53,0,0,1,15.26,14.5Z" style="fill: currentColor"/></svg>
+                                    Auto
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+            
+                    <!-- Divider -->
+                    <div class="vr bg-gray-700 mx-1 mx-md-2 mx-lg-3"></div>
+                    
+                    <!-- Link -->
+                    <a href="mailto:support@dashly-theme.com" class="btn btn-link mx-1 mx-lg-2 fw-semibold d-none d-md-block">
+                        Get support
+                    </a>
+
+                    <!-- Link -->
+                    <a href="https://themes.getbootstrap.com/product/dashly-admin-dashboard-template/" target="_blank" class="btn btn-primary mx-1 mx-lg-2 px-4 px-lg-5">
+                        Purchase Now
+                    </a>
+
+                    <!-- Link -->
+                    <a href="../index.html" class="btn btn-dark mx-1 mx-lg-2 px-4 px-lg-5">
+                        Preview Demo
+                    </a>
+                </div>
+            </header>
+
+            <div class="container-fluid">
+
+                <!-- Title -->
+                <h1 class="h2">
+                    Site config
+                </h1>
+
+                <div class="row">
+                    <div class="col">
+
+                        <!-- Card -->
+                        <div class="card border-0 p-md-6">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h2 class="mb-3">Configuration settings</h2>
+                                        <p>Dashly has a global configuration system. You can change the theme settings with a single global javascript object. You can find it in the <code>dashly/theme/config.json</code> file.</p>
+                                        
+                                        <div class="position-relative mb-8">
+                                            <button class="position-absolute position-absolute top-0 end-0 clipboard btn btn-link text-gray-500 px-2" data-clipboard-target="#code-01" data-bs-toggle="tooltip" data-bs-title="Copy to clipboard">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" width="18"><g><path d="M13.4,4.73a.24.24,0,0,0,.2.26,1.09,1.09,0,0,1,.82,1.11V7.5a1.24,1.24,0,0,0,1.25,1.24h0A1.23,1.23,0,0,0,16.91,7.5V4a1.5,1.5,0,0,0-1.49-1.5H13.69a.29.29,0,0,0-.18.07.26.26,0,0,0-.07.18C13.44,3.2,13.44,4.22,13.4,4.73Z" style="fill: currentColor"/><path d="M9,21.26A1.23,1.23,0,0,0,7.71,20H3.48a1.07,1.07,0,0,1-1-1.14V6.1A1.08,1.08,0,0,1,3.33,5a.25.25,0,0,0,.2-.26c0-.77,0-1.6,0-2a.25.25,0,0,0-.25-.25H1.5A1.5,1.5,0,0,0,0,4V21a1.5,1.5,0,0,0,1.49,1.5H7.71A1.24,1.24,0,0,0,9,21.26Z" style="fill: currentColor"/><path d="M11.94,4.47v-2a.5.5,0,0,0-.5-.49h-.76a.26.26,0,0,1-.25-.22,2,2,0,0,0-3.95,0A.25.25,0,0,1,6.23,2H5.47A.49.49,0,0,0,5,2.48v2a.49.49,0,0,0,.49.5h6A.5.5,0,0,0,11.94,4.47Z" style="fill: currentColor"/><path d="M19,17.27H15a.75.75,0,0,0,0,1.5h4a.75.75,0,0,0,0-1.5Z" style="fill: currentColor"/><path d="M14.29,14.54a.76.76,0,0,0,.75.75h2.49a.75.75,0,0,0,0-1.5H15A.76.76,0,0,0,14.29,14.54Z" style="fill: currentColor"/><path d="M23.5,13.46a2,2,0,0,0-.58-1.41l-1.41-1.4a2,2,0,0,0-1.41-.59H12.49a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h9a2,2,0,0,0,2-2Zm-11-.4a1,1,0,0,1,1-1h6.19a1,1,0,0,1,.71.29l.82.82a1,1,0,0,1,.29.7V21a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1Z" style="fill: currentColor"/></g></svg>
+                                            </button>
+<pre><code class="highlight language-javascript mt-2" id="code-01">{
+    "demoMode": true,
+    "theme": "light",
+    "sidebarBehaviour": "fixed",
+    "navigationColor": "default",
+    "isRTL": false,
+    "isFluid": true
+}</code></pre>
+                                        </div>
+
+                                        <h2 class="mb-6">Available options</h2>
+                                        
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover table-nowrap">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Option</th>
+                                                        <th>Type</th>
+                                                        <th>Default</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><code>demoMode</code></td>
+                                                        <td><code>Boolean</code></td>
+                                                        <td><code>true</code></td>
+                                                        <td>Set <code>false</code> to remove "Customize" buttons on the <a href="../index.html">demo site</a>. In demo mode you can try all these setting on the website by using the customization panel.<br>It's highly recommended to change this value to <code>false</code> in live environment!</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>theme</code></td>
+                                                        <td><code>String</code></td>
+                                                        <td><code>light</code></td>
+                                                        <td>This option is for setting up the default color mode (<code>dark</code>, <code>light</code> or system <code>auto</code>matic) for your project. Available values:
+                                                            <ul class="mb-0">
+                                                                <li>light</li>
+                                                                <li>dark</li>
+                                                                <li>auto</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>sidebarBehaviour</code></td>
+                                                        <td><code>String</code></td>
+                                                        <td><code>fixed</code></td>
+                                                        <td>For setting the sidebar layout. Available values:
+                                                            <ul class="mb-0">
+                                                                <li>fixed</li>
+                                                                <li>condensed</li>
+                                                                <li>scrollable</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>navigationColor</code></td>
+                                                        <td><code>String</code></td>
+                                                        <td><code>inverted</code></td>
+                                                        <td>This option is for changing the navigation styling. Available values:
+                                                            <ul class="mb-0">
+                                                                <li>default</li>
+                                                                <li>inverted</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>isRTL</code></td>
+                                                        <td><code>Boolean</code></td>
+                                                        <td><code>false</code></td>
+                                                        <td>Use <code>true</code> to make the whole layout RTL (Right to Left). Recommended for languages such as Arabic, Hebrew, or other RTL languages.</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>isFluid</code></td>
+                                                        <td><code>Boolean</code></td>
+                                                        <td><code>true</code></td>
+                                                        <td>Set <code>false</code> to disable fluid mood. This will decrease the container from full width.</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <p class="mb-0">
+                                            <span class="badge text-bg-warning-soft">Heads up!</span> Modifying <code>config.json</code> requires you to restart any of the currently active webpack tasks.
+                                        </p>
+                                    </div>
+                                </div> <!-- / .row -->  
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- / .row -->
+
+            </div> <!-- / .container-fluid -->
+
+            <!-- Footer -->
+            <footer class="mt-auto">
+                <div class="container-fluid mt-4 mb-6 text-muted">
+                    <div class="row justify-content-between">
+                        <div class="col">
+                            © Dashly. 2022 Webinning.
+                        </div>
+
+                        <div class="col-auto">
+                            v1.0.0
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+            </footer>
+            
+        </main> <!-- / main -->
+
+        <!-- JAVASCRIPT-->
+        <!-- Vendor JS -->
+        <!-- <script src="../assets/js/vendors.bundle.js"></script> -->
+        
+        <!-- Theme JS -->
+        <script src="../assets/js/theme.bundle.js"></script>    </body>
+
+<!-- Mirrored from dashly-theme.com/docs/site-config.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Oct 2022 14:52:25 GMT -->
+</html>
