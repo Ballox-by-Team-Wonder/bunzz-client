@@ -396,102 +396,152 @@
       </div>
     </header>
 
-    <div class="container-fluid">
-      <div id="DeviceModalCenter" class="modal modal-lg fade" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalCenterTitle">Add your new device</h3>
+              <h3 class="modal-title" id="exampleModalScrollableTitle">PAY DAO MEMBERS</h3>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <div class="card border-0 py-6 px-md-6">
-                <div class="card-body">
-                  <h2 class="text-center mb-0">Device setup</h2>
-                  <p class="text-secondary text-center">General information about your device</p>
-
-                  <div class="mb-3">
-                    <div class="row">
-                      <div class="col-md">
-                        <label for="projectName" class="form-label">Name your device</label>
-                        <input type="text" class="form-control" id="projectName" placeholder="Your project name"
-                          required />
-                        <div class="invalid-feedback">Please add a name for your device</div>
-                      </div>
-
-                      <div class="col-md">
-                        <label for="owner" class="form-label">Owner Name</label>
-                        <input type="text" class="form-control" id="owner" placeholder="Owner's name" required />
-                        <div class="invalid-feedback">Please add a name</div>
-                      </div>
-                    </div>
-                    <!-- / .row -->
-                  </div>
-
-                  <div class="mb-3">
-                    <div class="row">
-                      <div class="col-md">
-                        <label for="projectName" class="form-label">Owner's Address</label>
-                        <input type="text" class="form-control" id="projectName" placeholder="Your address" required />
-                        <div class="invalid-feedback">
-                          Please add your address
-                          <address></address>
-                        </div>
-                      </div>
-
-                      <div class="col-md">
-                        <label for="country" class="form-label">Device type</label>
-                        <select class="form-select" id="country" required autocomplete="off"
-                          data-select='{"placeholder": "Choose..."}'
-                          data-option-template='<span class="d-flex align-items-center py-2"><span class="avatar avatar-circle avatar-xxs"><img class="avatar-img shadow-sm" src="assets/images/flags/1x1/%5b%5bvalue%5d%5d.html" /></span><span class="text-truncate ms-2">[[text]]</span></span>'
-                          data-item-template='<span class="d-flex align-items-center"><span class="avatar avatar-circle avatar-xxs"><img class="avatar-img shadow-sm" src="assets/images/flags/1x1/%5b%5bvalue%5d%5d.html" /></span><span class="text-truncate ms-2">[[text]]</span></span>'>
-                          <option value="" label="Device type"></option>
-                          <option value="af">Biogas System</option>
-                          <option value="as">Solar System</option>
-                          <option value="ad">Hydro System</option>
-                          <option value="ao">Wind System</option>
-                        </select>
-                        <div class="invalid-feedback">Please select a device type</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="mb-3">
-                    <div class="row">
-                      <div class="col-md">
-                        <label for="owner" class="form-label">Meter No</label>
-                        <input type="text" class="form-control" id="owner" placeholder="Meter no" required />
-                        <div class="invalid-feedback">Please add Meter no</div>
-                      </div>
-
-                      <div class="col-md">
-                        <label for="owner" class="form-label">Referral Code</label>
-                        <input type="text" class="form-control" id="owner" placeholder="Referral Code" required />
-                        <div class="invalid-feedback">Please add Referral Code</div>
-                      </div>
-                    </div>
-                    <!-- / .row -->
-                  </div>
-
-                  <div class="mb-3">
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" role="switch" id="private" />
-                      <label class="form-check-label" for="private">This is for my business</label>
-                    </div>
-                  </div>
-                </div>
-
+              <div class="mb-3">
+                <label class="form-label" for="exampleFormControlSelect1">Please select DAO</label>
+                <select id="exampleFormControlSelect1" class="form-control">
+                  <option>Choose a DAO</option>
+                  <option>Identify DAO</option>
+                  <option>eBay DAO</option>
+                  <option>Nike DAO</option>
+                  <option>Richmond DAO</option>
+                  <option>Burago brand DAO</option>
+                </select>
               </div>
+
+              <div class="mb-3">
+                <label class="form-label" for="exampleFormControlPlaceholderInput2">Enter Amount</label>
+                <input type="number" id="exampleFormControlPlaceholderInput2" class="form-control" placeholder="Enter Amount">
+              </div>
+
+              <div>
+                <label class="form-label" for="exampleFormControlTextarea1">Tag those your funding</label>
+                <textarea id="exampleFormControlTextarea1" class="form-control" placeholder="Tag users by their ID No" rows="4"></textarea>
+              </div>
+
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-              <a href="home.html" class="btn btn-primary">Yes, Proceed</a>
+              <button type="button" class="btn btn-primary">Send Funds</button>
             </div>
           </div>
         </div>
       </div>
 
+      <div class="modal fade" id="payFellow" tabindex="-1" role="dialog"
+        aria-labelledby="payFellowTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalScrollableTitle">PAY FELLOW</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+      
+              <div class="mb-3">
+                <label class="form-label" for="exampleFormControlPlaceholderInput2">Enter Amount</label>
+                <input type="number" id="exampleFormControlPlaceholderInput2" class="form-control" placeholder="Enter Amount">
+              </div>
+      
+              <div class="mb-3">
+                <label class="form-label" for="exampleFormControlPlaceholderInput2">Users ID NO</label>
+                <input type="number" id="exampleFormControlPlaceholderInput2" class="form-control" placeholder="Enter Users ID NO">
+              </div>
+      
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary">Send Funds</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="withdrawFunds" tabindex="-1" role="dialog" aria-labelledby="withdrawFundsTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalScrollableTitle">WITHDRAW $Unify</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+      
+              <div class="mb-3">
+                <label class="form-label" for="exampleFormControlPlaceholderInput2">Enter Amount</label>
+                <input type="number" id="exampleFormControlPlaceholderInput2" class="form-control" placeholder="Enter Amount">
+              </div>
+      
+              <div class="mb-3">
+                <label class="form-label" for="exampleFormControlPlaceholderInput2">Wallet Address</label>
+                <input type="text" id="exampleFormControlPlaceholderInput2" class="form-control"
+                  placeholder="Enter Wallet Address">
+              </div>
+      
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary">Withdraw Funds</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="stakeFunds" tabindex="-1" role="dialog" aria-labelledby="stakeFundsTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalScrollableTitle">STAKE $Unify</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+      
+              <div class="mb-3">
+                <label class="form-label" for="exampleFormControlPlaceholderInput2">Enter Amount</label>
+                <input type="number" id="exampleFormControlPlaceholderInput2" class="form-control" placeholder="Enter Amount">
+              </div>
+      
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary">Stake Funds</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="depositFunds" tabindex="-1" role="dialog" aria-labelledby="depositFundsTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalScrollableTitle">P2P $Unify</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="card">
+              <img src="assets/images/identify/lettering-lettering-coming-soon-cartoon-style-with-hourglass-1.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text">This feature is still under Construction.
+                </p>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+              <!-- <button type="button" class="btn btn-primary">Stake Funds</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    
       <!-- Title -->
       <h1 class="h2">Welcome Home</h1>
 
@@ -503,10 +553,10 @@
               <div class="row">
                 <div class="col">
                   <!-- Title -->
-                  <h5 class="text-uppercase text-muted fw-semibold mb-2">Your Earnings in $Unify</h5>
+                  <h5 class="text-uppercase text-muted fw-semibold mb-2">Available Balance in $Unify</h5>
 
                   <!-- Subtitle -->
-                  <h2 class="mb-0">2,328</h2>
+                  <h2 class="mb-0">25,928</h2>
                 </div>
               </div>
               <!-- / .row -->
@@ -515,14 +565,14 @@
               <div class="row justify-content-between">
                 <div class="col-auto">
                   <!-- Label -->
-                  <p class="fs-6 text-muted text-uppercase mb-0">Active devices</p>
+                  <p class="fs-6 text-muted text-uppercase mb-0">Task Rewards</p>
 
                   <!-- Comment -->
                   <p class="fs-5 fw-bold mb-0">1</p>
                 </div>
                 <div class="col text-end text-truncate">
                   <!-- Label -->
-                  <p class="fs-6 text-muted text-uppercase mb-0">Mining Duration</p>
+                  <p class="fs-6 text-muted text-uppercase mb-0">Active Duration </p>
 
                   <!-- Comment -->
                   <p class="fs-5 fw-bold mb-0">4 days</p>
@@ -657,137 +707,19 @@
               <!-- Title -->
               <h2 class="card-header-title h4 text-uppercase">Payments</h2>
               <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                <button type="button" class="btn btn-dark">Deposit</button>
-                <button type="button" class="btn btn-dark">Withdraw</button>
-                <button type="button" class="btn btn-dark">Stake</button>
-                <button type="button" class="btn btn-dark">Button</button>
-                <button type="button" class="btn btn-dark">Button</button>
-                <button type="button" class="btn btn-dark">Button</button>
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">Pay DAO Members</button>
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#payFellow">Pay fellow</button>
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#depositFunds">Deposit</button>
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#withdrawFunds">Withdraw</button>
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#stakeFunds">Stake</button>
+                
               </div>
             </div>
           </div>
         </div>
 
 
-        <div class="col-xxl-9 d-flex">
-          <!-- Card -->
-          <div class="card border-0 flex-fill w-100">
-            <div class="card-header border-0 border-0 card-header-space-between">
-              <!-- Title -->
-              <h2 class="card-header-title h4 text-uppercase">Connected Devices</h2>
-
-              <!-- Link -->
-              <!-- <a href="#DeviceModalCenter" class="small fw-bold">  </a> -->
-              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                data-bs-target="#DeviceModalCenter">
-                Add New Device
-              </button>
-              <button type="button" class="btn btn-primary btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#">
-                Refresh
-              </button>
-            </div>
-
-            <!-- Table -->
-            <div class="table-responsive">
-              <table class="table table-sm table-borderless align-middle mb-0">
-                <thead class="thead-light">
-                  <tr>
-                    <th>Name your device</th>
-                    <th class="text-end">Amount Mined $Unify</th>
-                    <th class="text-end">Configure</th>
-                    <th class="text-end">Performance</th>
-                    <th class="text-end">Last check</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div class="d-flex flex-column">
-                          <span class="fw-bold d-block">Solar at Work</span>
-                          <span class="fs-6 text-muted">active</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-end">
-                      <div class="fw-bold">1,200</div>
-                    </td>
-                    <td class="text-end">
-                      <div class="btn-group">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButtonPrimary"
-                          data-bs-toggle="dropdown" aria-expanded="false">
-                          Delete
-                        </button>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonPrimary">
-                          <a class="dropdown-item" href="javascript: void(0);">Disable</a>
-                          <a class="dropdown-item" href="javascript: void(0);">Cancel</a>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="status" data-sales="81">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="progress d-flex flex-grow-1">
-                          <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="81"
-                            aria-valuemin="0" aria-valuemax="80"></div>
-                        </div>
-                        <span class="ms-3 text-muted">Good</span>
-                      </div>
-                    </td>
-
-                    <td class="text-end">
-                      <div class="fw-bold">11:50am</div>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div class="d-flex flex-column">
-                          <span class="fw-bold d-block">Solar at home</span>
-                          <span class="fs-6 text-muted">inactive</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-end">
-                      <div class="fw-bold">1,000</div>
-                    </td>
-                    <td class="text-end">
-                      <div class="btn-group">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButtonPrimary"
-                          data-bs-toggle="dropdown" aria-expanded="false">
-                          Activate
-                        </button>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonPrimary">
-                          <a class="dropdown-item" href="javascript: void(0);">Enable</a>
-                          <a class="dropdown-item" href="javascript: void(0);">Cancel</a>
-                        </div>
-                      </div>
-                    </td>
-
-                    <td class="status" data-sales="81">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="progress d-flex flex-grow-1">
-                          <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="81"
-                            aria-valuemin="0" aria-valuemax="15"></div>
-                        </div>
-                        <span class="ms-3 text-muted">Poor</span>
-                      </div>
-                    </td>
-
-                    <td class="text-end">
-                      <div class="fw-bold">11:50am</div>
-                    </td>
-                  </tr>
-
-                </tbody>
-              </table>
-            </div>
-            <!-- / .table-responsive -->
-          </div>
-        </div>
+        
 
       </div>
 
@@ -860,7 +792,7 @@
                   </tr>
 
                   <tr>
-                    <td class="name fw-bold">Airdrop Claim</td>
+                    <td class="name fw-bold">DAO TASK</td>
                     <td class="amount text-end">$128</td>
                     <td class="Time text-end">11:30am</td>
                     <td class="status" data-sales="81">
