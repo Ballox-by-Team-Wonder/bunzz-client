@@ -665,15 +665,21 @@
                     <div class="mb-3">
                       <div class="row">
                         <div class="col-md">
-                          <label for="teamLeader" class="form-label">Enter your BVN</label>
-                          <input type="number" class="form-control" id="teamLeader" placeholder="your BVN" />
-                          <div class="invalid-feedback">Please enter your BVN</div>
+                          <label for="teamLeaderEmail" class="form-label">Select ID type</label>
+                          <select class="form-select mb-3" aria-label=".form-select-sm example">
+                            <option selected>click here to select</option>
+                            <option value="NIN">NIN</option>
+                            <option value="BVN">BVN</option>
+                            <option value="PVC">PVC</option>
+                          </select>
+                          <div class="invalid-feedback">Please select a valid ID type</div>
                         </div>
-
+                    
                         <div class="col-md">
-                          <label for="teamLeaderEmail" class="form-label">Enter your NIN</label>
-                          <input type="number" class="form-control" id="teamLeaderEmail" placeholder="your NIN" />
-                          <div class="invalid-feedback">Please enter your NIN</div>
+                          <label for="teamLeaderEmail" class="form-label">Enter ID number</label>
+                          <input type="email" class="form-control" id="teamLeaderEmail"
+                            placeholder="Enter the ID number of your chosen ID" />
+                          <div class="invalid-feedback">Please add your id number</div>
                         </div>
                       </div>
                       <!-- / .row -->
@@ -682,10 +688,10 @@
                     <div class="mb-3">
                       <div class="row">
                         <div class="col-md">
-                          <label for="teamLeader" class="form-label">Bind your Local Account NO.</label>
+                          <label for="teamLeader" class="form-label">Enter your account number</label>
                           <input type="number" class="form-control" id="teamLeader"
-                            placeholder="your Local Account NO." />
-                          <div class="invalid-feedback">Please enter your Local Account NO.</div>
+                            placeholder="your Local Account Number" />
+                          <div class="invalid-feedback">Please enter your Local Account number</div>
                         </div>
 
                         <div class="col-md">
@@ -1022,7 +1028,7 @@
                       <div class="row">
                         <div class="col-md">
                           <div class="card">
-                            <img src="assets/images/Identify/upgrade-illustration.svg" class="card-img-top w-50 mx-auto"
+                            <img src="./assets/images/identify/upgrade-illustration.svg" class="card-img-top w-50 mx-auto"
                               alt="..." />
                             <div class="card-body">
                               <h3 class="card-title">Your Identify_DAO_NFT is ready</h3>
