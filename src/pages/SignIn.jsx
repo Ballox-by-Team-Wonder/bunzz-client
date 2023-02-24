@@ -48,9 +48,9 @@ function SignIn() {
               {/* Title */}
               <h1 className="mb-2 text-center">Sign In</h1>
               {/* Subtitle */}
-              <p className="text-secondary text-center">
+              {/* <p className="text-secondary text-center">
                 Enter your email address and password to access admin panel
-              </p>
+              </p> */}
               <p className="text-primary text-center">{resMsg}</p>
               {/* Form */}
               <form onSubmit={handleSubmit}>
@@ -78,15 +78,15 @@ function SignIn() {
                           {/* Label */}
                           <label className="form-label"> Password </label>
                         </div>
-                        <div className="col-auto">
-                          {/* Help text */}
+                        {/* <div className="col-auto">
+                          
                           <a
                             href="reset.html"
                             className="form-text small text-muted link-primary"
                           >
                             Forgot password
                           </a>
-                        </div>
+                        </div> */}
                       </div>
                       {/* / .row */}
                       {/* Input */}

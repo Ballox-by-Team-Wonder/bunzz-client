@@ -1,6 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { logout } from "../redux/authSlice";
 
 function Header() {
+  const dispatch = useDispatch()
+
+  const _logout = () => {
+    dispatch(logout())
+  }
+
   return (
     <header className="container-fluid d-flex py-6 mb-4">
       {/* Top buttons */}
@@ -226,17 +235,17 @@ function Header() {
               </div>
             </div>
             <hr className="dropdown-divider" />
-            <a className="dropdown-item" href="javascript: void(0);">
+            <Link className="dropdown-item" to="#">
               Profile &amp; account
-            </a>
+            </Link>
             <hr className="dropdown-divider" />
-            <a className="dropdown-item" href="sign-in.html">
+            <Link className="dropdown-item" to="#">
               Settings
-            </a>
+            </Link>
             <hr className="dropdown-divider" />
-            <a className="dropdown-item" href="sign-in.html">
+            <button className="dropdown-item" onClick={_logout}>
               Sign out
-            </a>
+            </button>
           </div>
         </div>
       </div>

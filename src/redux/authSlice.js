@@ -5,7 +5,7 @@ import { removeUserToken, setUserToken } from '../services/localStorage'
 
 const namespace = 'auth'
 
-const base = '/api/user'
+const base = 'http://localhost:5000/api/user'
 
 export const signupUser = createAsyncThunk(`${namespace}/signupUser`, async (objData, { rejectWithValue }) => {
   try {

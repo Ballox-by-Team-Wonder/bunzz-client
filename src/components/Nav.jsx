@@ -116,13 +116,13 @@ function Nav() {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/airdrops" className={`nav-link ${isActiveLink(routes.dashboard[3])}`}>
+                    <Link to="/chat" className={`nav-link ${isActiveLink(routes.dashboard[3])}`}>
                       {" "}
                       DAO Chat{" "}
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/airdrops" className={`nav-link ${isActiveLink(routes.dashboard[4])}`}>
+                    <Link to="/activities" className={`nav-link ${isActiveLink(routes.dashboard[4])}`}>
                       {" "}
                       DAO Activities{" "}
                     </Link>

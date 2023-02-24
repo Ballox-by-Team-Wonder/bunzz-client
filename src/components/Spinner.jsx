@@ -3,7 +3,7 @@ import React from 'react'
 function Spinner() {
   return (
     <div 
-      class="spinner-border text-primary" 
+      className="spinner-border text-primary" 
       role="status"
       style={{
         zIndex: 1000,
