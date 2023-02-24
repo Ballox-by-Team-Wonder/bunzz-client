@@ -5,7 +5,7 @@ import { removeUserToken, setUserToken } from '../services/localStorage'
 
 const namespace = 'auth'
 
-const base = 'http://localhost:5000/api/user'
+const base = '/api/user'
 
 export const signupUser = createAsyncThunk(`${namespace}/signupUser`, async (objData, { rejectWithValue }) => {
   try {
@@ -34,6 +34,15 @@ export const loginUser = createAsyncThunk(`${namespace}/loginUser`, async (objDa
   }
 })
 
+export const onboardUser = createAsyncThunk(`${namespace}/onboardUser`, async (objData, { rejectWithValue }) => {
+  try {
+    const { data } = await axios.patch(`${base}/update-user`, objData)
+    return data;
+  } catch (err) {
+    return rejectWithValue(err?.response?.data)
+  }
+})
+
 
 const DEFAULT = { status: null, data: null, error: null }
 
@@ -47,6 +56,7 @@ const authSlice = createSlice({
     verifyPassword: DEFAULT,
     changePassword: DEFAULT,
     resetPassword: DEFAULT,
+    onboardUser: DEFAULT,
   },
   reducers: {
     logout(state) {
@@ -91,6 +101,18 @@ const authSlice = createSlice({
       state.login.status = STATUS.REJECTED
       state.login.error = payload
     },
+
+    [onboardUser.pending](state) {
+      state.onboardUser.status = STATUS.PENDING
+    },
+    [onboardUser.fulfilled](state, { payload }) {
+      state.onboardUser.status = STATUS.FULFILLED
+      state.user = payload.result
+    },
+    [onboardUser.rejected](state, { payload }) {
+      state.onboardUser.status = STATUS.REJECTED
+      state.onboardUser.error = payload
+    },
     
   }
 })
@@ -100,6 +122,7 @@ export const { logout } = authSlice.actions
 export const selectSignupState = state => state.auth.signup
 export const selectVerifyEmailState = state => state.auth.verifyEmail
 export const selectLoginState = state => state.auth.login
+export const selectOnboardUserState = state => state.auth.onboardUser
 
 
 export default authSlice.reducer

@@ -1,10 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
+import Spinner from "../components/Spinner";
+import { STATUS } from "../constants";
+import { onboardUser, selectOnboardUserState } from "../redux/authSlice";
 
 function Onboarding() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { status } = useSelector(selectOnboardUserState);
+
+  const [currentStep, setCurrentStep] = useState(1);
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    otherNames: "",
+    residentAddress: "",
+    residentState: "",
+    residentLga: "",
+    residentTown: "",
+    stateOfOrigin: "",
+    lgaOfOrigin: "",
+    townOfOrigin: "",
+    dateOfBirth: "",
+    phoneNumber: "",
+    bvn: "",
+    nin: "",
+    accountNumber: "",
+    bankName: ""
+  })
+
+  console.log(formData)
+
+  const [resMsg, setResMsg] = useState('')
+
+  const handleChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = () => {
+    // e.preventDefault();
+    console.log(formData)
+
+    dispatch(onboardUser(formData))
+      .unwrap()
+      .then(() => {
+        setCurrentStep(4)
+        setResMsg('Successful')
+      })
+      .catch((err) => {
+        console.log(err)
+        setResMsg(err.message || "Something went wrong")
+      })
+  }
+
   return (
     <>
+      { status === STATUS.PENDING && <Spinner /> }
+
       <div>
         <Nav />
         <main>
@@ -36,56 +92,56 @@ function Onboarding() {
                   >
                     <li className="nav-item" role="presentation">
                       <button
-                        className="nav-link active"
-                        id="wizardTabOne"
-                        data-bs-toggle="pill"
-                        data-bs-target="#wizardStepOne"
+                        className={`nav-link ${currentStep === 1 ? "active" : ""}`}
+                        // id="wizardTabOne"
+                        // data-bs-toggle="pill"
+                        // data-bs-target="#wizardStepOne"
                         type="button"
-                        role="tab"
-                        aria-controls="wizardStepOne"
-                        aria-selected="true"
+                        // role="tab"
+                        // aria-controls="wizardStepOne"
+                        // aria-selected="true"
                       >
                         1
                       </button>
                     </li>
                     <li className="nav-item" role="presentation">
                       <button
-                        className="nav-link"
-                        id="wizardTabTwo"
-                        data-bs-toggle="pill"
-                        data-bs-target="#wizardStepTwo"
+                        className={`nav-link ${currentStep === 2 ? "active" : ""}`}
+                        // id="wizardTabTwo"
+                        // data-bs-toggle="pill"
+                        // data-bs-target="#wizardStepTwo"
                         type="button"
-                        role="tab"
-                        aria-controls="wizardStepTwo"
-                        aria-selected="false"
+                        // role="tab"
+                        // aria-controls="wizardStepTwo"
+                        // aria-selected="false"
                       >
                         2
                       </button>
                     </li>
                     <li className="nav-item" role="presentation">
                       <button
-                        className="nav-link"
-                        id="wizardTabThree"
-                        data-bs-toggle="pill"
-                        data-bs-target="#wizardStepThree"
+                        className={`nav-link ${currentStep === 3 ? "active" : ""}`}
+                        // id="wizardTabThree"
+                        // data-bs-toggle="pill"
+                        // data-bs-target="#wizardStepThree"
                         type="button"
-                        role="tab"
-                        aria-controls="wizardStepThree"
-                        aria-selected="false"
+                        // role="tab"
+                        // aria-controls="wizardStepThree"
+                        // aria-selected="false"
                       >
                         3
                       </button>
                     </li>
                     <li className="nav-item" role="presentation">
                       <button
-                        className="nav-link"
-                        id="wizardTabFour"
-                        data-bs-toggle="pill"
-                        data-bs-target="#wizardStepFour"
+                        className={`nav-link ${currentStep === 4 ? "active" : ""}`}
+                        // id="wizardTabFour"
+                        // data-bs-toggle="pill"
+                        // data-bs-target="#wizardStepFour"
                         type="button"
-                        role="tab"
-                        aria-controls="wizardStepFour"
-                        aria-selected="false"
+                        // role="tab"
+                        // aria-controls="wizardStepFour"
+                        // aria-selected="false"
                       >
                         4
                       </button>
@@ -93,7 +149,7 @@ function Onboarding() {
                   </ul>
                   <div className="tab-content" id="wizard-tabContent">
                     <div
-                      className="tab-pane fade show active"
+                      className={`tab-pane fade ${currentStep === 1 ? 'show active' : ''}`}
                       id="wizardStepOne"
                       role="tabpanel"
                       aria-labelledby="wizardTabOne"
@@ -121,6 +177,9 @@ function Onboarding() {
                                   className="form-control"
                                   id="firstName"
                                   placeholder="your first name"
+                                  name="firstName"
+                                  value={formData.firstName}
+                                  onChange={handleChange}
                                 />
                                 <div className="invalid-feedback">
                                   Please enter your first name
@@ -134,10 +193,13 @@ function Onboarding() {
                                   Last Name
                                 </label>
                                 <input
-                                  type="email"
+                                  type="text"
                                   className="form-control"
                                   id="lastNAme"
                                   placeholder="your last name"
+                                  name="lastName"
+                                  value={formData.lastName}
+                                  onChange={handleChange}
                                 />
                                 <div className="invalid-feedback">
                                   Please enter your last name
@@ -151,10 +213,13 @@ function Onboarding() {
                                   Other Names
                                 </label>
                                 <input
-                                  type="email"
+                                  type="text"
                                   className="form-control"
                                   id="othernames"
                                   placeholder="your other names"
+                                  name="otherNames"
+                                  value={formData.otherNames}
+                                  onChange={handleChange}
                                 />
                                 <div className="invalid-feedback">
                                   Please enter your other names
@@ -173,10 +238,13 @@ function Onboarding() {
                                   Resident's Address
                                 </label>
                                 <input
-                                  type="email"
+                                  type="text"
                                   className="form-control"
                                   id="residentADDress"
                                   placeholder="your home address"
+                                  name="residentAddress"
+                                  value={formData.residentAddress}
+                                  onChange={handleChange}
                                 />
                                 <div className="invalid-feedback">
                                   Please enter your home address
@@ -196,6 +264,9 @@ function Onboarding() {
                                 <select
                                   className="form-select mb-3"
                                   aria-label=".form-select-sm example"
+                                  name="residentState"
+                                  value={formData.residentState}
+                                  onChange={handleChange}
                                 >
                                   <option disabled selected>
                                     --Select State--
@@ -254,10 +325,13 @@ function Onboarding() {
                                   Resident's LGA
                                 </label>
                                 <input
-                                  type="email"
+                                  type="text"
                                   className="form-control"
                                   id="residentLGA"
                                   placeholder="your local government Area"
+                                  name="residentLga"
+                                  value={formData.residentLga}
+                                  onChange={handleChange}
                                 />
                                 <div className="invalid-feedback">
                                   Please enter the LGA for the above state
@@ -275,6 +349,9 @@ function Onboarding() {
                                   className="form-control"
                                   id="residentTown"
                                   placeholder="your town"
+                                  name="residentTown"
+                                  value={formData.residentTown}
+                                  onChange={handleChange}
                                 />
                                 <div className="invalid-feedback">
                                   Please enter the Town for the above state
@@ -295,6 +372,9 @@ function Onboarding() {
                                 <select
                                   className="form-select mb-3"
                                   aria-label=".form-select-sm example"
+                                  name="stateOfOrigin"
+                                  value={formData.stateOfOrigin}
+                                  onChange={handleChange}
                                 >
                                   <option disabled selected>
                                     --Select State--
@@ -353,10 +433,13 @@ function Onboarding() {
                                   LGA of Origin
                                 </label>
                                 <input
-                                  type="email"
+                                  type="text"
                                   className="form-control"
                                   id="residentLGA"
                                   placeholder="your local government Area"
+                                  name="lgaOfOrigin"
+                                  value={formData.lgaOfOrigin}
+                                  onChange={handleChange}
                                 />
                                 <div className="invalid-feedback">
                                   Please enter the LGA for the above state
@@ -370,10 +453,13 @@ function Onboarding() {
                                   Town of Origin
                                 </label>
                                 <input
-                                  type="email"
+                                  type="text"
                                   className="form-control"
                                   id="residentTown"
                                   placeholder="your town"
+                                  name="townOfOrigin"
+                                  value={formData.townOfOrigin}
+                                  onChange={handleChange}
                                 />
                                 <div className="invalid-feedback">
                                   Please enter the Town for the above state
@@ -397,9 +483,12 @@ function Onboarding() {
                                   className="form-control"
                                   id="residentLGA"
                                   placeholder="your Date OF Birth"
+                                  name="dateOfBirth"
+                                  value={formData.dateOfBirth}
+                                  onChange={handleChange}
                                 />
                                 <div className="invalid-feedback">
-                                  Please enter your Date OF Birth
+                                  Please enter your Date of Birth
                                 </div>
                               </div>
                               <div className="col-md">
@@ -414,6 +503,9 @@ function Onboarding() {
                                   className="form-control"
                                   id="residentTown"
                                   placeholder="your Phone No."
+                                  name="phoneNumber"
+                                  value={formData.phoneNumber}
+                                  onChange={handleChange}
                                 />
                                 <div className="invalid-feedback">
                                   Please enter your phone no
@@ -446,19 +538,21 @@ function Onboarding() {
                               Cancel
                             </button>
                             {/* Button */}
-                            <a
+                            <button
                               className="btn btn-primary"
-                              data-toggle="wizard"
-                              href="#wizardStepTwo"
+                              onClick={() => setCurrentStep(2)}
+                              type="button"
+                              // data-toggle="wizard"
+                              // href="#wizardStepTwo"
                             >
                               Next
-                            </a>
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div
-                      className="tab-pane fade"
+                      className={`tab-pane fade ${currentStep === 2 ? 'show active' : ''}`}
                       id="wizardStepTwo"
                       role="tabpanel"
                       aria-labelledby="wizardTabTwo"
@@ -486,6 +580,9 @@ function Onboarding() {
                                   className="form-control"
                                   id="teamLeader"
                                   placeholder="your BVN"
+                                  name="bvn"
+                                  value={formData.bvn}
+                                  onChange={handleChange}
                                 />
                                 <div className="invalid-feedback">
                                   Please enter your BVN
@@ -503,6 +600,9 @@ function Onboarding() {
                                   className="form-control"
                                   id="teamLeaderEmail"
                                   placeholder="your NIN"
+                                  name="nin"
+                                  value={formData.nin}
+                                  onChange={handleChange}
                                 />
                                 <div className="invalid-feedback">
                                   Please enter your NIN
@@ -525,6 +625,9 @@ function Onboarding() {
                                   className="form-control"
                                   id="teamLeader"
                                   placeholder="your Local Account NO."
+                                  name="accountNumber"
+                                  value={formData.accountNumber}
+                                  onChange={handleChange}
                                 />
                                 <div className="invalid-feedback">
                                   Please enter your Local Account NO.
@@ -540,19 +643,23 @@ function Onboarding() {
                                 <select
                                   className="form-select mb-3"
                                   aria-label=".form-select-sm example"
+                                  name="bankName"
+                                  value={formData.bankName}
+                                  onChange={handleChange}
                                 >
                                   <option selected>Choose</option>
-                                  {/* <option value={801}>
+                                  <option value="abbey-mortgage">
                                     Abbey Mortgage Bank
                                   </option>
                                   <option value='access-bank'>Access Bank</option>
-                                  <option value={063}>
+                                  <option value="access-diamond">
                                     Access Bank (Diamond)
                                   </option>
-                                  <option value="035A">ALAT by WEMA</option>
-                                  <option value={401}>
+                                  <option value='alat-by-wema'>ALAT by WEMA</option>
+                                  <option value="aso-savings-and-loans">
                                     ASO Savings and Loans
                                   </option>
+                                  {/* 
                                   <option value={50931}>
                                     Bowen Microfinance Bank
                                   </option>
@@ -687,7 +794,7 @@ function Onboarding() {
                                 <button
                                   type="button"
                                   className="btn btn-primary"
-                                  onclick="window.location.href='https://twitter.com/login?lang=en';"
+                                  // onclick="window.location.href='https://twitter.com/login?lang=en';"
                                 >
                                   Connect Now
                                 </button>
@@ -702,7 +809,7 @@ function Onboarding() {
                                 <button
                                   type="button"
                                   className="btn btn-primary"
-                                  onclick="window.location.href='https://www.linkedin.com/login';"
+                                  // onclick="window.location.href='https://www.linkedin.com/login';"
                                 >
                                   Connect Now
                                 </button>
@@ -714,27 +821,31 @@ function Onboarding() {
                         <div className="card-footer">
                           <div className="d-flex justify-content-between">
                             {/* Button */}
-                            <a
+                            <button
                               className="btn btn-light"
                               data-toggle="wizard"
-                              href="#wizardStepOne"
+                              onClick={() => setCurrentStep(1)}
+                              type="button"
+                              // href="#wizardStepOne"
                             >
                               Previous
-                            </a>
+                            </button>
                             {/* Button */}
-                            <a
+                            <button
                               className="btn btn-primary"
+                              onClick={() => setCurrentStep(3)}
+                              type="button"
                               data-toggle="wizard"
-                              href="#wizardStepThree"
+                              // href="#wizardStepThree"
                             >
                               Next
-                            </a>
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div
-                      className="tab-pane fade"
+                      className={`tab-pane fade ${currentStep === 3 ? 'show active' : ''}`}
                       id="wizardStepThree"
                       role="tabpanel"
                       aria-labelledby="wizardTabThree"
@@ -742,7 +853,9 @@ function Onboarding() {
                       {/* Card */}
                       <div className="card border-0 py-6 px-md-6">
                         <div className="card-body">
+
                           <h2 className="text-center mb-0">Wallet Setup</h2>
+                          <p className="text-primary text-center my-5">{resMsg}</p>
                           <p className="text-secondary text-center">
                             Connect and Link your wallet (if any)
                           </p>
@@ -809,27 +922,31 @@ function Onboarding() {
                           </div>
                           <div className="d-flex justify-content-between">
                             {/* Button */}
-                            <a
+                            <button
                               className="btn btn-light"
-                              data-toggle="wizard"
-                              href="#wizardStepTwo"
+                              // data-toggle="wizard"
+                              onClick={() => setCurrentStep(2)}
+                              type="button"
+                              // href="#wizardStepTwo"
                             >
                               Previous
-                            </a>
+                            </button>
                             {/* Button */}
-                            <a
+                            <button
                               className="btn btn-primary"
                               data-toggle="wizard"
-                              href="#wizardStepFour"
+                              onClick={() => handleSubmit()}
+                              type="submit"
+                              // href="#wizardStepFour"
                             >
                               Save
-                            </a>
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div
-                      className="tab-pane fade"
+                      className={`tab-pane fade ${currentStep === 4 ? 'show active' : ''}`}
                       id="wizardStepFour"
                       role="tabpanel"
                       aria-labelledby="wizardTabFour"
@@ -857,12 +974,12 @@ function Onboarding() {
                                       Your Identify_DAO_NFT is ready
                                     </h3>
                                     <p className="card-text">Thank you</p>
-                                    <a
-                                      href="main.html"
+                                    <Link
+                                      to="/home"
                                       className="btn btn-primary"
                                     >
                                       Proceed to view your Identify_DAO_NFT
-                                    </a>
+                                    </Link>
                                   </div>
                                 </div>
                               </div>
