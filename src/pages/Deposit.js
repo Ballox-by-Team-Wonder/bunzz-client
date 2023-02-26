@@ -1,4 +1,4 @@
-const { ethers } = require('ethers');
+import { ethers } from 'ethers';
 
 // Connect to blockchain
 const provider = new ethers.providers.Web3Provider(window.ethereum);

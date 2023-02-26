@@ -33,8 +33,6 @@ function Onboarding() {
     bankName: ""
   })
 
-  console.log(formData)
-
   const [resMsg, setResMsg] = useState('')
 
   const handleChange = e => {
@@ -42,7 +40,6 @@ function Onboarding() {
   }
 
   const handleSubmit = () => {
-    // e.preventDefault();
     console.log(formData)
 
     dispatch(onboardUser(formData))
@@ -936,7 +933,7 @@ function Onboarding() {
                               className="btn btn-primary"
                               data-toggle="wizard"
                               onClick={() => handleSubmit()}
-                              type="submit"
+                              type="button"
                               // href="#wizardStepFour"
                             >
                               Save

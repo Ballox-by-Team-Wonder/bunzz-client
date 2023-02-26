@@ -1,8 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
 
 function Home() {
+  const user = useSelector(state => state.auth.user)
+
   return (
     <div>
       <Nav />
@@ -44,7 +47,9 @@ function Home() {
                         </div>
                       </div>
                       <div className="col-auto me-auto d-flex flex-column">
-                        <h3 className="mb-0">MMERICHUKWU ANOSIKE</h3>
+                        <h3 className="mb-0" style={{ textTransform: 'uppercase' }}>
+                          {user.fullName}
+                        </h3>
                         <span className="small text-secondary fw-bold d-block mb-4">
                           DAO MODERATOR
                         </span>
@@ -338,7 +343,7 @@ function Home() {
                           About
                         </h3>
                         <ul className="list-unstyled mb-7">
-                          <li className="py-2">
+                          <li className="py-2" style={{ textTransform: 'uppercase' }}>
                             <svg
                               viewBox="0 0 24 24"
                               height={18}
@@ -371,7 +376,7 @@ function Home() {
                                 strokeWidth="1.5"
                               />
                             </svg>
-                            MMERICHUKWU ANOSIKE
+                            { user.fullName }
                           </li>
                           <li className="py-2">
                             <svg
@@ -625,7 +630,7 @@ function Home() {
                                 />
                               </g>
                             </svg>
-                            +234 8110671481
+                            {user.phoneNumber || '+234 900 0000'}
                           </li>
                           <li className="py-2">
                             <svg
@@ -652,7 +657,7 @@ function Home() {
                                 strokeWidth="1.5"
                               />
                             </svg>
-                            mmerichukwuanosike@gmail.com
+                            {user.email}
                           </li>
                         </ul>
                         <h3 className="h6 small text-secondary text-uppercase mb-3">
