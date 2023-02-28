@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
-    <img width=200px height=200px src="https://github.com/Ballox-by-Team-Wonder/bunzz-client/blob/master/Base%20for%20ui/dashboard/assets/images/identify/ide_logo-transformed.png" alt="Project logo"></a>
+    <img  src="https://github.com/Ballox-by-Team-Wonder/bunzz-client/blob/master/Base%20for%20ui/dashboard/assets/images/identify/ide_logo-transformed.png" alt="Project logo"></a>
 
 <h3 align="center">Identify DAO by Rethink Tech</h3>
 
