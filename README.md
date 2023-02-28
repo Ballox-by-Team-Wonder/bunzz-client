@@ -26,10 +26,7 @@
 - [Solution](#usage)
 - [How It Works](#deployment)
 - [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
 
 ## 🧐 Problem Statement <a name = "problem"></a>
 
@@ -55,13 +52,13 @@ Our system also allows organizations to conduct credible elections and gives the
 The major enhancement in our proposed method is that organizations or political parties can also monitor the process in such a way that, if any political party is tampering with their voters' KYC data and that particular party or entity will get sanctioned accordingly on the network based on this voting. In this way, Blockchain can be used to improve the efficiency of KYC process with its distinctive features.
 
 Our core DAO features include 
-A unified NFT IDS system 
-Spilt Payment system
-Dynamic voting system with real time results (for both private and public entities)
-Community calls and members register,
-Real time analytics for dao owners
-DAO pay (allows the bankless and walletless to make transactions)
-Our DAO bots . And other cool community features
+- A unified NFT IDS system 
+- Spilt Payment system
+- Dynamic voting system with real time results (for both private and public entities)
+- Community calls and members register,
+- Real time analytics for dao owners
+- DAO pay (allows the bankless and walletless to make transactions)
+- Our DAO bots . And other cool community features
 
 Our open source DAO based system, is built in such a way that our community members are onboarded seamlessly and on the go. This will help us track the growth of the software and its level of impact  with our open source code model, based on the level of active communities that are onboarded on the platform and their activity level backed with our real time analytics. It will also help us make policies and upgrade to the system for better engagement.
 
